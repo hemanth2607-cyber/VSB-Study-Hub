@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="web_standard" name="shell-type"/>
+  <title>VSB StudyHub - Design System &amp; Brand Guidelines</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Merriweather:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #c4c6cf; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #74777f; }
+
+    /* Ambient Warm Scholarly Dark Mode */
+    html.dark {
+      color-scheme: dark;
+    }
+    html.dark body {
+      background-color: #161311 !important;
+      color: #ede7dc !important;
+    }
+    html.dark header {
+      background-color: #1f1a17 !important;
+      border-color: #38302a !important;
+    }
+    html.dark main {
+      background-color: #161311 !important;
+    }
+    html.dark .bg-\[\#FAF7F2\] {
+      background-color: #161311 !important;
+    }
+    html.dark .bg-surface-container-lowest {
+      background-color: #211c19 !important;
+      border-color: #38302a !important;
+    }
+    html.dark .bg-surface-container-low {
+      background-color: #28221e !important;
+      border-color: #3d342d !important;
+    }
+    html.dark .bg-surface {
+      background-color: #1b1714 !important;
+      border-color: #38302a !important;
+    }
+    html.dark .bg-surface-container {
+      background-color: #2c2521 !important;
+      border-color: #423831 !important;
+    }
+    html.dark .border-\[\#E8E0D2\] {
+      border-color: #38302a !important;
+    }
+    html.dark .text-primary {
+      color: #e3be72 !important;
+    }
+    html.dark .text-secondary {
+      color: #df8894 !important;
+    }
+    html.dark .text-on-surface {
+      color: #ede7dc !important;
+    }
+    html.dark .text-on-surface-variant {
+      color: #b0a698 !important;
+    }
+    html.dark footer {
+      background-color: #1b1714 !important;
+      border-color: #38302a !important;
+    }
+    html.dark input, html.dark select {
+      background-color: #241e1b !important;
+      color: #ede7dc !important;
+      border-color: #423831 !important;
+    }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-secondary-container": "#792e3a",
+            "inverse-surface": "#303030",
+            "surface-container-low": "#f6f3f2",
+            "surface-container-high": "#eae7e7",
+            "secondary": "#964450",
+            "on-tertiary": "#ffffff",
+            "tertiary-fixed-dim": "#ecc246",
+            "tertiary-fixed": "#ffe08e",
+            "primary-fixed-dim": "#aec8f4",
+            "secondary-container": "#ff99a4",
+            "surface-container": "#f0eded",
+            "tertiary-container": "#cea72c",
+            "on-surface": "#1b1c1c",
+            "on-tertiary-fixed": "#241a00",
+            "on-secondary-fixed-variant": "#792d39",
+            "on-primary-fixed-variant": "#2d476d",
+            "on-primary-container": "#8ba4cf",
+            "primary-fixed": "#d5e3ff",
+            "surface": "#fcf9f8",
+            "on-tertiary-fixed-variant": "#584400",
+            "secondary-fixed-dim": "#ffb2b9",
+            "surface-variant": "#e4e2e1",
+            "error-container": "#ffdad6",
+            "on-background": "#1b1c1c",
+            "surface-container-highest": "#e4e2e1",
+            "error": "#ba1a1a",
+            "background": "#fcf9f8",
+            "on-tertiary-container": "#4f3d00",
+            "inverse-primary": "#aec8f4",
+            "on-error-container": "#93000a",
+            "on-secondary": "#ffffff",
+            "on-secondary-fixed": "#3f0110",
+            "primary": "#032448",
+            "outline": "#74777f",
+            "secondary-fixed": "#ffdadc",
+            "inverse-on-surface": "#f3f0f0",
+            "surface-container-lowest": "#ffffff",
+            "surface-tint": "#465f86",
+            "surface-dim": "#dcd9d9",
+            "outline-variant": "#c4c6cf",
+            "tertiary": "#755b00",
+            "on-surface-variant": "#43474e",
+            "surface-bright": "#fcf9f8",
+            "on-primary-fixed": "#001c3b",
+            "on-error": "#ffffff",
+            "on-primary": "#ffffff",
+            "primary-container": "#1f3a5f"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "margin": "3rem",
+            "space-lg": "1.5rem",
+            "margin-mobile": "1.25rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "gutter-mobile": "1rem",
+            "space-xl": "2.5rem",
+            "gutter": "1.5rem"
+          },
+          fontFamily: {
+            "body-md": ["Inter", "sans-serif"],
+            "display-lg": ["Merriweather", "serif"],
+            "body-lg": ["Inter", "sans-serif"],
+            "headline-lg": ["Merriweather", "serif"],
+            "title-lg": ["Inter", "sans-serif"],
+            "headline-lg-mobile": ["Merriweather", "serif"],
+            "title-md": ["Inter", "sans-serif"],
+            "label-md": ["Inter", "sans-serif"],
+            "headline-md": ["Merriweather", "serif"],
+            "headline-sm": ["Merriweather", "serif"],
+            "label-sm": ["Inter", "sans-serif"],
+            "display-lg-mobile": ["Merriweather", "serif"],
+            "body-sm": ["Inter", "sans-serif"]
+          },
+          fontSize: {
+            "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }],
+            "display-lg": ["40px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
+            "headline-lg": ["32px", { "lineHeight": "42px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "fontWeight": "600" }],
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+            "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "700" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "display-lg-mobile": ["30px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased transition-colors duration-200">
+
+  <!-- TOP HEADER -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-[#FAF7F2] border-b border-[#E8E0D2] shadow-sm transition-colors">
+    <div class="w-full max-w-[1680px] 2xl:max-w-[96vw] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex items-center justify-between gap-4 h-20">
+      <!-- Crest Logo with Official VSB Image -->
+      <a href="index.html" class="flex items-center gap-3 sm:gap-4 flex-shrink-0 group">
+        <img alt="VSB College of Engineering Karur Logo" class="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-105" src="assets/vsb-logo.png" onerror="this.src='https://vsbec.edu.in/wp-content/uploads/2026/06/VSB-Karur.png'"/>
+        <div class="flex flex-col">
+          <span class="font-headline-sm text-base sm:text-xl text-primary tracking-tight leading-none group-hover:text-secondary transition-colors">VSB StudyHub</span>
+          <span class="font-label-sm text-[10px] sm:text-xs text-secondary tracking-wider uppercase font-semibold mt-1">Dept of CSE (AI &amp; ML)</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-2 xl:gap-4 2xl:gap-6 flex-shrink-0">
+        <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors py-1" href="index.html">Home</a>
+        <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors py-1" href="semesters.html">Semesters</a>
+        <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors py-1" href="subjects.html">Subjects</a>
+        <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors py-1" href="question-papers.html">Question Papers</a>
+        <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors py-1" href="resources.html">Resources</a>
+        <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors py-1" href="study-tools.html">Study Tools</a>
+        <a aria-current="page" class="transition-colors py-1 text-primary font-title-md border-b-2 border-primary" href="design-system.html">Design System</a>
+        <a class="font-label-md px-3 py-1.5 rounded-lg bg-secondary/10 hover:bg-secondary/20 text-secondary font-semibold transition-colors flex items-center gap-1.5" href="admin.html">
+          <span class="material-symbols-outlined text-[16px]">admin_panel_settings</span>
+          <span>Admin Center</span>
+        </a>
+      </nav>
+
+      <!-- Action Controls -->
+      <div class="flex items-center gap-space-sm flex-shrink-0">
+        <!-- Dark / Light Mode Switcher -->
+        <div class="flex items-center bg-surface-container-high rounded-full p-0.5 border border-[#E8E0D2]">
+          <button id="lightModeBtn" aria-label="Light mode" onclick="setTheme('light')" class="w-7 h-7 rounded-full flex items-center justify-center bg-surface-container-lowest text-primary shadow-xs transition-colors" type="button">
+            <span class="material-symbols-outlined text-[16px]">light_mode</span>
+          </button>
+          <button id="darkModeBtn" aria-label="Dark mode" onclick="setTheme('dark')" class="w-7 h-7 rounded-full flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" type="button">
+            <span class="material-symbols-outlined text-[16px]">dark_mode</span>
+          </button>
+        </div>
+
+        <!-- Unified Login & Account Slot -->
+        <div class="header-auth-slot flex items-center">
+          <button onclick="openAuthModal('student')" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-primary text-white hover:bg-primary-container text-xs sm:text-sm font-semibold transition-colors shadow-xs" type="button">
+            <span class="material-symbols-outlined text-[17px]">login</span>
+            <span>Sign In / Register</span>
+          </button>
+        </div>
+
+        <!-- Mobile Menu Hamburger -->
+        <button onclick="toggleMobileNav()" class="lg:hidden p-2 text-on-surface hover:text-primary rounded-lg ml-1" type="button" aria-label="Menu">
+          <span class="material-symbols-outlined text-[24px]">menu</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobileNav" class="hidden lg:hidden border-t border-[#E8E0D2] bg-[#FAF7F2] px-gutter py-3 space-y-2">
+      <a class="block py-1.5 text-on-surface-variant hover:text-primary font-title-md" href="index.html">Home</a>
+      <a class="block py-1.5 text-on-surface-variant hover:text-primary font-label-md" href="semesters.html">Semesters Directory</a>
+      <a class="block py-1.5 text-on-surface-variant hover:text-primary font-label-md" href="subjects.html">Core &amp; Elective Subjects</a>
+      <a class="block py-1.5 text-on-surface-variant hover:text-primary font-label-md" href="question-papers.html">Previous Year Questions (PYQs)</a>
+      <a class="block py-1.5 text-on-surface-variant hover:text-primary font-label-md" href="resources.html">Academic Resources</a>
+      <a class="block py-1.5 text-on-surface-variant hover:text-primary font-label-md" href="study-tools.html">Study Tools &amp; CGPA</a>
+      <a class="block py-1.5 text-primary font-semibold font-label-md" href="design-system.html">Design System &amp; Mood Board</a>
+      <a class="block py-2 text-secondary font-semibold font-label-md flex items-center gap-1.5" href="admin.html">
+        <span class="material-symbols-outlined text-[18px]">admin_panel_settings</span>
+        <span>Open Admin Control Center</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- MAIN BODY -->
+  <main class="w-full pt-20 bg-[#FAF7F2] min-h-screen transition-colors">
+    <div class="w-full max-w-[1680px] 2xl:max-w-[96vw] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+      <div class="flex flex-col w-full pb-space-xl">
+
+        <!-- System Architecture & Header Specimen -->
+        <section class="relative w-full pt-space-md pb-space-xl">
+          <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-md mb-space-lg">
+            <div class="space-y-space-xs max-w-3xl">
+              <div class="inline-flex items-center gap-space-xs px-3 py-1 rounded-full bg-surface-container text-secondary font-label-sm text-label-sm uppercase tracking-wider font-semibold">
+                <span class="material-symbols-outlined text-[14px]">auto_stories</span>
+                System Specification v2.4 • Academic Year 2024–25
+              </div>
+              <h1 class="font-display-lg text-display-lg text-primary tracking-tight">VSB StudyHub • Design Language &amp; Brand Guidelines</h1>
+              <p class="font-headline-sm text-headline-sm text-secondary font-serif italic">CSE (AI &amp; ML) Department — Scholarly College Library Aesthetic</p>
+            </div>
+            <div class="flex items-center gap-space-sm flex-wrap">
+              <div class="px-space-md py-space-sm rounded-lg bg-surface-container-low shadow-sm flex items-center gap-space-sm">
+                <span class="material-symbols-outlined text-primary text-[20px]">verified</span>
+                <div class="flex flex-col">
+                  <span class="font-label-sm text-label-sm text-on-surface-variant font-semibold">STATUS</span>
+                  <span class="font-title-md text-title-md text-primary font-bold">Canonical Guide</span>
+                </div>
+              </div>
+              <div class="px-space-md py-space-sm rounded-lg bg-surface-container-low shadow-sm flex items-center gap-space-sm">
+                <span class="material-symbols-outlined text-tertiary text-[20px]">architecture</span>
+                <div class="flex flex-col">
+                  <span class="font-label-sm text-label-sm text-on-surface-variant font-semibold">FOUNDATION</span>
+                  <span class="font-title-md text-title-md text-primary font-bold">Merriweather + Inter</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Core Philosophy Statement Banner -->
+          <div class="w-full bg-surface-container-lowest rounded-xl p-space-lg shadow-sm relative overflow-hidden border border-[#E8E0D2]">
+            <div class="absolute -right-12 -top-12 w-48 h-48 bg-primary/5 rounded-full pointer-events-none"></div>
+            <div class="relative z-10 grid grid-cols-1 md:grid-cols-4 gap-space-lg">
+              <div class="md:col-span-1 space-y-space-xs">
+                <span class="font-label-sm text-label-sm text-tertiary font-semibold uppercase tracking-widest">Philosophy Core</span>
+                <h2 class="font-headline-md text-headline-md text-primary">Scholarly Dignity &amp; Tactile Calm</h2>
+              </div>
+              <div class="md:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-space-md">
+                <div class="space-y-space-xs bg-surface-container-low p-space-md rounded-lg border border-[#E8E0D2]/50">
+                  <div class="w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center">
+                    <span class="material-symbols-outlined text-[18px]">library_books</span>
+                  </div>
+                  <h3 class="font-title-md text-title-md text-primary">Grounded &amp; Archival</h3>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant">Rejects high-gloss neon digital gimmicks. Favors warm parchment surfaces, explicit spatial boundaries, and textbook typographic restraint.</p>
+                </div>
+                <div class="space-y-space-xs bg-surface-container-low p-space-md rounded-lg border border-[#E8E0D2]/50">
+                  <div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center">
+                    <span class="material-symbols-outlined text-[18px]">psychology</span>
+                  </div>
+                  <h3 class="font-title-md text-title-md text-secondary">Cognitive Focus</h3>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant">Calibrated for deep technical comprehension: clear variable markers, legible equations, and zero sensory fatigue during multi-hour review.</p>
+                </div>
+                <div class="space-y-space-xs bg-surface-container-low p-space-md rounded-lg border border-[#E8E0D2]/50">
+                  <div class="w-8 h-8 rounded-full bg-tertiary-container text-on-primary flex items-center justify-center">
+                    <span class="material-symbols-outlined text-[18px]">balance</span>
+                  </div>
+                  <h3 class="font-title-md text-title-md text-primary">Departmental Authority</h3>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant">Synthesizes traditional collegiate prestige with rigorous, modern Computer Science (Artificial Intelligence &amp; Machine Learning) curricula.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Color Palette & Swatches Showcase -->
+        <section class="w-full space-y-space-md mt-space-lg">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="font-label-sm text-label-sm text-secondary font-semibold uppercase tracking-wider">Foundation 01</span>
+              <h2 class="font-headline-lg text-headline-lg text-primary">Chromatic System &amp; Semantic Swatches</h2>
+            </div>
+            <span class="font-label-md text-label-md text-on-surface-variant hidden sm:inline-block">Full WCAG AAA &amp; AA Checked Contrast Pairings</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+            <!-- Swatch 1: Primary Navy Blue -->
+            <div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm flex flex-col justify-between border border-[#E8E0D2]">
+              <div class="h-32 bg-primary p-space-md flex flex-col justify-between">
+                <span class="px-2 py-0.5 rounded bg-surface-container-lowest/20 text-on-primary font-label-sm text-label-sm uppercase backdrop-blur-sm self-start">Primary Accent</span>
+                <span class="font-headline-sm text-headline-sm text-on-primary">Primary Navy</span>
+              </div>
+              <div class="p-space-md space-y-space-xs bg-surface-container-lowest">
+                <div class="flex justify-between items-center text-on-surface font-title-md text-title-md">
+                  <span>#1F3A5F / #032448</span>
+                  <span class="font-label-sm text-label-sm text-on-surface-variant font-mono">rgb(3, 36, 72)</span>
+                </div>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">Primary actions, editorial headers, institutional badges, and focused interaction states.</p>
+                <div class="pt-2 flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+                  <span class="font-semibold text-primary">Token: primary</span>
+                  <span class="px-1.5 py-0.5 bg-surface-container rounded">Contrast 13.8:1</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Swatch 2: Secondary Burgundy -->
+            <div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm flex flex-col justify-between border border-[#E8E0D2]">
+              <div class="h-32 bg-secondary p-space-md flex flex-col justify-between">
+                <span class="px-2 py-0.5 rounded bg-surface-container-lowest/20 text-on-secondary font-label-sm text-label-sm uppercase backdrop-blur-sm self-start">Department Accent</span>
+                <span class="font-headline-sm text-headline-sm text-on-secondary">Heritage Burgundy</span>
+              </div>
+              <div class="p-space-md space-y-space-xs bg-surface-container-lowest">
+                <div class="flex justify-between items-center text-on-surface font-title-md text-title-md">
+                  <span>#7A2E3A / #964450</span>
+                  <span class="font-label-sm text-label-sm text-on-surface-variant font-mono">rgb(150, 68, 80)</span>
+                </div>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">Syllabus highlights, urgent departmental advisories, verified seals, unit tags.</p>
+                <div class="pt-2 flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+                  <span class="font-semibold text-secondary">Token: secondary</span>
+                  <span class="px-1.5 py-0.5 bg-surface-container rounded">Contrast 7.4:1</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Swatch 3: Soft Parchment / Paper Cream -->
+            <div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm flex flex-col justify-between border border-[#E8E0D2]">
+              <div class="h-32 bg-[#FAF7F2] p-space-md flex flex-col justify-between relative border-b border-[#E8E0D2]">
+                <span class="px-2 py-0.5 rounded bg-primary/10 text-primary font-label-sm text-label-sm uppercase self-start">Canvas Substrate</span>
+                <span class="font-headline-sm text-headline-sm text-primary">Parchment Cream</span>
+              </div>
+              <div class="p-space-md space-y-space-xs bg-surface-container-lowest">
+                <div class="flex justify-between items-center text-on-surface font-title-md text-title-md">
+                  <span>#FAF7F2 / #FCF9F8</span>
+                  <span class="font-label-sm text-label-sm text-on-surface-variant font-mono">rgb(250, 247, 242)</span>
+                </div>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">Base page background replicating acid-free archival manuscript paper for low glare.</p>
+                <div class="pt-2 flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+                  <span class="font-semibold text-primary">Token: surface</span>
+                  <span class="px-1.5 py-0.5 bg-surface-container rounded">Substrate</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Swatch 4: Muted Scholar Gold -->
+            <div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm flex flex-col justify-between border border-[#E8E0D2]">
+              <div class="h-32 bg-tertiary-container p-space-md flex flex-col justify-between">
+                <span class="px-2 py-0.5 rounded bg-surface-container-lowest/30 text-on-primary font-label-sm text-label-sm uppercase backdrop-blur-sm self-start">Curriculum Gold</span>
+                <span class="font-headline-sm text-headline-sm text-on-primary">Muted Gold</span>
+              </div>
+              <div class="p-space-md space-y-space-xs bg-surface-container-lowest">
+                <div class="flex justify-between items-center text-on-surface font-title-md text-title-md">
+                  <span>#C9A227 / #CEA72C</span>
+                  <span class="font-label-sm text-label-sm text-on-surface-variant font-mono">rgb(206, 167, 44)</span>
+                </div>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">Starred repositories, faculty honors, rank certificates, gold rating indicators.</p>
+                <div class="pt-2 flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+                  <span class="font-semibold text-tertiary">Token: tertiary</span>
+                  <span class="px-1.5 py-0.5 bg-surface-container rounded">Contrast 5.1:1</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Secondary & Functional Tone Bars -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-space-sm mt-space-sm">
+            <div class="bg-surface-container-lowest p-space-sm rounded-lg shadow-sm flex items-center gap-space-sm border border-[#E8E0D2]">
+              <div class="w-8 h-8 rounded bg-[#2B2B2B]"></div>
+              <div>
+                <span class="block font-title-md text-title-md text-on-surface">Charcoal Text</span>
+                <span class="block font-label-sm text-label-sm text-on-surface-variant">#2B2B2B • High Legibility</span>
+              </div>
+            </div>
+            <div class="bg-surface-container-lowest p-space-sm rounded-lg shadow-sm flex items-center gap-space-sm border border-[#E8E0D2]">
+              <div class="w-8 h-8 rounded bg-[#6B6B6B]"></div>
+              <div>
+                <span class="block font-title-md text-title-md text-on-surface">Secondary Slate</span>
+                <span class="block font-label-sm text-label-sm text-on-surface-variant">#6B6B6B • Meta Details</span>
+              </div>
+            </div>
+            <div class="bg-surface-container-lowest p-space-sm rounded-lg shadow-sm flex items-center gap-space-sm border border-[#E8E0D2]">
+              <div class="w-8 h-8 rounded bg-[#3E7C59]"></div>
+              <div>
+                <span class="block font-title-md text-title-md text-on-surface">Forest Green</span>
+                <span class="block font-label-sm text-label-sm text-on-surface-variant">#3E7C59 • Solved / Pass</span>
+              </div>
+            </div>
+            <div class="bg-surface-container-lowest p-space-sm rounded-lg shadow-sm flex items-center gap-space-sm border border-[#E8E0D2]">
+              <div class="w-8 h-8 rounded bg-[#B23A48]"></div>
+              <div>
+                <span class="block font-title-md text-title-md text-on-surface">Soft Crimson</span>
+                <span class="block font-label-sm text-label-sm text-on-surface-variant">#B23A48 • Urgent / Error</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Typography Scale & Pairings -->
+        <section class="w-full space-y-space-md mt-space-xl">
+          <div>
+            <span class="font-label-sm text-label-sm text-secondary font-semibold uppercase tracking-wider">Foundation 02</span>
+            <h2 class="font-headline-lg text-headline-lg text-primary">Typographic Hierarchy &amp; Specimen Scale</h2>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md">
+            <!-- Editorial Serif Specimens -->
+            <div class="lg:col-span-7 bg-surface-container-lowest rounded-xl p-space-lg shadow-sm space-y-space-md border border-[#E8E0D2]">
+              <div class="flex items-center justify-between pb-space-sm border-b border-[#E8E0D2]">
+                <span class="font-label-sm text-label-sm uppercase font-bold text-primary tracking-widest">Editorial Serif • Merriweather</span>
+                <span class="font-label-sm text-label-sm text-on-surface-variant">Display, Headlines &amp; Quotes</span>
+              </div>
+              <div class="space-y-space-md">
+                <div class="space-y-1">
+                  <span class="font-label-sm text-label-sm text-on-surface-variant font-mono">Display Large • 40px / 52px • Bold</span>
+                  <p class="font-display-lg text-display-lg text-primary leading-tight">Neural Architectures &amp; Optimization</p>
+                </div>
+                <div class="space-y-1">
+                  <span class="font-label-sm text-label-sm text-on-surface-variant font-mono">Headline Large • 32px / 42px • Bold</span>
+                  <p class="font-headline-lg text-headline-lg text-primary leading-snug">Empirical Evaluation of Gradient Descent</p>
+                </div>
+                <div class="space-y-1">
+                  <span class="font-label-sm text-label-sm text-on-surface-variant font-mono">Headline Medium • 24px / 32px • Bold</span>
+                  <p class="font-headline-md text-headline-md text-secondary">Unit IV: Convolutional Feature Hierarchies &amp; Pooling</p>
+                </div>
+                <div class="space-y-1">
+                  <span class="font-label-sm text-label-sm text-on-surface-variant font-mono">Headline Small • 20px / 28px • Bold</span>
+                  <p class="font-headline-sm text-headline-sm text-primary">"The ultimate goal of AI is not to mimic human thought, but to extend cognitive clarity."</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Functional Sans & Code Specimens -->
+            <div class="lg:col-span-5 bg-surface-container-lowest rounded-xl p-space-lg shadow-sm space-y-space-md border border-[#E8E0D2]">
+              <div class="flex items-center justify-between pb-space-sm border-b border-[#E8E0D2]">
+                <span class="font-label-sm text-label-sm uppercase font-bold text-primary tracking-widest">UI &amp; Body Sans • Inter</span>
+                <span class="font-label-sm text-label-sm text-on-surface-variant">Data Density &amp; Reading</span>
+              </div>
+              <div class="space-y-space-md">
+                <div>
+                  <span class="font-label-sm text-label-sm text-on-surface-variant block mb-1">Body Large (16px/26px)</span>
+                  <p class="font-body-lg text-body-lg text-on-surface">Curated autonomous repository maintained for scholars of Computer Science &amp; Engineering specializing in AI &amp; ML.</p>
+                </div>
+                <div>
+                  <span class="font-label-sm text-label-sm text-on-surface-variant block mb-1">Body Medium (14px/22px)</span>
+                  <p class="font-body-md text-body-md text-on-surface-variant">All question banks are indexed by regulation year, verified against official Anna University and Autonomous curriculum syllabi, and solved step-by-step.</p>
+                </div>
+                <div>
+                  <span class="font-label-sm text-label-sm text-on-surface-variant block mb-1">Label Medium &amp; Small (13px &amp; 11px)</span>
+                  <div class="flex items-center gap-space-sm">
+                    <span class="font-label-md text-label-md font-semibold text-primary uppercase">CS3491 • ARTIFICIAL INTELLIGENCE</span>
+                    <span class="font-label-sm text-label-sm text-secondary bg-surface-container px-2 py-0.5 rounded font-bold">SEM 05</span>
+                  </div>
+                </div>
+
+                <!-- Code Snippet specimen -->
+                <div class="bg-surface-container-low p-space-md rounded-lg space-y-1 border border-[#E8E0D2]/50">
+                  <div class="flex justify-between items-center">
+                    <span class="font-label-sm text-label-sm text-secondary font-bold">PYTHON ARCHIVAL SPECIMEN</span>
+                    <span class="font-label-sm text-label-sm text-on-surface-variant font-mono">main.py</span>
+                  </div>
+                  <pre class="font-mono text-body-sm text-on-surface overflow-x-auto p-2 bg-surface-container-lowest rounded border border-[#E8E0D2]/40"><code>import torch.nn as nn
+# Cross-Entropy Loss for Autonomous Evaluation
+loss_criterion = nn.CrossEntropyLoss(reduction='mean')
+print("Model initialized: VSB-CSE-AIML-v24")</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Interactive Component Library & States Showcase -->
+        <section class="w-full space-y-space-md mt-space-xl">
+          <div>
+            <span class="font-label-sm text-label-sm text-secondary font-semibold uppercase tracking-wider">Foundation 03</span>
+            <h2 class="font-headline-lg text-headline-lg text-primary">UI Component System &amp; Interactive States</h2>
+          </div>
+
+          <!-- Component Row 1: Button Matrices -->
+          <div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm space-y-space-md border border-[#E8E0D2]">
+            <div class="flex items-center justify-between">
+              <h3 class="font-headline-sm text-headline-sm text-primary">1. Button Hierarchy &amp; Interaction States</h3>
+              <span class="font-label-sm text-label-sm text-on-surface-variant">Hover, Active, Focused &amp; Disabled Specs</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-space-md pt-space-xs">
+              <!-- Normal Primary -->
+              <div class="space-y-space-xs flex flex-col">
+                <span class="font-label-sm text-label-sm text-on-surface-variant">Primary (Default)</span>
+                <button class="w-full py-2.5 px-space-md bg-primary text-on-primary font-label-md text-label-md rounded-lg shadow-sm hover:bg-[#162A45] transition-all flex items-center justify-center gap-space-xs" type="button">
+                  <span class="material-symbols-outlined text-[18px]">download</span>
+                  Download Archive
+                </button>
+                <span class="font-label-sm text-label-sm text-on-surface-variant text-center font-mono">bg-primary • 10px / 20px</span>
+              </div>
+
+              <!-- Hover State representation -->
+              <div class="space-y-space-xs flex flex-col">
+                <span class="font-label-sm text-label-sm text-secondary font-semibold">Primary (Simulated Hover)</span>
+                <button class="w-full py-2.5 px-space-md bg-[#162A45] text-on-primary font-label-md text-label-md rounded-lg shadow-md -translate-y-0.5 transition-all flex items-center justify-center gap-space-xs ring-2 ring-primary/20" type="button">
+                  <span class="material-symbols-outlined text-[18px]">download</span>
+                  Download Archive
+                </button>
+                <span class="font-label-sm text-label-sm text-on-surface-variant text-center font-mono">Elevated + -2px lift</span>
+              </div>
+
+              <!-- Secondary Maroon -->
+              <div class="space-y-space-xs flex flex-col">
+                <span class="font-label-sm text-label-sm text-on-surface-variant">Departmental (Secondary)</span>
+                <button class="w-full py-2.5 px-space-md bg-secondary text-on-secondary font-label-md text-label-md rounded-lg shadow-sm hover:bg-on-secondary-container transition-all flex items-center justify-center gap-space-xs" type="button">
+                  <span class="material-symbols-outlined text-[18px]">assignment_add</span>
+                  Submit Question Bank
+                </button>
+                <span class="font-label-sm text-label-sm text-on-surface-variant text-center font-mono">bg-secondary • Heritage</span>
+              </div>
+
+              <!-- Outlined Accent -->
+              <div class="space-y-space-xs flex flex-col">
+                <span class="font-label-sm text-label-sm text-on-surface-variant">Outlined Library</span>
+                <button class="w-full py-2.5 px-space-md bg-transparent text-primary font-label-md text-label-md rounded-lg shadow-xs hover:bg-surface-container transition-all flex items-center justify-center gap-space-xs border border-primary/30" type="button">
+                  <span class="material-symbols-outlined text-[18px]">visibility</span>
+                  View Manuscript
+                </button>
+                <span class="font-label-sm text-label-sm text-on-surface-variant text-center font-mono">Border hairline stroke</span>
+              </div>
+
+              <!-- Disabled State -->
+              <div class="space-y-space-xs flex flex-col">
+                <span class="font-label-sm text-label-sm text-on-surface-variant">Disabled Rest</span>
+                <button class="w-full py-2.5 px-space-md bg-surface-container text-outline font-label-md text-label-md rounded-lg cursor-not-allowed flex items-center justify-center gap-space-xs" disabled="" type="button">
+                  <span class="material-symbols-outlined text-[18px]">lock</span>
+                  Unit 05 Pending
+                </button>
+                <span class="font-label-sm text-label-sm text-on-surface-variant text-center font-mono">opacity-50 • Inactive</span>
+              </div>
+            </div>
+
+            <!-- Icon & Pill variations -->
+            <div class="pt-space-sm flex flex-wrap items-center gap-space-md bg-surface-container-low p-space-md rounded-lg border border-[#E8E0D2]/50">
+              <div class="flex items-center gap-space-sm">
+                <span class="font-label-sm text-label-sm text-on-surface font-semibold">Icon-Only Controls:</span>
+                <button class="w-9 h-9 rounded-lg bg-surface-container-lowest text-primary shadow-xs hover:bg-surface-container flex items-center justify-center transition-colors border border-[#E8E0D2]" type="button">
+                  <span class="material-symbols-outlined text-[18px]">bookmark</span>
+                </button>
+                <button class="w-9 h-9 rounded-lg bg-surface-container-lowest text-secondary shadow-xs hover:bg-surface-container flex items-center justify-center transition-colors border border-[#E8E0D2]" type="button">
+                  <span class="material-symbols-outlined text-[18px]">favorite</span>
+                </button>
+                <button class="w-9 h-9 rounded-lg bg-surface-container-lowest text-tertiary shadow-xs hover:bg-surface-container flex items-center justify-center transition-colors border border-[#E8E0D2]" type="button">
+                  <span class="material-symbols-outlined text-[18px]">share</span>
+                </button>
+              </div>
+              <div class="h-6 w-[1px] bg-outline-variant hidden sm:block"></div>
+              <div class="flex items-center gap-space-sm flex-wrap">
+                <span class="font-label-sm text-label-sm text-on-surface font-semibold">Pill Filter Buttons:</span>
+                <button class="px-3 py-1 rounded-full bg-primary text-on-primary font-label-sm text-label-sm shadow-xs font-semibold" type="button">Active: All Semesters</button>
+                <button class="px-3 py-1 rounded-full bg-surface-container-lowest text-on-surface font-label-sm text-label-sm hover:bg-surface-container shadow-xs border border-[#E8E0D2]" type="button">Semester 04</button>
+                <button class="px-3 py-1 rounded-full bg-surface-container-lowest text-on-surface font-label-sm text-label-sm hover:bg-surface-container shadow-xs border border-[#E8E0D2]" type="button">Semester 06</button>
+                <button class="px-3 py-1 rounded-full bg-surface-container-lowest text-on-surface font-label-sm text-label-sm hover:bg-surface-container shadow-xs border border-[#E8E0D2]" type="button">Regulation 2024</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Component Row 2: Form & Input Controls -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-space-md">
+            <!-- Search & Input Fields -->
+            <div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm space-y-space-md border border-[#E8E0D2]">
+              <h3 class="font-headline-sm text-headline-sm text-primary">2. Form Fields &amp; Input Validation</h3>
+              <div class="space-y-space-md">
+                <!-- Quick Search with Clear button -->
+                <div class="space-y-1">
+                  <label class="font-label-sm text-label-sm text-primary font-semibold uppercase tracking-wider block">Standard Search Field</label>
+                  <div class="relative flex items-center">
+                    <span class="material-symbols-outlined absolute left-3 text-on-surface-variant text-[20px]">search</span>
+                    <input class="w-full pl-10 pr-10 py-2.5 bg-surface-container-low rounded-lg font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary shadow-xs border border-[#E8E0D2]" type="text" value="Deep Learning Neural Networks"/>
+                    <button class="absolute right-3 text-on-surface-variant hover:text-primary" type="button" onclick="this.previousElementSibling.value=''">
+                      <span class="material-symbols-outlined text-[18px]">cancel</span>
+                    </button>
+                  </div>
+                  <span class="font-label-sm text-label-sm text-on-surface-variant">Live query: 14 matches found in Regulation 2021/2024</span>
+                </div>
+
+                <!-- Select Dropdown -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+                  <div class="space-y-1">
+                    <label class="font-label-sm text-label-sm text-primary font-semibold uppercase tracking-wider block">Target Semester</label>
+                    <div class="relative">
+                      <select class="w-full appearance-none py-2.5 px-space-md bg-surface-container-low rounded-lg font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary shadow-xs border border-[#E8E0D2]">
+                        <option>Semester V (AI &amp; ML)</option>
+                        <option>Semester VI (Advanced)</option>
+                        <option>Semester VII (Electives)</option>
+                      </select>
+                      <span class="material-symbols-outlined absolute right-3 top-3 pointer-events-none text-on-surface-variant text-[18px]">expand_more</span>
+                    </div>
+                  </div>
+
+                  <!-- Error State Input -->
+                  <div class="space-y-1">
+                    <label class="font-label-sm text-label-sm text-error font-semibold uppercase tracking-wider block">Subject Code (Validation)</label>
+                    <div class="relative">
+                      <input class="w-full py-2.5 px-space-md bg-surface-container-low text-error rounded-lg font-body-md text-body-md focus:outline-none ring-2 ring-error shadow-xs border border-error" type="text" value="CS8900-X"/>
+                      <span class="material-symbols-outlined absolute right-3 top-2.5 text-error text-[20px]">error</span>
+                    </div>
+                    <span class="font-label-sm text-label-sm text-error font-medium">Invalid syllabus course mapping.</span>
+                  </div>
+                </div>
+
+                <!-- Checkboxes, Radios, and Toggles -->
+                <div class="pt-space-xs grid grid-cols-1 sm:grid-cols-3 gap-space-md bg-surface-container-low p-space-md rounded-lg border border-[#E8E0D2]/50">
+                  <div class="space-y-space-xs">
+                    <span class="font-label-sm text-label-sm text-primary font-semibold block">Checkboxes</span>
+                    <label class="flex items-center gap-space-xs cursor-pointer">
+                      <input checked="" class="w-4 h-4 rounded text-primary focus:ring-0 accent-primary" type="checkbox"/>
+                      <span class="font-body-sm text-body-sm text-on-surface">Verified Notes</span>
+                    </label>
+                    <label class="flex items-center gap-space-xs cursor-pointer">
+                      <input class="w-4 h-4 rounded text-primary focus:ring-0 accent-primary" type="checkbox"/>
+                      <span class="font-body-sm text-body-sm text-on-surface-variant">Handwritten Only</span>
+                    </label>
+                  </div>
+
+                  <div class="space-y-space-xs">
+                    <span class="font-label-sm text-label-sm text-primary font-semibold block">Radio Selection</span>
+                    <label class="flex items-center gap-space-xs cursor-pointer">
+                      <input checked="" class="w-4 h-4 text-primary accent-primary" name="format_spec" type="radio"/>
+                      <span class="font-body-sm text-body-sm text-on-surface">Anna Univ PYQ</span>
+                    </label>
+                    <label class="flex items-center gap-space-xs cursor-pointer">
+                      <input class="w-4 h-4 text-primary accent-primary" name="format_spec" type="radio"/>
+                      <span class="font-body-sm text-body-sm text-on-surface-variant">Autonomous Reg</span>
+                    </label>
+                  </div>
+
+                  <div class="space-y-space-xs">
+                    <span class="font-label-sm text-label-sm text-primary font-semibold block">Reading Mode</span>
+                    <div class="flex items-center justify-between">
+                      <span class="font-body-sm text-body-sm text-on-surface">Parchment Tint</span>
+                      <button onclick="this.firstElementChild.classList.toggle('translate-x-5')" class="w-11 h-6 bg-primary rounded-full relative p-0.5 transition-colors" type="button">
+                        <div class="w-5 h-5 bg-surface-container-lowest rounded-full shadow-sm transform translate-x-5 transition-transform"></div>
+                      </button>
+                    </div>
+                    <span class="font-label-sm text-label-sm text-on-surface-variant block">Low-eye-strain baseline</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Badges, Status Tags & Toast Specimen -->
+            <div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm space-y-space-md flex flex-col justify-between border border-[#E8E0D2]">
+              <div>
+                <h3 class="font-headline-sm text-headline-sm text-primary mb-space-sm">3. Academic Badges &amp; Status Indicators</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md">Standardized status pills indicate verification depth, exam alignment, and archival frequency.</p>
+                
+                <div class="flex flex-wrap items-center gap-space-sm pb-space-md">
+                  <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#FDF8E9] text-[#7D610E] font-label-sm text-label-sm font-semibold shadow-xs border border-[#F3DE97]">
+                    <span class="material-symbols-outlined text-[14px]">verified</span>
+                    Verified by Faculty
+                  </span>
+                  <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#EBF4EE] text-[#28603C] font-label-sm text-label-sm font-semibold shadow-xs border border-[#C5E1CF]">
+                    <span class="material-symbols-outlined text-[14px]">task_alt</span>
+                    Solved PYQ (100%)
+                  </span>
+                  <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#F6EBED] text-[#7A2E3A] font-label-sm text-label-sm font-semibold shadow-xs border border-[#EAC9CE]">
+                    <span class="material-symbols-outlined text-[14px]">draw</span>
+                    Handwritten Scholar Folio
+                  </span>
+                  <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-primary-container text-on-primary font-label-sm text-label-sm font-semibold shadow-xs">
+                    <span class="material-symbols-outlined text-[14px]">trending_up</span>
+                    Trending • 840 Reads
+                  </span>
+                  <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#FEEBED] text-[#93000A] font-label-sm text-label-sm font-semibold shadow-xs border border-[#F9C3C8]">
+                    <span class="material-symbols-outlined text-[14px]">campaign</span>
+                    New Announcement
+                  </span>
+                </div>
+
+                <!-- Progress Rings & Bars -->
+                <div class="space-y-space-sm bg-surface-container-low p-space-md rounded-lg border border-[#E8E0D2]/50">
+                  <div class="flex justify-between items-center font-label-sm text-label-sm font-semibold text-primary">
+                    <span>Syllabus Completion Index: CS3491</span>
+                    <span>85% Completed</span>
+                  </div>
+                  <!-- Linear Progress Bar -->
+                  <div class="w-full h-2.5 bg-surface-container-highest rounded-full overflow-hidden">
+                    <div class="h-full bg-primary rounded-full transition-all" style="width: 85%;"></div>
+                  </div>
+                  <div class="flex items-center justify-between pt-space-xs text-on-surface-variant font-label-sm text-label-sm">
+                    <div class="flex items-center gap-1 text-tertiary">
+                      <span class="material-symbols-outlined text-[16px]">star</span>
+                      <span class="material-symbols-outlined text-[16px]">star</span>
+                      <span class="material-symbols-outlined text-[16px]">star</span>
+                      <span class="material-symbols-outlined text-[16px]">star</span>
+                      <span class="material-symbols-outlined text-[16px]">star_half</span>
+                      <span class="font-semibold text-on-surface ml-1">4.8 / 5.0 (214 Peer Reviews)</span>
+                    </div>
+                    <span>Grade Weight: 4 Credits</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Specimen Toast Notification -->
+              <div class="mt-space-md bg-primary text-on-primary p-space-md rounded-xl shadow-lg flex items-center justify-between">
+                <div class="flex items-center gap-space-sm">
+                  <div class="w-8 h-8 rounded-full bg-[#3E7C59] flex items-center justify-center text-on-primary">
+                    <span class="material-symbols-outlined text-[18px]">check</span>
+                  </div>
+                  <div>
+                    <p class="font-title-md text-title-md leading-none">Manuscript Saved to Offline Library</p>
+                    <p class="font-label-sm text-label-sm text-on-primary/80 mt-1">CS3491_Unit3_Deep_Learning_Notes.pdf (14.2 MB)</p>
+                  </div>
+                </div>
+                <button class="text-on-primary/80 hover:text-on-primary font-label-sm text-label-sm font-semibold underline" type="button">UNDO</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Component Row 3: Academic Cards Showcase -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+            <!-- Card A: Standard Academic Material Card -->
+            <div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-md transition-all flex flex-col justify-between border border-[#E8E0D2]">
+              <div class="space-y-space-xs">
+                <div class="flex items-center justify-between">
+                  <span class="font-label-sm text-label-sm text-secondary font-bold uppercase tracking-wider">UNIT 02 FOLIO</span>
+                  <span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm font-mono">14.8 MB</span>
+                </div>
+                <h4 class="font-headline-sm text-headline-sm text-primary">Uninformed &amp; Heuristic Search Strategies</h4>
+                <p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Complete state space representation, A* Algorithm proofs, optimality benchmarks, and heuristic evaluation functions.</p>
+              </div>
+              <div class="pt-space-md space-y-space-sm">
+                <div class="flex items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant">
+                  <span class="material-symbols-outlined text-[16px] text-tertiary">person</span>
+                  <span>Authored by Dr. K. Ramanathan, HOD</span>
+                </div>
+                <div class="flex items-center justify-between pt-1">
+                  <span class="px-2 py-1 bg-surface-container rounded font-label-sm text-label-sm font-semibold text-primary">PDF • 52 Pages</span>
+                  <button class="px-3 py-1.5 bg-primary text-on-primary rounded font-label-md text-label-md hover:bg-[#162A45] transition-colors flex items-center gap-1 shadow-xs" type="button">
+                    <span class="material-symbols-outlined text-[16px]">download</span>
+                    Save
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card B: Interactive Hover Lift Subject Card -->
+            <div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-md -translate-y-1 transition-all flex flex-col justify-between relative overflow-hidden border border-[#E8E0D2]">
+              <div class="space-y-space-xs">
+                <div class="flex items-center justify-between">
+                  <span class="font-label-sm text-label-sm text-tertiary font-bold uppercase tracking-wider">CORE ACCREDITED</span>
+                  <span class="px-2 py-0.5 rounded bg-[#FDF8E9] text-[#7D610E] font-label-sm text-label-sm font-bold border border-[#F3DE97]">REG 2024</span>
+                </div>
+                <h4 class="font-headline-sm text-headline-sm text-primary">Machine Learning Foundations</h4>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">Supervised paradigms, SVM loss bounds, decision tree entropy calculations, and Python regression labs.</p>
+              </div>
+              <div class="pt-space-md space-y-space-sm">
+                <div class="space-y-1">
+                  <div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant font-medium">
+                    <span>Classroom Coverage</span>
+                    <span>18/20 Lectures Uploaded</span>
+                  </div>
+                  <div class="w-full h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+                    <div class="h-full bg-secondary rounded-full" style="width: 90%;"></div>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between pt-2">
+                  <div class="flex items-center gap-1 text-tertiary font-label-sm text-label-sm font-semibold">
+                    <span class="material-symbols-outlined text-[16px]">star</span>
+                    <span>4.9 / 5.0</span>
+                  </div>
+                  <a class="font-label-md text-label-md text-secondary font-bold hover:underline flex items-center gap-0.5" href="index.html#subjects">
+                    Explore Units <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card C: Notice Bulletin Board Specimen -->
+            <div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between relative border border-[#E8E0D2] border-l-4 border-l-secondary">
+              <div class="space-y-space-xs">
+                <div class="flex items-center justify-between">
+                  <span class="font-label-sm text-label-sm text-error font-bold uppercase tracking-wider flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[16px]">notifications_active</span>
+                    EXAM CELL ADVISORY
+                  </span>
+                  <span class="font-label-sm text-label-sm text-on-surface-variant">Today, 09:30 AM</span>
+                </div>
+                <h4 class="font-headline-sm text-headline-sm text-primary">Mid-Semester Continuous Assessment 02</h4>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">Portions for AI &amp; ML comprise Units 3 and 4. All autonomous question papers will adhere strictly to revised Blooms Taxonomy Level 4 standards.</p>
+              </div>
+              <div class="pt-space-md space-y-space-sm">
+                <div class="p-space-sm bg-surface-container-low rounded-lg font-body-sm text-body-sm text-on-surface flex items-center gap-space-xs border border-[#E8E0D2]/50">
+                  <span class="material-symbols-outlined text-secondary text-[18px]">event</span>
+                  <span>Scheduled: 24th Oct 2024 • LH-302</span>
+                </div>
+                <button class="w-full py-2 bg-surface-container text-primary font-label-md text-label-md rounded-lg hover:bg-surface-container-high transition-colors font-medium border border-[#E8E0D2]" type="button">
+                  Download Seating Matrix PDF
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Navigation & Structure Elements: Breadcrumb & Pagination -->
+          <div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col sm:flex-row items-center justify-between gap-space-md border border-[#E8E0D2]">
+            <!-- Breadcrumb Specimen -->
+            <div class="flex items-center gap-space-xs font-label-md text-label-md text-on-surface-variant flex-wrap">
+              <a class="hover:text-primary transition-colors flex items-center gap-1" href="index.html">
+                <span class="material-symbols-outlined text-[16px]">home</span>
+                <span>Home</span>
+              </a>
+              <span>/</span>
+              <a class="hover:text-primary transition-colors" href="index.html#subjects">CSE Department</a>
+              <span>/</span>
+              <a class="hover:text-primary transition-colors" href="index.html#semesters">Semester 05</a>
+              <span>/</span>
+              <span class="text-primary font-semibold">CS3491 Deep Learning Notes</span>
+            </div>
+
+            <!-- Pagination Specimen -->
+            <div class="flex items-center gap-1">
+              <button class="w-8 h-8 rounded bg-surface-container text-on-surface-variant hover:text-primary flex items-center justify-center border border-[#E8E0D2]" type="button">
+                <span class="material-symbols-outlined text-[16px]">chevron_left</span>
+              </button>
+              <button class="w-8 h-8 rounded bg-primary text-on-primary font-label-sm text-label-sm font-semibold" type="button">1</button>
+              <button class="w-8 h-8 rounded bg-surface-container text-on-surface-variant hover:text-primary font-label-sm text-label-sm border border-[#E8E0D2]" type="button">2</button>
+              <button class="w-8 h-8 rounded bg-surface-container text-on-surface-variant hover:text-primary font-label-sm text-label-sm border border-[#E8E0D2]" type="button">3</button>
+              <span class="px-1 text-on-surface-variant font-label-sm text-label-sm">...</span>
+              <button class="w-8 h-8 rounded bg-surface-container text-on-surface-variant hover:text-primary font-label-sm text-label-sm border border-[#E8E0D2]" type="button">12</button>
+              <button class="w-8 h-8 rounded bg-surface-container text-on-surface-variant hover:text-primary flex items-center justify-center border border-[#E8E0D2]" type="button">
+                <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Empty State Specimen -->
+          <div class="bg-surface-container-lowest rounded-xl p-space-xl shadow-sm text-center max-w-2xl mx-auto space-y-space-sm border border-[#E8E0D2]">
+            <div class="w-16 h-16 rounded-full bg-surface-container mx-auto flex items-center justify-center text-secondary">
+              <span class="material-symbols-outlined text-[32px]">folder_off</span>
+            </div>
+            <h4 class="font-headline-sm text-headline-sm text-primary">No Manuscripts Uploaded Yet for This Unit</h4>
+            <p class="font-body-md text-body-md text-on-surface-variant max-w-md mx-auto">The lecture folios and laboratory code scripts for Unit 5 are currently undergoing peer review by our Department Curriculum Board.</p>
+            <div class="pt-space-xs flex justify-center gap-space-sm">
+              <a href="index.html" class="px-space-md py-2 bg-primary text-on-primary rounded-lg font-label-md text-label-md shadow-xs hover:bg-[#162A45] transition-colors">
+                Request Faculty Upload
+              </a>
+              <a href="index.html#subjects" class="px-space-md py-2 bg-surface-container text-on-surface rounded-lg font-label-md text-label-md hover:bg-surface-container-high transition-colors border border-[#E8E0D2]">
+                Browse Other Units
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Iconography & Tactile Texture Showcase -->
+        <section class="w-full space-y-space-md mt-space-xl">
+          <div>
+            <span class="font-label-sm text-label-sm text-secondary font-semibold uppercase tracking-wider">Foundation 04</span>
+            <h2 class="font-headline-lg text-headline-lg text-primary">Iconographic Library &amp; Archival Textures</h2>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-10 gap-space-sm">
+            <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col items-center justify-center text-center gap-1 border border-[#E8E0D2]">
+              <span class="material-symbols-outlined text-primary text-[28px]">menu_book</span>
+              <span class="font-label-sm text-label-sm text-on-surface-variant">Manuscript</span>
+            </div>
+            <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col items-center justify-center text-center gap-1 border border-[#E8E0D2]">
+              <span class="material-symbols-outlined text-secondary text-[28px]">school</span>
+              <span class="font-label-sm text-label-sm text-on-surface-variant">Scholastic</span>
+            </div>
+            <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col items-center justify-center text-center gap-1 border border-[#E8E0D2]">
+              <span class="material-symbols-outlined text-primary text-[28px]">science</span>
+              <span class="font-label-sm text-label-sm text-on-surface-variant">Lab Manual</span>
+            </div>
+            <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col items-center justify-center text-center gap-1 border border-[#E8E0D2]">
+              <span class="material-symbols-outlined text-secondary text-[28px]">code_blocks</span>
+              <span class="font-label-sm text-label-sm text-on-surface-variant">Algorithm</span>
+            </div>
+            <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col items-center justify-center text-center gap-1 border border-[#E8E0D2]">
+              <span class="material-symbols-outlined text-primary text-[28px]">schedule</span>
+              <span class="font-label-sm text-label-sm text-on-surface-variant">Timetable</span>
+            </div>
+            <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col items-center justify-center text-center gap-1 border border-[#E8E0D2]">
+              <span class="material-symbols-outlined text-secondary text-[28px]">download_for_offline</span>
+              <span class="font-label-sm text-label-sm text-on-surface-variant">Offline</span>
+            </div>
+            <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col items-center justify-center text-center gap-1 border border-[#E8E0D2]">
+              <span class="material-symbols-outlined text-primary text-[28px]">article</span>
+              <span class="font-label-sm text-label-sm text-on-surface-variant">PYQ Bank</span>
+            </div>
+            <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col items-center justify-center text-center gap-1 border border-[#E8E0D2]">
+              <span class="material-symbols-outlined text-secondary text-[28px]">notifications</span>
+              <span class="font-label-sm text-label-sm text-on-surface-variant">Dispatch</span>
+            </div>
+            <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col items-center justify-center text-center gap-1 border border-[#E8E0D2]">
+              <span class="material-symbols-outlined text-primary text-[28px]">find_in_page</span>
+              <span class="font-label-sm text-label-sm text-on-surface-variant">Index</span>
+            </div>
+            <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col items-center justify-center text-center gap-1 border border-[#E8E0D2]">
+              <span class="material-symbols-outlined text-tertiary text-[28px]">grade</span>
+              <span class="font-label-sm text-label-sm text-on-surface-variant">Accredited</span>
+            </div>
+          </div>
+
+          <!-- Tactile Specimen Showcase Panel -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-space-md pt-space-xs">
+            <!-- Specimen 1: Subtle Collegiate Double Line Border -->
+            <div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm space-y-space-xs relative overflow-hidden border border-[#E8E0D2]">
+              <div class="p-space-md bg-surface-container-low rounded-lg space-y-space-xs border border-[#E8E0D2]">
+                <span class="font-label-sm text-label-sm text-secondary font-bold uppercase">Archival Double Border</span>
+                <p class="font-body-sm text-body-sm text-on-surface">Used on official degree transcripts, top ranker certificates, and accredited syllabi downloads.</p>
+              </div>
+              <span class="font-label-sm text-label-sm text-on-surface-variant block font-mono">Class: nested concentric surfaces</span>
+            </div>
+
+            <!-- Specimen 2: Soft Corner Radii System -->
+            <div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm space-y-space-xs border border-[#E8E0D2]">
+              <div class="space-y-space-xs">
+                <div class="p-space-sm bg-surface-container rounded font-label-sm text-label-sm text-primary text-center font-bold">
+                  Rounded 8px (Cards &amp; Input Fields)
+                </div>
+                <div class="p-space-sm bg-surface-container rounded-xl font-label-sm text-label-sm text-secondary text-center font-bold">
+                  Rounded 12px (Modals &amp; Hero Folios)
+                </div>
+                <div class="p-space-sm bg-surface-container rounded-full font-label-sm text-label-sm text-on-surface text-center font-bold">
+                  Rounded Full 9999px (Filter Pills &amp; Badges)
+                </div>
+              </div>
+              <span class="font-label-sm text-label-sm text-on-surface-variant block">Strict adherence to gentle corner radii</span>
+            </div>
+
+            <!-- Specimen 3: Parchment Contrast Ratio -->
+            <div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm space-y-space-xs border border-[#E8E0D2]">
+              <div class="p-space-md bg-[#FAF7F2] rounded-lg space-y-space-xs border border-[#E8E0D2]">
+                <div class="flex items-center gap-space-xs text-primary font-headline-sm text-headline-sm">
+                  <span class="material-symbols-outlined text-[20px]">auto_stories</span>
+                  Scholarly Parchment
+                </div>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">Neutral 450nm wavelength reflection prevents retinal exhaustion over sustained 4-hour technical reading sessions.</p>
+              </div>
+              <span class="font-label-sm text-label-sm text-on-surface-variant block">Laboratory tested against glare fatigue</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Academic Imagery Style Guide & Mood Board -->
+        <section class="w-full space-y-space-md mt-space-xl">
+          <div>
+            <span class="font-label-sm text-label-sm text-secondary font-semibold uppercase tracking-wider">Foundation 05</span>
+            <h2 class="font-headline-lg text-headline-lg text-primary">Academic Imagery Guide &amp; Mood Board</h2>
+            <p class="font-body-md text-body-md text-on-surface-variant">Warm-toned collegiate library environments, quiet focus, tactile manuscripts, and clean machine learning schematic overlays.</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+            <!-- Image Card 1: Collegiate Study Table -->
+            <div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm flex flex-col border border-[#E8E0D2]">
+              <div class="h-64 overflow-hidden relative">
+                <img class="w-full h-full object-cover" alt="A warm and scholarly university library reading hall with dark polished wooden study desks" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADXV-jQv8f8a2Jpz1KkNljwUqPcI5w2IZD7zcIpHEJEc1Q4dYfz6Ir8FjXS93tDDMELbSMM-MKKbJjtz0fIUBPpdIROA9yAlfZTPaGNbYVVTZogBfzZQcXqzVMT5FfCsJN2Ki3r2VL9cnIg45vtBeZ9PFg46E14f9jhCQvWinhw2spLPh7u1e5-lSnLrgSnuspBOFaPVm4zTTQi0LNiYSNBzCSRey0NZQDTOXFkt2Jo0OE1eE8mHc"/>
+                <div class="absolute bottom-2 left-2 px-2.5 py-1 rounded bg-primary/80 backdrop-blur-sm text-on-primary font-label-sm text-label-sm font-semibold">
+                  Atmosphere: Deep Scholarly Study
+                </div>
+              </div>
+              <div class="p-space-md space-y-space-xs flex-1 flex flex-col justify-between">
+                <div>
+                  <h4 class="font-title-lg text-title-lg text-primary">Physical Library Ambience</h4>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Imagery captures quiet collegiate study spaces, natural sunlight on timber surfaces, and traditional reading tables to instill cognitive calmness.</p>
+                </div>
+                <span class="font-label-sm text-label-sm text-secondary font-semibold pt-space-xs block">Style: Warm Natural Daylight • 3200K Color Temperature</span>
+              </div>
+            </div>
+
+            <!-- Image Card 2: Vintage Academic Folios & Deep Learning Textbooks -->
+            <div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm flex flex-col border border-[#E8E0D2]">
+              <div class="h-64 overflow-hidden relative">
+                <img class="w-full h-full object-cover" alt="A close-up artistic composition of vintage leather-bound academic folios beside modern artificial intelligence textbooks" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFWTo9QXUMH1LZ-DkiwvRWxDcgZ75KdiJek5J5YUxH9cclvskzlUlaRKhrJb-2l-YmZoljaZ35SxRVGJIgC_smKEOVklFE3ivgLl1TogwM5gyGwYxop6FGobOOaWnpV-1sm-QJE1_Vdf0V2h5A0e74Hd_64mK0BdPuFWlw6al8n3plLi25hc0gUKWkDDopg4vybRGV9qPoP3paE9ktovFVTkgV--3VB3XIaycBPyOKfq08DoX0lfk"/>
+                <div class="absolute bottom-2 left-2 px-2.5 py-1 rounded bg-secondary/80 backdrop-blur-sm text-on-secondary font-label-sm text-label-sm font-semibold">
+                  Synthesis: Heritage &amp; Innovation
+                </div>
+              </div>
+              <div class="p-space-md space-y-space-xs flex-1 flex flex-col justify-between">
+                <div>
+                  <h4 class="font-title-lg text-title-lg text-primary">Archival Manuscript Precision</h4>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Detail shots of high-quality bound textbooks paired with clean fountain pen handwriting reinforcing institutional pride and methodical care.</p>
+                </div>
+                <span class="font-label-sm text-label-sm text-secondary font-semibold pt-space-xs block">Style: Macro Detail • Rich Cream and Charcoal Tones</span>
+              </div>
+            </div>
+
+            <!-- Image Card 3: Modern AI & ML Campus Laboratory -->
+            <div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm flex flex-col border border-[#E8E0D2]">
+              <div class="h-64 overflow-hidden relative">
+                <img class="w-full h-full object-cover" alt="Undergraduate engineering students quietly collaborating in a contemporary collegiate AI research lab" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgLrPHTiVAEOVifp0kya4B81MRR02VgtNr2iEaDjEBJV34mVHbBRzaCRL6jtH-gO_qVLXvCy7teJgYO_fum2v7BkqVZzwbKeYAyV4xuMd-Vcq6uMledR8XJ3p8mejCvCXw3BM19j584YeLI7bBPXNOORjkxF2o5gERvn2CxjVg0WO40e8NTQQapMQ5Uc5JOrzOab4hukiew05o0ioDcr52ijsHwxe_Fck-A3e4gv7L9UL9NNhVI84"/>
+                <div class="absolute bottom-2 left-2 px-2.5 py-1 rounded bg-tertiary-container/90 backdrop-blur-sm text-on-primary font-label-sm text-label-sm font-semibold">
+                  Collaborative Research Environment
+                </div>
+              </div>
+              <div class="p-space-md space-y-space-xs flex-1 flex flex-col justify-between">
+                <div>
+                  <h4 class="font-title-lg text-title-lg text-primary">Department Research Labs</h4>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Authentic portrayal of VSB students engaging in real artificial intelligence experimentation, code optimization, and seminar presentations.</p>
+                </div>
+                <span class="font-label-sm text-label-sm text-secondary font-semibold pt-space-xs block">Style: Authentic Collegiate Life • No Neon Overlays</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="w-full bg-surface-container-lowest border-t border-[#E8E0D2] mt-space-xl transition-colors">
+    <div class="w-full max-w-[1680px] 2xl:max-w-[96vw] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 pt-space-xl pb-space-lg">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-space-lg mb-space-xl">
+        <div class="lg:col-span-2 space-y-space-md">
+          <div class="flex items-center gap-space-sm">
+            <div class="w-10 h-10 rounded-lg bg-primary-container text-on-primary flex items-center justify-center font-bold">
+              <span class="material-symbols-outlined text-[24px]">school</span>
+            </div>
+            <div>
+              <h4 class="font-headline-sm text-headline-sm text-primary">VSB StudyHub</h4>
+              <p class="font-label-sm text-label-sm text-secondary uppercase font-semibold">Department of CSE (AI &amp; ML)</p>
+            </div>
+          </div>
+          <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Autonomous academic repository engineered for undergraduate scholars in Computer Science and Engineering (Artificial Intelligence and Machine Learning). VSB Educational Campus, NH-67, Covai Road, Karur, Tamil Nadu 639111.
+          </p>
+          <div class="flex items-center gap-space-sm pt-1">
+            <span class="material-symbols-outlined text-primary text-[20px]">mail</span>
+            <span class="font-body-sm text-body-sm text-on-surface font-medium">studyhub@vsb.edu.in</span>
+          </div>
+        </div>
+
+        <div>
+          <h5 class="font-title-md text-title-md text-primary mb-space-md border-b border-[#E8E0D2] pb-2">Quick Navigation</h5>
+          <ul class="space-y-2 font-body-sm text-body-sm text-on-surface-variant">
+            <li><a class="hover:text-primary transition-colors" href="index.html#semesters">Semesters 1 to 8</a></li>
+            <li><a class="hover:text-primary transition-colors" href="index.html#subjects">Syllabus 2024 Reg</a></li>
+            <li><a class="hover:text-primary transition-colors" href="index.html#recent">Lab Manuals &amp; Codes</a></li>
+            <li><a class="hover:text-primary transition-colors" href="index.html#resources">Curated Video Lectures</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="font-title-md text-title-md text-primary mb-space-md border-b border-[#E8E0D2] pb-2">Academic Resources</h5>
+          <ul class="space-y-2 font-body-sm text-body-sm text-on-surface-variant">
+            <li><a class="hover:text-primary transition-colors" href="index.html#recent">Anna Univ / Auto Reg</a></li>
+            <li><a class="hover:text-primary transition-colors" href="index.html#recent">PYQ Archive (10 Yrs)</a></li>
+            <li><a class="hover:text-primary transition-colors" href="index.html#subjects">Model Question Papers</a></li>
+            <li><a class="hover:text-primary transition-colors" href="design-system.html">Design Guidelines</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="font-title-md text-title-md text-primary mb-space-md border-b border-[#E8E0D2] pb-2">Student Services</h5>
+          <ul class="space-y-2 font-body-sm text-body-sm text-on-surface-variant">
+            <li><a class="hover:text-primary transition-colors" href="index.html#tools">Official Notice Board</a></li>
+            <li><a class="hover:text-primary transition-colors" href="index.html">CGPA &amp; SGPA Calculator</a></li>
+            <li><a class="hover:text-primary transition-colors" href="index.html">Contribute Notes</a></li>
+            <li><a class="hover:text-primary transition-colors" href="index.html#subjects">Faculty Office Hours</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="font-title-md text-title-md text-primary mb-space-md border-b border-[#E8E0D2] pb-2">Accreditation</h5>
+          <ul class="space-y-2 font-body-sm text-body-sm text-on-surface-variant">
+            <li><a class="hover:text-primary transition-colors" href="#">NBA Accredited Dept</a></li>
+            <li><a class="hover:text-primary transition-colors" href="#">NAAC 'A+' Guidelines</a></li>
+            <li><a class="hover:text-primary transition-colors" href="#">AICTE Model Syllabus</a></li>
+            <li><a class="hover:text-primary transition-colors" href="#">Academic Integrity Policy</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-[#E8E0D2] pt-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-on-surface-variant">
+        <p class="font-body-sm text-body-sm">© 2026 VSB StudyHub. All rights reserved. Department of Computer Science &amp; Engineering (AI &amp; ML), VSB Engineering College Karur.</p>
+        <div class="flex items-center gap-space-md">
+          <button onclick="openLegalModal()" class="hover:text-primary underline text-xs">Legal Disclaimer</button>
+          <span class="font-label-sm text-label-sm text-secondary font-semibold bg-surface-container px-3 py-1 rounded-full">Canonical Design System</span>
+          <a class="font-body-sm text-body-sm hover:text-primary transition-colors" href="index.html">Main Portal</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Toggle Mobile Nav
+    function toggleMobileNav() {
+      const nav = document.getElementById('mobileNav');
+      nav.classList.toggle('hidden');
+    }
+
+    // Theme Switcher (Dark / Light)
+    function setTheme(mode) {
+      if (mode === 'dark') {
+        document.documentElement.classList.add('dark');
+        document.getElementById('darkModeBtn')?.classList.add('bg-surface-container-lowest', 'text-primary', 'shadow-xs');
+        document.getElementById('darkModeBtn')?.classList.remove('text-on-surface-variant');
+        document.getElementById('lightModeBtn')?.classList.remove('bg-surface-container-lowest', 'text-primary', 'shadow-xs');
+        document.getElementById('lightModeBtn')?.classList.add('text-on-surface-variant');
+        localStorage.setItem('vsb_theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.getElementById('lightModeBtn')?.classList.add('bg-surface-container-lowest', 'text-primary', 'shadow-xs');
+        document.getElementById('lightModeBtn')?.classList.remove('text-on-surface-variant');
+        document.getElementById('darkModeBtn')?.classList.remove('bg-surface-container-lowest', 'text-primary', 'shadow-xs');
+        document.getElementById('darkModeBtn')?.classList.add('text-on-surface-variant');
+        localStorage.setItem('vsb_theme', 'light');
+      }
+    }
+
+    const savedTheme = localStorage.getItem('vsb_theme');
+    if (savedTheme === 'dark') {
+      setTheme('dark');
+    }
+
+    // Micro-interactions demonstrator
+    document.addEventListener('DOMContentLoaded', () => {
+      const demoButtons = document.querySelectorAll('button:not([disabled])');
+      demoButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          btn.style.transform = 'scale(0.98)';
+          setTimeout(() => {
+            btn.style.transform = '';
+          }, 120);
+        });
+      });
+    });
+  </script>
+  <!-- Portal Core Runtime (Auth, Timer Analytics, Submissions, Legal Disclaimers) -->
+  <script src="assets/portal-core.js"></script>
+</body>
+</html>

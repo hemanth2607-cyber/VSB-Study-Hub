@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0" name="viewport"/>
+  <meta content="web_standard" name="shell-type"/>
+  <title>Semesters Curriculum Directory - VSB StudyHub</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Merriweather:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <style>
+    @layer base {
+      html { scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+      html, body { margin: 0; padding: 0; width: 100%; overflow-x: hidden; box-sizing: border-box; }
+      *, *::before, *::after { box-sizing: border-box; }
+    }
+    ::-webkit-scrollbar { width: 7px; height: 7px; }
+    ::-webkit-scrollbar-thumb { background: #d3cbbe; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #964450; }
+
+    /* Ambient Warm Scholarly Dark Mode */
+    html.dark { color-scheme: dark; }
+    html.dark body { background-color: #161311 !important; color: #ede7dc !important; }
+    html.dark header { background-color: #1f1a17 !important; border-color: #38302a !important; }
+    html.dark main { background-color: #161311 !important; }
+    html.dark .bg-\[\#FAF7F2\] { background-color: #161311 !important; }
+    html.dark .bg-surface-container-lowest { background-color: #211c19 !important; border-color: #38302a !important; }
+    html.dark .bg-surface-container-low { background-color: #28221e !important; border-color: #3d342d !important; }
+    html.dark .bg-surface { background-color: #1b1714 !important; border-color: #38302a !important; }
+    html.dark .bg-surface-container { background-color: #2c2521 !important; border-color: #423831 !important; }
+    html.dark .border-\[\#E8E0D2\] { border-color: #38302a !important; }
+    html.dark .text-primary { color: #e3be72 !important; }
+    html.dark .text-secondary { color: #df8894 !important; }
+    html.dark .text-on-surface { color: #ede7dc !important; }
+    html.dark .text-on-surface-variant { color: #b0a698 !important; }
+    html.dark footer { background-color: #1b1714 !important; border-color: #38302a !important; }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#032448",
+            "secondary": "#964450",
+            "tertiary": "#755b00",
+            "tertiary-fixed": "#ffe08e",
+            "on-primary": "#ffffff",
+            "surface": "#fcf9f8",
+            "surface-container-low": "#f6f3f2",
+            "surface-container-lowest": "#ffffff",
+            "on-surface": "#1b1c1c",
+            "on-surface-variant": "#43474e"
+          },
+          fontFamily: {
+            "display": ["Merriweather", "serif"],
+            "headline": ["Merriweather", "serif"],
+            "body": ["Inter", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-[#FAF7F2] font-body text-on-surface antialiased transition-colors duration-300 w-full min-h-screen flex flex-col">
+
+  <!-- TOP HEADER -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-[#FAF7F2] border-b border-[#E8E0D2] shadow-sm transition-colors duration-300">
+    <div class="w-full max-w-[1680px] 2xl:max-w-[96vw] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex items-center justify-between gap-4 h-20">
+      <a href="index.html" class="flex items-center gap-3 sm:gap-4 flex-shrink-0 group">
+        <img alt="VSB College of Engineering Karur Logo" class="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-105" src="assets/vsb-logo.png" onerror="this.src='https://vsbec.edu.in/wp-content/uploads/2026/06/VSB-Karur.png'"/>
+        <div class="flex flex-col">
+          <span class="font-headline font-bold text-base sm:text-xl text-primary tracking-tight leading-none group-hover:text-secondary transition-colors">VSB StudyHub</span>
+          <span class="text-[10px] sm:text-xs text-secondary tracking-wider uppercase font-semibold mt-1">Dept of CSE (AI &amp; ML)</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-2 xl:gap-4 2xl:gap-6 flex-shrink-0 text-sm font-medium">
+        <a class="text-on-surface-variant hover:text-primary transition-colors py-1" href="index.html">Home</a>
+        <a aria-current="page" class="transition-colors py-1 text-primary font-bold border-b-2 border-primary" href="semesters.html">Semesters</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors py-1" href="subjects.html">Subjects</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors py-1" href="question-papers.html">Question Papers</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors py-1" href="resources.html">Resources</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors py-1" href="study-tools.html">Study Tools</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors py-1" href="design-system.html">Design System</a>
+        <a class="px-3 py-1.5 rounded-lg bg-secondary/10 hover:bg-secondary/20 text-secondary font-semibold transition-colors flex items-center gap-1.5" href="admin.html">
+          <span class="material-symbols-outlined text-[16px]">admin_panel_settings</span>
+          <span>Admin Center</span>
+        </a>
+      </nav>
+
+      <!-- Theme & Action -->
+      <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+        <div class="flex items-center bg-surface-container-high rounded-full p-0.5 border border-[#E8E0D2]">
+          <button id="lightModeBtn" onclick="setTheme('light')" class="w-7 h-7 rounded-full flex items-center justify-center bg-surface-container-lowest text-primary shadow-xs" type="button">
+            <span class="material-symbols-outlined text-[16px]">light_mode</span>
+          </button>
+          <button id="darkModeBtn" onclick="setTheme('dark')" class="w-7 h-7 rounded-full flex items-center justify-center text-on-surface-variant hover:text-primary" type="button">
+            <span class="material-symbols-outlined text-[16px]">dark_mode</span>
+          </button>
+        </div>
+
+        <!-- Unified Login & Account Slot -->
+        <div class="header-auth-slot flex items-center">
+          <button onclick="openAuthModal('student')" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-primary text-white hover:bg-primary-container text-xs sm:text-sm font-semibold transition-colors shadow-xs" type="button">
+            <span class="material-symbols-outlined text-[17px]">login</span>
+            <span>Sign In / Register</span>
+          </button>
+        </div>
+
+        <button onclick="toggleMobileNav()" class="lg:hidden p-2 text-on-surface hover:text-primary rounded-lg" type="button">
+          <span class="material-symbols-outlined text-[24px]">menu</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileNav" class="hidden lg:hidden border-t border-[#E8E0D2] bg-[#FAF7F2] px-4 py-3 space-y-2 text-sm">
+      <a class="block py-1.5 text-on-surface-variant hover:text-primary" href="index.html">Home</a>
+      <a class="block py-1.5 text-primary font-bold" href="semesters.html">Semesters Directory</a>
+      <a class="block py-1.5 text-on-surface-variant hover:text-primary" href="subjects.html">Subjects</a>
+      <a class="block py-1.5 text-on-surface-variant hover:text-primary" href="question-papers.html">Question Papers</a>
+      <a class="block py-1.5 text-on-surface-variant hover:text-primary" href="resources.html">Resources</a>
+      <a class="block py-1.5 text-on-surface-variant hover:text-primary" href="study-tools.html">Study Tools</a>
+      <a class="block py-1.5 text-on-surface-variant hover:text-primary" href="design-system.html">Design System</a>
+      <a class="block py-2 text-secondary font-semibold" href="admin.html">Admin Control Center</a>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="w-full pt-20 bg-[#FAF7F2] flex-1 transition-colors duration-300">
+    <div class="w-full max-w-[1680px] 2xl:max-w-[96vw] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-8 space-y-8">
+      
+      <!-- Page Header Banner -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#E8E0D2] pb-6">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/10 text-secondary text-xs uppercase font-semibold tracking-wider mb-2">
+            <span class="material-symbols-outlined text-[14px]">school</span>
+            Curriculum Progression 2021 &amp; 2024
+          </div>
+          <h1 class="font-headline font-bold text-2xl sm:text-4xl text-primary leading-tight">B.Tech CSE (AI &amp; ML) Semesters</h1>
+          <p class="text-xs sm:text-sm text-on-surface-variant mt-1 max-w-2xl">
+            Complete 8-semester curriculum roadmap from foundational mathematics to advanced Generative AI and Autonomous Capstone projects.
+          </p>
+        </div>
+
+        <div id="activeTermIndicatorContainer" class="flex items-center gap-2">
+          <!-- Dynamically populated only when user logs in -->
+        </div>
+      </div>
+
+      <!-- Semester Selector Tabs (Sem 1 to 8) -->
+      <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none" id="semTabs">
+        <button id="semTab-1" onclick="displaySemester(1, this)" class="sem-btn px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all bg-surface-container-lowest border border-[#E8E0D2] hover:border-primary">Semester 1</button>
+        <button id="semTab-2" onclick="displaySemester(2, this)" class="sem-btn px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all bg-surface-container-lowest border border-[#E8E0D2] hover:border-primary">Semester 2</button>
+        <button id="semTab-3" onclick="displaySemester(3, this)" class="sem-btn px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all bg-surface-container-lowest border border-[#E8E0D2] hover:border-primary">Semester 3</button>
+        <button id="semTab-4" onclick="displaySemester(4, this)" class="sem-btn px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all bg-surface-container-lowest border border-[#E8E0D2] hover:border-primary">Semester 4</button>
+        <button id="semTab-5" onclick="displaySemester(5, this)" class="sem-btn px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all bg-surface-container-lowest border border-[#E8E0D2] hover:border-primary">Semester 5</button>
+        <button id="semTab-6" onclick="displaySemester(6, this)" class="sem-btn px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all bg-surface-container-lowest border border-[#E8E0D2] hover:border-primary">Semester 6</button>
+        <button id="semTab-7" onclick="displaySemester(7, this)" class="sem-btn px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all bg-surface-container-lowest border border-[#E8E0D2] hover:border-primary">Semester 7</button>
+        <button id="semTab-8" onclick="displaySemester(8, this)" class="sem-btn px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all bg-surface-container-lowest border border-[#E8E0D2] hover:border-primary">Semester 8</button>
+      </div>
+
+      <!-- Selected Semester Overview Panel -->
+      <div class="bg-surface-container-lowest p-6 rounded-2xl border border-[#E8E0D2] shadow-sm space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#E8E0D2] pb-4">
+          <div>
+            <h2 class="font-headline font-bold text-xl sm:text-2xl text-primary" id="semTitle">Semester 5 Curriculum Folio</h2>
+            <p class="text-xs text-on-surface-variant mt-0.5" id="semSubtitle">Third Year B.Tech CSE (Artificial Intelligence &amp; Machine Learning)</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-xs px-3 py-1 bg-surface-container rounded-lg font-mono font-bold text-primary" id="semCredits">Total Credits: 23</span>
+            <a href="subjects.html" class="text-xs font-semibold text-secondary hover:underline flex items-center gap-1">
+              <span>View Subjects</span>
+              <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Courses for this Semester -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="semCoursesGrid">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+
+      <!-- Curated Exam Kits for Term (Dynamic - True Values Only) -->
+      <div class="space-y-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <span class="text-xs uppercase tracking-wider font-semibold text-secondary">Term Materials Repository</span>
+            <h3 class="font-headline font-bold text-lg text-primary">Published Study Materials &amp; Revision Packs</h3>
+          </div>
+        </div>
+
+        <div id="semMaterialsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Dynamically populated from verified published materials only -->
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="w-full bg-surface-container-lowest border-t border-[#E8E0D2] mt-8 py-8 transition-colors duration-300">
+    <div class="w-full max-w-[1680px] 2xl:max-w-[96vw] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-on-surface-variant">
+      <div class="flex items-center gap-3">
+        <img alt="VSB College of Engineering Karur Logo" class="h-8 w-auto object-contain" src="assets/vsb-logo.png" onerror="this.src='https://vsbec.edu.in/wp-content/uploads/2026/06/VSB-Karur.png'"/>
+        <p>© 2026 VSB StudyHub. Department of Computer Science &amp; Engineering (AI &amp; ML).</p>
+      </div>
+      <div class="flex items-center gap-4">
+        <button onclick="openLegalModal()" class="hover:text-primary">Legal &amp; Privacy</button>
+        <a href="subjects.html" class="hover:text-primary">Subjects</a>
+        <a href="question-papers.html" class="hover:text-primary">Question Papers</a>
+        <a href="study-tools.html" class="hover:text-primary">CGPA Calculator</a>
+        <a href="admin.html" class="text-secondary font-semibold">Admin Center</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const SEMESTER_DATA = {
+      1: {
+        title: "Semester 1 Curriculum Folio",
+        subtitle: "First Year B.Tech • Engineering Foundations",
+        credits: "Total Credits: 21",
+        courses: [
+          { code: "HS3151", name: "Professional English - I", credits: 3, type: "Theory" },
+          { code: "MA3151", name: "Matrices and Calculus", credits: 4, type: "Theory" },
+          { code: "PH3151", name: "Engineering Physics", credits: 3, type: "Theory" },
+          { code: "CY3151", name: "Engineering Chemistry", credits: 3, type: "Theory" },
+          { code: "GE3151", name: "Problem Solving and Python Programming", credits: 4, type: "Core Lab + Theory" }
+        ]
+      },
+      2: {
+        title: "Semester 2 Curriculum Folio",
+        subtitle: "First Year B.Tech • Computing & Hardware Foundations",
+        credits: "Total Credits: 22",
+        courses: [
+          { code: "HS3251", name: "Professional English - II", credits: 3, type: "Theory" },
+          { code: "MA3251", name: "Statistics and Numerical Methods", credits: 4, type: "Theory" },
+          { code: "CS3251", name: "Programming in C", credits: 4, type: "Core Theory + Lab" },
+          { code: "EE3251", name: "Basic Electrical and Electronics Engineering", credits: 3, type: "Theory" },
+          { code: "GE3251", name: "Engineering Graphics", credits: 4, type: "Design Lab" }
+        ]
+      },
+      3: {
+        title: "Semester 3 Curriculum Folio",
+        subtitle: "Second Year B.Tech • Data Structures & Discrete Systems",
+        credits: "Total Credits: 23",
+        courses: [
+          { code: "MA3354", name: "Discrete Mathematics & Graphs", credits: 4, type: "Core Math" },
+          { code: "CS3351", name: "Digital Principles & Computer Organization", credits: 4, type: "Hardware Core" },
+          { code: "CS3352", name: "Foundations of Data Science", credits: 3, type: "Core AI/ML" },
+          { code: "CS3391", name: "Object Oriented Programming in Java", credits: 4, type: "Software Core + Lab" },
+          { code: "AD3301", name: "Data Structures & Algorithms", credits: 4, type: "Algorithm Core" }
+        ]
+      },
+      4: {
+        title: "Semester 4 Curriculum Folio",
+        subtitle: "Second Year B.Tech • Algorithms & Database Engineering",
+        credits: "Total Credits: 22",
+        courses: [
+          { code: "CS3452", name: "Theory of Computation & Automata", credits: 4, type: "Theory Core" },
+          { code: "CS3491", name: "Artificial Intelligence", credits: 4, type: "Core AI Track" },
+          { code: "CS3492", name: "Database Management Systems", credits: 4, type: "System Core + SQL Lab" },
+          { code: "AL3452", name: "Machine Learning Techniques", credits: 4, type: "Specialized Track" },
+          { code: "GE3451", name: "Environmental Sciences and Sustainability", credits: 2, type: "Mandatory Non-Credit" }
+        ]
+      },
+      5: {
+        title: "Semester 5 Curriculum Folio",
+        subtitle: "Third Year B.Tech • Deep Learning & Advanced Artificial Intelligence",
+        credits: "Total Credits: 23",
+        courses: [
+          { code: "CS3491", name: "Artificial Intelligence Principles", credits: 4, type: "Core AI / Prof. R. Sundaram" },
+          { code: "AL3452", name: "Machine Learning Techniques", credits: 3, type: "Core ML / Prof. K. Meenakshi" },
+          { code: "AL3501", name: "Deep Learning & Neural Nets", credits: 4, type: "Specialized Core / Dr. S. Priya" },
+          { code: "CS3352", name: "Foundations of Data Science", credits: 3, type: "Statistical AI / Dr. A. V. Raman" },
+          { code: "CS3391", name: "Object Oriented Java Systems", credits: 3, type: "Software Engineering / Prof. M. Dinesh" },
+          { code: "MA3354", name: "Discrete Mathematics & Graphs", credits: 4, type: "Math Foundations / Dr. N. Balakrishnan" }
+        ]
+      },
+      6: {
+        title: "Semester 6 Curriculum Folio",
+        subtitle: "Third Year B.Tech • Computer Vision & Natural Language Processing",
+        credits: "Total Credits: 22",
+        courses: [
+          { code: "AL3601", name: "Computer Vision and Image Understanding", credits: 4, type: "Specialized Core" },
+          { code: "AL3602", name: "Natural Language Processing & LLMs", credits: 4, type: "Specialized Core" },
+          { code: "CS3691", name: "Embedded Systems and IoT Architectures", credits: 3, type: "Hardware Core" },
+          { code: "PE3601", name: "Professional Elective I (Cloud AI Services)", credits: 3, type: "Elective" },
+          { code: "AL3611", name: "AI Mini-Project Laboratory", credits: 2, type: "Capstone Lab" }
+        ]
+      },
+      7: {
+        title: "Semester 7 Curriculum Folio",
+        subtitle: "Final Year B.Tech • Autonomous Agents & Reinforcement Learning",
+        credits: "Total Credits: 19",
+        courses: [
+          { code: "AL3701", name: "Reinforcement Learning & Robotics", credits: 4, type: "Specialized Core" },
+          { code: "AL3702", name: "Ethics in AI & Responsible Machine Learning", credits: 3, type: "Core Ethics" },
+          { code: "PE3702", name: "Professional Elective II (Generative Diffusion Models)", credits: 3, type: "Advanced Elective" },
+          { code: "OE3701", name: "Open Elective (FinTech & Quantitative Analysis)", credits: 3, type: "Interdisciplinary" },
+          { code: "AL3711", name: "Capstone Project Work - Phase I", credits: 3, type: "Project Work" }
+        ]
+      },
+      8: {
+        title: "Semester 8 Curriculum Folio",
+        subtitle: "Final Year B.Tech • Industrial Internship & Capstone Thesis",
+        credits: "Total Credits: 14",
+        courses: [
+          { code: "PE3801", name: "Professional Elective III (Edge AI & MLOps)", credits: 3, type: "Industry Elective" },
+          { code: "AL3811", name: "Capstone Project Work - Phase II & Viva Voce", credits: 8, type: "Degree Thesis" },
+          { code: "IN3801", name: "Full Semester Corporate Internship", credits: 3, type: "Industrial Training" }
+        ]
+      }
+    };
+
+    function renderSemesterMaterials(semNum) {
+      const container = document.getElementById('semMaterialsGrid');
+      if (!container) return;
+      const materials = JSON.parse(localStorage.getItem('vsb_materials') || '[]');
+      const semMaterials = materials.filter(m => m.semester === `sem${semNum}` || m.semester == semNum);
+
+      if (semMaterials.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full p-8 text-center bg-surface-container-lowest rounded-xl border border-[#E8E0D2] text-xs text-on-surface-variant">
+            <span class="material-symbols-outlined text-4xl text-on-surface-variant mb-2">folder_open</span>
+            <h4 class="font-bold text-sm text-primary mb-1">No Materials Uploaded for Semester ${semNum} Yet</h4>
+            <p class="text-xs text-on-surface-variant mb-4 max-w-md mx-auto">All official curriculum packs, faculty lecture notes, and PYQs are published directly by the department administrator or verified from student contributions.</p>
+            <div class="flex items-center justify-center gap-3">
+              <a href="admin.html" class="px-3.5 py-2 bg-primary text-white text-xs font-semibold rounded-lg hover:bg-primary-container transition-colors flex items-center gap-1.5 shadow-xs">
+                <span class="material-symbols-outlined text-[16px]">upload_file</span>
+                <span>Upload in Admin Center</span>
+              </a>
+              <button onclick="openUploadModal()" class="px-3.5 py-2 border border-[#E8E0D2] bg-surface text-primary text-xs font-semibold rounded-lg hover:bg-surface-container transition-colors flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[16px]">upload</span>
+                <span>Contribute Notes</span>
+              </button>
+            </div>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = semMaterials.map(m => `
+        <div class="bg-surface-container-lowest p-5 rounded-xl border border-[#E8E0D2] shadow-xs flex flex-col justify-between hover:border-primary transition-all">
+          <div>
+            <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-primary/10 text-primary uppercase">${m.type || 'Document'}</span>
+            <h4 class="font-headline font-bold text-base text-primary mt-2">${m.title}</h4>
+            <p class="text-xs text-on-surface-variant mt-1">${m.subject || m.code}</p>
+          </div>
+          <div class="pt-3 border-t border-[#E8E0D2] mt-4 flex items-center justify-between">
+            <span class="text-xs text-secondary font-semibold">${m.contributor || 'Verified IRL'}</span>
+            <a href="${m.url}" target="_blank" rel="noopener noreferrer" class="text-xs text-primary hover:underline font-semibold flex items-center gap-1">
+              <span>Access Material</span>
+              <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function displaySemester(num, btn) {
+      document.querySelectorAll('.sem-btn').forEach(b => {
+        b.className = 'sem-btn px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all bg-surface-container-lowest border border-[#E8E0D2] hover:border-primary';
+      });
+      btn.className = 'sem-btn active px-5 py-2 rounded-full text-xs sm:text-sm font-bold transition-all bg-primary text-on-primary border-2 border-tertiary-fixed shadow-sm flex items-center gap-2';
+
+      const data = SEMESTER_DATA[num];
+      const user = window.portalCore ? window.portalCore.getCurrentUser() : null;
+      const isUserTerm = user && parseInt(user.semester, 10) === parseInt(num, 10);
+
+      document.getElementById('semTitle').textContent = isUserTerm ? `${data.title} (Your Active Term)` : data.title;
+      document.getElementById('semSubtitle').textContent = data.subtitle;
+      document.getElementById('semCredits').textContent = data.credits;
+
+      const container = document.getElementById('semCoursesGrid');
+      container.innerHTML = '';
+
+      data.courses.forEach(c => {
+        const div = document.createElement('div');
+        div.className = 'bg-surface p-4 rounded-xl border border-[#E8E0D2] shadow-xs flex flex-col justify-between hover:border-primary transition-colors';
+        div.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-xs px-2 py-0.5 rounded bg-surface-container font-mono font-bold text-primary">${c.code}</span>
+              <span class="text-xs text-on-surface-variant font-medium">${c.credits} Credits</span>
+            </div>
+            <h4 class="font-headline font-bold text-sm text-primary mb-1">${c.name}</h4>
+            <p class="text-xs text-on-surface-variant">${c.type}</p>
+          </div>
+          <div class="mt-3 pt-2 border-t border-[#E8E0D2]/60 flex justify-end">
+            <a href="subjects.html?search=${c.code}" class="text-xs font-semibold text-secondary hover:underline flex items-center gap-0.5">
+              <span>View Course Folio</span>
+              <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+            </a>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+
+      renderSemesterMaterials(num);
+    }
+
+    function setTheme(mode) {
+      if (mode === 'dark') {
+        document.documentElement.classList.add('dark');
+        document.getElementById('darkModeBtn')?.classList.add('bg-surface-container-lowest', 'text-primary', 'shadow-xs');
+        document.getElementById('darkModeBtn')?.classList.remove('text-on-surface-variant');
+        document.getElementById('lightModeBtn')?.classList.remove('bg-surface-container-lowest', 'text-primary', 'shadow-xs');
+        document.getElementById('lightModeBtn')?.classList.add('text-on-surface-variant');
+        localStorage.setItem('vsb_theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.getElementById('lightModeBtn')?.classList.add('bg-surface-container-lowest', 'text-primary', 'shadow-xs');
+        document.getElementById('lightModeBtn')?.classList.remove('text-on-surface-variant');
+        document.getElementById('darkModeBtn')?.classList.remove('bg-surface-container-lowest', 'text-primary', 'shadow-xs');
+        document.getElementById('darkModeBtn')?.classList.add('text-on-surface-variant');
+        localStorage.setItem('vsb_theme', 'light');
+      }
+    }
+
+    if (localStorage.getItem('vsb_theme') === 'dark') setTheme('dark');
+
+    function toggleMobileNav() {
+      document.getElementById('mobileNav').classList.toggle('hidden');
+    }
+
+    function updateActiveSemesterHeader() {
+      const user = window.portalCore ? window.portalCore.getCurrentUser() : null;
+      const container = document.getElementById("activeTermIndicatorContainer");
+      if (!container) return;
+
+      if (user && user.semester) {
+        container.innerHTML = `
+          <span class="text-xs text-on-surface-variant">Your Registered Term:</span>
+          <span class="px-3 py-1 rounded-full bg-secondary text-white text-xs font-bold shadow-xs flex items-center gap-1">
+            <span class="material-symbols-outlined text-[14px]">school</span>
+            <span>Semester ${user.semester} (Active)</span>
+          </span>
+        `;
+      } else {
+        container.innerHTML = `
+          <span class="px-3 py-1 rounded-full bg-surface-container text-on-surface text-xs font-medium border border-[#E8E0D2]">
+            <button onclick="openAuthModal('student')" class="text-primary font-bold hover:underline">Sign In</button> to highlight your semester
+          </span>
+        `;
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const user = window.portalCore ? window.portalCore.getCurrentUser() : null;
+      const defaultSem = (user && user.semester) ? parseInt(user.semester, 10) : 4;
+      const targetBtn = document.getElementById(`semTab-${defaultSem}`) || document.getElementById('semTab-4');
+      if (targetBtn) displaySemester(defaultSem, targetBtn);
+      updateActiveSemesterHeader();
+    });
+
+    window.addEventListener('vsb_auth_changed', () => {
+      const user = window.portalCore ? window.portalCore.getCurrentUser() : null;
+      if (user && user.semester) {
+        const semNum = parseInt(user.semester, 10);
+        const targetBtn = document.getElementById(`semTab-${semNum}`);
+        if (targetBtn) displaySemester(semNum, targetBtn);
+      }
+      updateActiveSemesterHeader();
+    });
+  </script>
+  <script src="assets/portal-core.js"></script>
+</body>
+</html>

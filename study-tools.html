@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0" name="viewport"/>
+  <meta content="web_standard" name="shell-type"/>
+  <title>Academic Study Tools &amp; CGPA Calculator - VSB StudyHub</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Merriweather:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <style>
+    @layer base {
+      html { scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+      html, body { margin: 0; padding: 0; width: 100%; overflow-x: hidden; box-sizing: border-box; }
+      *, *::before, *::after { box-sizing: border-box; }
+    }
+    ::-webkit-scrollbar { width: 7px; height: 7px; }
+    ::-webkit-scrollbar-thumb { background: #d3cbbe; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #964450; }
+
+    /* Ambient Warm Scholarly Dark Mode */
+    html.dark { color-scheme: dark; }
+    html.dark body { background-color: #161311 !important; color: #ede7dc !important; }
+    html.dark header { background-color: #1f1a17 !important; border-color: #38302a !important; }
+    html.dark main { background-color: #161311 !important; }
+    html.dark .bg-\[\#FAF7F2\] { background-color: #161311 !important; }
+    html.dark .bg-surface-container-lowest { background-color: #211c19 !important; border-color: #38302a !important; }
+    html.dark .bg-surface-container-low { background-color: #28221e !important; border-color: #3d342d !important; }
+    html.dark .bg-surface { background-color: #1b1714 !important; border-color: #38302a !important; }
+    html.dark .bg-surface-container { background-color: #2c2521 !important; border-color: #423831 !important; }
+    html.dark .border-\[\#E8E0D2\] { border-color: #38302a !important; }
+    html.dark .text-primary { color: #e3be72 !important; }
+    html.dark .text-secondary { color: #df8894 !important; }
+    html.dark .text-on-surface { color: #ede7dc !important; }
+    html.dark .text-on-surface-variant { color: #b0a698 !important; }
+    html.dark footer { background-color: #1b1714 !important; border-color: #38302a !important; }
+    html.dark input, html.dark select, html.dark textarea {
+      background-color: #241e1b !important;
+      color: #ede7dc !important;
+      border-color: #423831 !important;
+    }
+    html.dark ::-webkit-scrollbar-thumb { background: #4a3e35; }
+    html.dark ::-webkit-scrollbar-thumb:hover { background: #e3be72; }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#032448",
+            "secondary": "#964450",
+            "tertiary": "#755b00",
+            "tertiary-fixed": "#ffe08e",
+            "on-primary": "#ffffff",
+            "surface": "#fcf9f8",
+            "surface-container-low": "#f6f3f2",
+            "surface-container-lowest": "#ffffff",
+            "on-surface": "#1b1c1c",
+            "on-surface-variant": "#43474e"
+          },
+          fontFamily: {
+            "display": ["Merriweather", "serif"],
+            "headline": ["Merriweather", "serif"],
+            "body": ["Inter", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-[#FAF7F2] font-body text-on-surface antialiased transition-colors duration-300 w-full min-h-screen flex flex-col">
+
+  <!-- TOP HEADER -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-[#FAF7F2] border-b border-[#E8E0D2] shadow-sm transition-colors duration-300">
+    <div class="w-full max-w-[1680px] 2xl:max-w-[96vw] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex items-center justify-between gap-4 h-20">
+      <a href="index.html" class="flex items-center gap-3 sm:gap-4 flex-shrink-0 group">
+        <img alt="VSB College of Engineering Karur Logo" class="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-105" src="assets/vsb-logo.png" onerror="this.src='https://vsbec.edu.in/wp-content/uploads/2026/06/VSB-Karur.png'"/>
+        <div class="flex flex-col">
+          <span class="font-headline font-bold text-base sm:text-xl text-primary tracking-tight leading-none group-hover:text-secondary transition-colors">VSB StudyHub</span>
+          <span class="text-[10px] sm:text-xs text-secondary tracking-wider uppercase font-semibold mt-1">Dept of CSE (AI &amp; ML)</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-2 xl:gap-4 2xl:gap-6 flex-shrink-0 text-sm font-medium">
+        <a class="text-on-surface-variant hover:text-primary transition-colors py-1" href="index.html">Home</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors py-1" href="semesters.html">Semesters</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors py-1" href="subjects.html">Subjects</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors py-1" href="question-papers.html">Question Papers</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors py-1" href="resources.html">Resources</a>
+        <a aria-current="page" class="transition-colors py-1 text-primary font-bold border-b-2 border-primary" href="study-tools.html">Study Tools</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors py-1" href="design-system.html">Design System</a>
+        <a class="px-3 py-1.5 rounded-lg bg-secondary/10 hover:bg-secondary/20 text-secondary font-semibold transition-colors flex items-center gap-1.5" href="admin.html">
+          <span class="material-symbols-outlined text-[16px]">admin_panel_settings</span>
+          <span>Admin Center</span>
+        </a>
+      </nav>
+
+      <!-- Action Controls -->
+      <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+        <!-- Ambient Warm Dark Mode Toggle -->
+        <div class="flex items-center bg-surface-container-high rounded-full p-0.5 border border-[#E8E0D2]">
+          <button id="lightModeBtn" aria-label="Light mode" onclick="setTheme('light')" class="w-7 h-7 rounded-full flex items-center justify-center bg-surface-container-lowest text-primary shadow-xs transition-colors" type="button" title="Parchment Light Mode">
+            <span class="material-symbols-outlined text-[16px]">light_mode</span>
+          </button>
+          <button id="darkModeBtn" aria-label="Dark mode" onclick="setTheme('dark')" class="w-7 h-7 rounded-full flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" type="button" title="Ambient Scholar Dark Mode">
+            <span class="material-symbols-outlined text-[16px]">dark_mode</span>
+          </button>
+        </div>
+
+        <!-- Unified Login & Account Slot -->
+        <div class="header-auth-slot flex items-center">
+          <button onclick="openAuthModal('student')" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-primary text-white hover:bg-primary-container text-xs sm:text-sm font-semibold transition-colors shadow-xs" type="button">
+            <span class="material-symbols-outlined text-[17px]">login</span>
+            <span>Sign In / Register</span>
+          </button>
+        </div>
+        
+        <!-- Mobile Menu Hamburger -->
+        <button onclick="toggleMobileNav()" class="lg:hidden p-2 text-on-surface hover:text-primary rounded-lg" type="button" aria-label="Menu">
+          <span class="material-symbols-outlined text-[24px]">menu</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Nav -->
+    <div id="mobileNav" class="hidden lg:hidden border-t border-[#E8E0D2] bg-[#FAF7F2] px-4 py-3 space-y-2 text-sm">
+      <a class="block py-1.5 text-on-surface-variant hover:text-primary" href="index.html">Home</a>
+      <a class="block py-1.5 text-on-surface-variant hover:text-primary" href="semesters.html">Semesters Directory</a>
+      <a class="block py-1.5 text-on-surface-variant hover:text-primary" href="subjects.html">Core &amp; Elective Subjects</a>
+      <a class="block py-1.5 text-on-surface-variant hover:text-primary" href="question-papers.html">Previous Year Questions (PYQs)</a>
+      <a class="block py-1.5 text-on-surface-variant hover:text-primary" href="resources.html">Academic Resources &amp; Lab Code</a>
+      <a class="block py-1.5 text-primary font-bold" href="study-tools.html">Study Tools &amp; CGPA Calc</a>
+      <a class="block py-1.5 text-on-surface-variant hover:text-primary" href="design-system.html">Design System &amp; Mood Board</a>
+      <a class="block py-2 text-secondary font-semibold flex items-center gap-1.5" href="admin.html">
+        <span class="material-symbols-outlined text-[18px]">admin_panel_settings</span>
+        <span>Open Admin Control Center</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="w-full pt-20 bg-[#FAF7F2] flex-1 transition-colors duration-300">
+    <div class="w-full max-w-[1680px] 2xl:max-w-[96vw] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-10">
+
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-xs text-on-surface-variant mb-6">
+        <a href="index.html" class="hover:text-primary">Home</a>
+        <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+        <span class="text-primary font-semibold">Academic Study Tools</span>
+      </nav>
+
+      <!-- Page Header Banner -->
+      <div class="bg-surface-container-lowest border border-[#E8E0D2] rounded-2xl p-6 sm:p-10 mb-8 relative overflow-hidden shadow-xs">
+        <div class="max-w-3xl relative z-10">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/10 text-secondary text-xs font-semibold mb-3">
+            <span class="material-symbols-outlined text-[16px]">calculate</span>
+            <span>Regulation 2021 &amp; Autonomous 2024 Grade Suite</span>
+          </div>
+          <h1 class="font-headline text-2xl sm:text-4xl text-primary font-bold mb-3 tracking-tight">Academic Tools &amp; Performance Suite</h1>
+          <p class="text-sm sm:text-base text-on-surface-variant leading-relaxed">
+            Essential productivity tools designed for VSB CSE (AI &amp; ML) undergraduates: Real-time Anna University SGPA &amp; CGPA calculator for Regulation 2021 &amp; Autonomous curriculum.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4 mt-6 text-xs text-on-surface-variant">
+            <a href="#gpaCalculator" class="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary text-white font-semibold hover:bg-primary-container transition-colors shadow-xs">
+              <span class="material-symbols-outlined text-[16px]">calculate</span>
+              <span>SGPA &amp; CGPA Calculator</span>
+            </a>
+            <a href="question-papers.html" class="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-surface-container-low border border-[#E8E0D2] hover:bg-surface-container transition-colors font-medium">
+              <span class="material-symbols-outlined text-[16px] text-secondary">quiz</span>
+              <span>Question Papers (PYQs)</span>
+            </a>
+            <a href="resources.html" class="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-surface-container-low border border-[#E8E0D2] hover:bg-surface-container transition-colors font-medium">
+              <span class="material-symbols-outlined text-[16px] text-tertiary">folder</span>
+              <span>Academic Resources</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 1: INTERACTIVE SGPA & CGPA CALCULATOR -->
+      <section id="gpaCalculator" class="mb-12 scroll-mt-24">
+        <div class="bg-surface-container-lowest border border-[#E8E0D2] rounded-2xl p-6 sm:p-8 shadow-xs">
+          
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-[#E8E0D2]">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary text-[24px]">calculate</span>
+                <h2 class="font-headline font-bold text-xl sm:text-2xl text-primary">SGPA &amp; CGPA Calculator</h2>
+              </div>
+              <p class="text-xs sm:text-sm text-on-surface-variant mt-1">
+                Anna University Regulation 2021 &amp; VSB Autonomous Credit-Weight Grading Formula
+              </p>
+            </div>
+
+            <!-- Grade Scale Quick Reference -->
+            <div class="flex items-center gap-1.5 text-[11px] bg-surface-container-low px-3 py-2 rounded-xl border border-[#E8E0D2] flex-wrap">
+              <span class="font-bold text-primary">Scale:</span>
+              <span class="px-1.5 py-0.5 rounded bg-surface">O = 10</span>
+              <span class="px-1.5 py-0.5 rounded bg-surface">A+ = 9</span>
+              <span class="px-1.5 py-0.5 rounded bg-surface">A = 8</span>
+              <span class="px-1.5 py-0.5 rounded bg-surface">B+ = 7</span>
+              <span class="px-1.5 py-0.5 rounded bg-surface">B = 6</span>
+              <span class="px-1.5 py-0.5 rounded bg-surface">C = 5</span>
+              <span class="px-1.5 py-0.5 rounded bg-secondary/10 text-secondary font-bold">RA = 0</span>
+            </div>
+          </div>
+
+          <!-- Cumulative Baseline Inputs -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 my-6 p-4 rounded-xl bg-surface-container-low border border-[#E8E0D2]">
+            <div>
+              <label class="block text-xs font-semibold text-on-surface-variant mb-1">Previous Completed Semesters' CGPA (Optional)</label>
+              <input id="prevCgpa" type="number" step="0.01" min="0" max="10" placeholder="e.g., 8.75" class="w-full px-3 py-2 text-xs rounded-lg border border-[#E8E0D2] bg-surface focus:outline-none focus:border-primary transition-colors" oninput="calculateGpa()"/>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-on-surface-variant mb-1">Total Earned Credits Till Previous Sem</label>
+              <input id="prevCredits" type="number" step="1" min="0" max="180" placeholder="e.g., 65" class="w-full px-3 py-2 text-xs rounded-lg border border-[#E8E0D2] bg-surface focus:outline-none focus:border-primary transition-colors" oninput="calculateGpa()"/>
+            </div>
+            <div class="flex items-end">
+              <button onclick="loadSemesterPreset(4)" class="w-full py-2 px-3 rounded-lg border border-primary text-primary hover:bg-primary/5 text-xs font-semibold transition-colors flex items-center justify-center gap-1.5">
+                <span class="material-symbols-outlined text-[16px]">restart_alt</span>
+                <span>Load Sem 4 Preset Courses</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Course Entry Table -->
+          <div class="overflow-x-auto mb-6">
+            <table class="w-full text-left text-xs sm:text-sm">
+              <thead>
+                <tr class="border-b border-[#E8E0D2] bg-surface-container-low text-on-surface-variant font-semibold uppercase tracking-wider text-[11px]">
+                  <th class="py-3 px-4">#</th>
+                  <th class="py-3 px-4">Course Name / Code</th>
+                  <th class="py-3 px-4 w-32">Credits (C)</th>
+                  <th class="py-3 px-4 w-40">Expected Grade</th>
+                  <th class="py-3 px-4 w-28 text-center">Grade Point (G)</th>
+                  <th class="py-3 px-4 w-28 text-center">C × G</th>
+                  <th class="py-3 px-4 w-16 text-right">Remove</th>
+                </tr>
+              </thead>
+              <tbody id="courseRowsBody" class="divide-y divide-[#E8E0D2]">
+                <!-- Rows injected dynamically -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Table Controls -->
+          <div class="flex flex-wrap items-center justify-between gap-4 mb-8">
+            <button onclick="addCourseRow()" class="px-4 py-2 rounded-xl bg-surface-container-low hover:bg-surface-container border border-[#E8E0D2] text-xs font-semibold text-primary transition-colors flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-[16px]">add_circle</span>
+              <span>Add Another Subject</span>
+            </button>
+            <button onclick="resetCalculator()" class="text-secondary hover:underline text-xs font-semibold">
+              Reset Calculator
+            </button>
+          </div>
+
+          <!-- Real-Time Calculation Result Banner -->
+          <div class="bg-gradient-to-r from-primary to-primary-container text-white rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-md">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-widest text-[#e3be72]">Computed Performance Metrics</span>
+              <h3 class="font-headline font-bold text-xl sm:text-2xl mt-1">Academic Grade Projection</h3>
+              <p class="text-xs text-white/80 mt-1 max-w-lg">
+                Calculated strictly in accordance with Anna University Degree Regulations (Clause 15: Passing Requirements &amp; CGPA Classification).
+              </p>
+            </div>
+
+            <div class="flex items-center gap-4 sm:gap-8 flex-wrap justify-center">
+              <div class="text-center bg-white/10 backdrop-blur-xs px-5 py-3 rounded-xl border border-white/15">
+                <span class="text-[11px] uppercase tracking-wider text-white/70 block">Current Term SGPA</span>
+                <span id="calculatedSgpa" class="font-headline text-3xl sm:text-4xl font-bold text-[#e3be72]">0.00</span>
+                <span id="totalCurrentCredits" class="text-[10px] text-white/70 block mt-0.5">0 Credits</span>
+              </div>
+
+              <div class="text-center bg-white/10 backdrop-blur-xs px-5 py-3 rounded-xl border border-white/15">
+                <span class="text-[11px] uppercase tracking-wider text-white/70 block">Cumulative CGPA</span>
+                <span id="calculatedCgpa" class="font-headline text-3xl sm:text-4xl font-bold text-white">0.00</span>
+                <span id="totalOverallCredits" class="text-[10px] text-white/70 block mt-0.5">0 Total Credits</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-surface border-t border-[#E8E0D2] py-12 transition-colors duration-300 mt-auto">
+    <div class="w-full max-w-[1680px] 2xl:max-w-[96vw] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <img alt="VSB College of Engineering Karur Logo" class="h-10 w-auto object-contain" src="assets/vsb-logo.png" onerror="this.src='https://vsbec.edu.in/wp-content/uploads/2026/06/VSB-Karur.png'"/>
+        <div>
+          <p class="font-headline font-bold text-sm text-primary">VSB Engineering College (Autonomous), Karur</p>
+          <p class="text-xs text-on-surface-variant">Department of Computer Science and Engineering (AI &amp; ML)</p>
+        </div>
+      </div>
+      <div class="flex flex-col sm:flex-row items-center gap-3 text-xs text-on-surface-variant text-center md:text-right">
+        <button onclick="openLegalModal()" class="hover:text-primary underline font-medium">Legal Disclaimer &amp; Compliance</button>
+        <span class="hidden sm:inline">•</span>
+        <span>© 2026 VSB StudyHub. Built for student academic excellence.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // Grade point lookup dictionary
+    const gradePoints = {
+      "O": 10,
+      "A+": 9,
+      "A": 8,
+      "B+": 7,
+      "B": 6,
+      "C": 5,
+      "RA": 0
+    };
+
+    // Semester 4 Preset
+    const sem4Preset = [
+      { name: "CS3491 - Artificial Intelligence and Machine Learning", credits: 4, grade: "O" },
+      { name: "AL3452 - Operating Systems Principles", credits: 3, grade: "A+" },
+      { name: "CS3492 - Database Management Systems", credits: 3, grade: "A" },
+      { name: "MA3354 - Discrete Mathematics", credits: 4, grade: "A+" },
+      { name: "AL3451 - Machine Learning Laboratory", credits: 2, grade: "O" },
+      { name: "CS3461 - DBMS Laboratory", credits: 2, grade: "O" },
+      { name: "GE3451 - Environmental Sciences & Sustainability", credits: 2, grade: "A" }
+    ];
+
+    let currentCourses = [];
+
+    function initCalculator() {
+      const saved = localStorage.getItem("vsb_calc_courses");
+      if (saved) {
+        try {
+          currentCourses = JSON.parse(saved);
+        } catch (e) {
+          currentCourses = [...sem4Preset];
+        }
+      } else {
+        currentCourses = [...sem4Preset];
+      }
+      renderCourseRows();
+      calculateGpa();
+    }
+
+    function renderCourseRows() {
+      const tbody = document.getElementById("courseRowsBody");
+      tbody.innerHTML = currentCourses.map((c, index) => {
+        const gp = gradePoints[c.grade] !== undefined ? gradePoints[c.grade] : 0;
+        const total = (c.credits * gp);
+        return `
+          <tr class="hover:bg-surface-container-low transition-colors">
+            <td class="py-3 px-4 text-on-surface-variant">${index + 1}</td>
+            <td class="py-3 px-4">
+              <input type="text" value="${c.name}" class="w-full px-2.5 py-1.5 text-xs rounded border border-[#E8E0D2] bg-surface font-medium text-primary focus:outline-none focus:border-primary" oninput="updateCourseField(${index}, 'name', this.value)"/>
+            </td>
+            <td class="py-3 px-4">
+              <select class="w-full px-2 py-1.5 text-xs rounded border border-[#E8E0D2] bg-surface focus:outline-none focus:border-primary" onchange="updateCourseField(${index}, 'credits', parseInt(this.value, 10))">
+                ${[1, 2, 3, 4, 5, 6].map(cr => `<option value="${cr}" ${c.credits === cr ? 'selected' : ''}>${cr} Credits</option>`).join("")}
+              </select>
+            </td>
+            <td class="py-3 px-4">
+              <select class="w-full px-2 py-1.5 text-xs rounded border border-[#E8E0D2] bg-surface font-semibold focus:outline-none focus:border-primary" onchange="updateCourseField(${index}, 'grade', this.value)">
+                ${Object.keys(gradePoints).map(g => `<option value="${g}" ${c.grade === g ? 'selected' : ''}>${g} (${gradePoints[g]} pts)</option>`).join("")}
+              </select>
+            </td>
+            <td class="py-3 px-4 text-center font-bold text-primary">${gp}</td>
+            <td class="py-3 px-4 text-center font-bold text-secondary">${total}</td>
+            <td class="py-3 px-4 text-right">
+              <button onclick="removeCourseRow(${index})" class="p-1 rounded text-on-surface-variant hover:text-secondary hover:bg-secondary/10 transition-colors" title="Remove course">
+                <span class="material-symbols-outlined text-[18px]">delete</span>
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    function addCourseRow() {
+      currentCourses.push({
+        name: `Course ${currentCourses.length + 1}`,
+        credits: 3,
+        grade: "A+"
+      });
+      renderCourseRows();
+      calculateGpa();
+      saveCourses();
+    }
+
+    function removeCourseRow(index) {
+      if (currentCourses.length <= 1) {
+        alert("You must have at least one course row in the calculator.");
+        return;
+      }
+      currentCourses.splice(index, 1);
+      renderCourseRows();
+      calculateGpa();
+      saveCourses();
+    }
+
+    function updateCourseField(index, field, value) {
+      if (currentCourses[index]) {
+        currentCourses[index][field] = value;
+        renderCourseRows();
+        calculateGpa();
+        saveCourses();
+      }
+    }
+
+    function loadSemesterPreset(sem) {
+      currentCourses = [...sem4Preset];
+      renderCourseRows();
+      calculateGpa();
+      saveCourses();
+    }
+
+    function resetCalculator() {
+      document.getElementById("prevCgpa").value = "";
+      document.getElementById("prevCredits").value = "";
+      currentCourses = [...sem4Preset];
+      renderCourseRows();
+      calculateGpa();
+      saveCourses();
+    }
+
+    function saveCourses() {
+      localStorage.setItem("vsb_calc_courses", JSON.stringify(currentCourses));
+    }
+
+    function calculateGpa() {
+      let totalCurrentCredits = 0;
+      let totalQualityPoints = 0;
+
+      currentCourses.forEach(c => {
+        const cr = Number(c.credits) || 0;
+        const gp = gradePoints[c.grade] !== undefined ? gradePoints[c.grade] : 0;
+        totalCurrentCredits += cr;
+        totalQualityPoints += (cr * gp);
+      });
+
+      const sgpa = totalCurrentCredits > 0 ? (totalQualityPoints / totalCurrentCredits) : 0;
+      document.getElementById("calculatedSgpa").innerText = sgpa.toFixed(2);
+      document.getElementById("totalCurrentCredits").innerText = `${totalCurrentCredits} Credits`;
+
+      // Cumulative Calculation
+      const prevCgpa = parseFloat(document.getElementById("prevCgpa").value) || 0;
+      const prevCredits = parseFloat(document.getElementById("prevCredits").value) || 0;
+
+      if (prevCredits > 0 && prevCgpa > 0) {
+        const totalOverallCredits = prevCredits + totalCurrentCredits;
+        const totalOverallPoints = (prevCgpa * prevCredits) + totalQualityPoints;
+        const cgpa = totalOverallPoints / totalOverallCredits;
+        document.getElementById("calculatedCgpa").innerText = cgpa.toFixed(2);
+        document.getElementById("totalOverallCredits").innerText = `${totalOverallCredits} Total Credits`;
+      } else {
+        document.getElementById("calculatedCgpa").innerText = sgpa.toFixed(2);
+        document.getElementById("totalOverallCredits").innerText = `${totalCurrentCredits} Total Credits`;
+      }
+    }
+
+    // Theme Handling
+    function setTheme(mode) {
+      const html = document.documentElement;
+      const lightBtn = document.getElementById("lightModeBtn");
+      const darkBtn = document.getElementById("darkModeBtn");
+
+      if (mode === 'dark') {
+        html.classList.add('dark');
+        localStorage.setItem('vsb_theme', 'dark');
+        if (darkBtn && lightBtn) {
+          darkBtn.classList.add('bg-surface-container-lowest', 'text-primary', 'shadow-xs');
+          darkBtn.classList.remove('text-on-surface-variant');
+          lightBtn.classList.remove('bg-surface-container-lowest', 'text-primary', 'shadow-xs');
+          lightBtn.classList.add('text-on-surface-variant');
+        }
+      } else {
+        html.classList.remove('dark');
+        localStorage.setItem('vsb_theme', 'light');
+        if (darkBtn && lightBtn) {
+          lightBtn.classList.add('bg-surface-container-lowest', 'text-primary', 'shadow-xs');
+          lightBtn.classList.remove('text-on-surface-variant');
+          darkBtn.classList.remove('bg-surface-container-lowest', 'text-primary', 'shadow-xs');
+          darkBtn.classList.add('text-on-surface-variant');
+        }
+      }
+    }
+
+    function toggleMobileNav() {
+      const nav = document.getElementById("mobileNav");
+      if (nav) nav.classList.toggle("hidden");
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const savedTheme = localStorage.getItem("vsb_theme") || "light";
+      setTheme(savedTheme);
+      initCalculator();
+    });
+  </script>
+  <!-- Portal Core Runtime (Auth, Timer Analytics, Submissions, Legal Disclaimers) -->
+  <script src="assets/portal-core.js"></script>
+</body>
+</html>

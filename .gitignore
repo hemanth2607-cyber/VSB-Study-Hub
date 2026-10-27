@@ -1,0 +1,13 @@
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# Development & Scratch Scripts
+scratch/
+*.pyc
+__pycache__/
+
+# IDE & Tooling
+.vscode/
+.idea/
+.agents/

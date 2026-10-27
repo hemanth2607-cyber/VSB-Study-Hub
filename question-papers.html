@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0" name="viewport"/>
+  <meta content="web_standard" name="shell-type"/>
+  <title>Previous Year Question Papers (PYQs) - VSB StudyHub</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Merriweather:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <style>
+    @layer base {
+      html { scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+      html, body { margin: 0; padding: 0; width: 100%; overflow-x: hidden; box-sizing: border-box; }
+      *, *::before, *::after { box-sizing: border-box; }
+    }
+    ::-webkit-scrollbar { width: 7px; height: 7px; }
+    ::-webkit-scrollbar-thumb { background: #d3cbbe; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #964450; }
+
+    /* Ambient Warm Scholarly Dark Mode */
+    html.dark { color-scheme: dark; }
+    html.dark body { background-color: #161311 !important; color: #ede7dc !important; }
+    html.dark header { background-color: #1f1a17 !important; border-color: #38302a !important; }
+    html.dark main { background-color: #161311 !important; }
+    html.dark .bg-\[\#FAF7F2\] { background-color: #161311 !important; }
+    html.dark .bg-surface-container-lowest { background-color: #211c19 !important; border-color: #38302a !important; }
+    html.dark .bg-surface-container-low { background-color: #28221e !important; border-color: #3d342d !important; }
+    html.dark .bg-surface { background-color: #1b1714 !important; border-color: #38302a !important; }
+    html.dark .bg-surface-container { background-color: #2c2521 !important; border-color: #423831 !important; }
+    html.dark .border-\[\#E8E0D2\] { border-color: #38302a !important; }
+    html.dark .text-primary { color: #e3be72 !important; }
+    html.dark .text-secondary { color: #df8894 !important; }
+    html.dark .text-on-surface { color: #ede7dc !important; }
+    html.dark .text-on-surface-variant { color: #b0a698 !important; }
+    html.dark footer { background-color: #1b1714 !important; border-color: #38302a !important; }
+    html.dark input, html.dark select, html.dark textarea {
+      background-color: #241e1b !important;
+      color: #ede7dc !important;
+      border-color: #423831 !important;
+    }
+    html.dark ::-webkit-scrollbar-thumb { background: #4a3e35; }
+    html.dark ::-webkit-scrollbar-thumb:hover { background: #e3be72; }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#032448",
+            "secondary": "#964450",
+            "tertiary": "#755b00",
+            "tertiary-fixed": "#ffe08e",
+            "on-primary": "#ffffff",
+            "surface": "#fcf9f8",
+            "surface-container-low": "#f6f3f2",
+            "surface-container-lowest": "#ffffff",
+            "on-surface": "#1b1c1c",
+            "on-surface-variant": "#43474e"
+          },
+          fontFamily: {
+            "display": ["Merriweather", "serif"],
+            "headline": ["Merriweather", "serif"],
+            "body": ["Inter", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-[#FAF7F2] font-body text-on-surface antialiased transition-colors duration-300 w-full min-h-screen flex flex-col">
+
+  <!-- TOP HEADER -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-[#FAF7F2] border-b border-[#E8E0D2] shadow-sm transition-colors duration-300">
+    <div class="w-full max-w-[1680px] 2xl:max-w-[96vw] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex items-center justify-between gap-4 h-20">
+      <a href="index.html" class="flex items-center gap-3 sm:gap-4 flex-shrink-0 group">
+        <img alt="VSB College of Engineering Karur Logo" class="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-105" src="assets/vsb-logo.png" onerror="this.src='https://vsbec.edu.in/wp-content/uploads/2026/06/VSB-Karur.png'"/>
+        <div class="flex flex-col">
+          <span class="font-headline font-bold text-base sm:text-xl text-primary tracking-tight leading-none group-hover:text-secondary transition-colors">VSB StudyHub</span>
+          <span class="text-[10px] sm:text-xs text-secondary tracking-wider uppercase font-semibold mt-1">Dept of CSE (AI &amp; ML)</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-2 xl:gap-4 2xl:gap-6 flex-shrink-0 text-sm font-medium">
+        <a class="text-on-surface-variant hover:text-primary transition-colors py-1" href="index.html">Home</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors py-1" href="semesters.html">Semesters</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors py-1" href="subjects.html">Subjects</a>
+        <a aria-current="page" class="transition-colors py-1 text-primary font-bold border-b-2 border-primary" href="question-papers.html">Question Papers</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors py-1" href="resources.html">Resources</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors py-1" href="study-tools.html">Study Tools</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors py-1" href="design-system.html">Design System</a>
+        <a class="px-3 py-1.5 rounded-lg bg-secondary/10 hover:bg-secondary/20 text-secondary font-semibold transition-colors flex items-center gap-1.5" href="admin.html">
+          <span class="material-symbols-outlined text-[16px]">admin_panel_settings</span>
+          <span>Admin Center</span>
+        </a>
+      </nav>
+
+      <!-- Action Controls -->
+      <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+        <!-- Ambient Warm Dark Mode Toggle -->
+        <div class="flex items-center bg-surface-container-high rounded-full p-0.5 border border-[#E8E0D2]">
+          <button id="lightModeBtn" aria-label="Light mode" onclick="setTheme('light')" class="w-7 h-7 rounded-full flex items-center justify-center bg-surface-container-lowest text-primary shadow-xs transition-colors" type="button" title="Parchment Light Mode">
+            <span class="material-symbols-outlined text-[16px]">light_mode</span>
+          </button>
+          <button id="darkModeBtn" aria-label="Dark mode" onclick="setTheme('dark')" class="w-7 h-7 rounded-full flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" type="button" title="Ambient Scholar Dark Mode">
+            <span class="material-symbols-outlined text-[16px]">dark_mode</span>
+          </button>
+        </div>
+
+        <!-- Unified Login & Account Slot -->
+        <div class="header-auth-slot flex items-center">
+          <button onclick="openAuthModal('student')" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-primary text-white hover:bg-primary-container text-xs sm:text-sm font-semibold transition-colors shadow-xs" type="button">
+            <span class="material-symbols-outlined text-[17px]">login</span>
+            <span>Sign In / Register</span>
+          </button>
+        </div>
+        
+        <!-- Mobile Menu Hamburger -->
+        <button onclick="toggleMobileNav()" class="lg:hidden p-2 text-on-surface hover:text-primary rounded-lg" type="button" aria-label="Menu">
+          <span class="material-symbols-outlined text-[24px]">menu</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Nav -->
+    <div id="mobileNav" class="hidden lg:hidden border-t border-[#E8E0D2] bg-[#FAF7F2] px-4 py-3 space-y-2 text-sm">
+      <a class="block py-1.5 text-on-surface-variant hover:text-primary" href="index.html">Home</a>
+      <a class="block py-1.5 text-on-surface-variant hover:text-primary" href="semesters.html">Semesters Directory</a>
+      <a class="block py-1.5 text-on-surface-variant hover:text-primary" href="subjects.html">Core &amp; Elective Subjects</a>
+      <a class="block py-1.5 text-primary font-bold" href="question-papers.html">Previous Year Questions (PYQs)</a>
+      <a class="block py-1.5 text-on-surface-variant hover:text-primary" href="resources.html">Academic Resources &amp; Lab Code</a>
+      <a class="block py-1.5 text-on-surface-variant hover:text-primary" href="study-tools.html">Study Tools &amp; CGPA Calc</a>
+      <a class="block py-1.5 text-on-surface-variant hover:text-primary" href="design-system.html">Design System &amp; Mood Board</a>
+      <a class="block py-2 text-secondary font-semibold flex items-center gap-1.5" href="admin.html">
+        <span class="material-symbols-outlined text-[18px]">admin_panel_settings</span>
+        <span>Open Admin Control Center</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="w-full pt-20 bg-[#FAF7F2] flex-1 transition-colors duration-300">
+    <div class="w-full max-w-[1680px] 2xl:max-w-[96vw] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-10">
+
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-xs text-on-surface-variant mb-6">
+        <a href="index.html" class="hover:text-primary">Home</a>
+        <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+        <span class="text-primary font-semibold">Question Papers Archive</span>
+      </nav>
+
+      <!-- Page Banner / Header -->
+      <div class="bg-surface-container-lowest border border-[#E8E0D2] rounded-2xl p-6 sm:p-10 mb-8 relative overflow-hidden shadow-xs">
+        <div class="max-w-3xl relative z-10">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/10 text-secondary text-xs font-semibold mb-3">
+            <span class="material-symbols-outlined text-[16px]">verified</span>
+            <span>Anna University &amp; VSB Autonomous Regulation Archive</span>
+          </div>
+          <h1 class="font-headline text-2xl sm:text-4xl text-primary font-bold mb-3 tracking-tight">Previous Year Question Papers (PYQs)</h1>
+          <p class="text-sm sm:text-base text-on-surface-variant leading-relaxed">
+            Exclusively curated 10-year question repository with authentic answer keys, marking breakdown schemes, and high-frequency model question sets for B.E. Computer Science and Engineering (AI &amp; ML).
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4 mt-6 text-xs text-on-surface-variant">
+            <span class="flex items-center gap-1.5 bg-surface-container-low px-3 py-1.5 rounded-lg border border-[#E8E0D2]">
+              <span class="material-symbols-outlined text-[16px] text-primary">download_done</span>
+              <span>Total Downloads: <strong id="totalPyqDownloads" class="text-primary font-bold">0</strong></span>
+            </span>
+            <span class="flex items-center gap-1.5 bg-surface-container-low px-3 py-1.5 rounded-lg border border-[#E8E0D2]">
+              <span class="material-symbols-outlined text-[16px] text-secondary">history_edu</span>
+              <span>Question Papers: <strong id="totalPyqCount" class="text-secondary font-bold">8</strong> Sets</span>
+            </span>
+            <span class="flex items-center gap-1.5 bg-surface-container-low px-3 py-1.5 rounded-lg border border-[#E8E0D2]">
+              <span class="material-symbols-outlined text-[16px] text-tertiary">check_circle</span>
+              <span>Verified Answer Keys: <strong>100% Solved</strong></span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filters & Live Search Bar -->
+      <div class="bg-surface-container-lowest border border-[#E8E0D2] rounded-xl p-5 mb-8 shadow-xs">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <!-- Keyword Search -->
+          <div>
+            <label class="block text-xs font-semibold text-on-surface-variant mb-1.5">Search Subject / Code</label>
+            <div class="relative">
+              <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+              <input id="pyqSearchInput" type="text" placeholder="e.g., CS3491, Machine Learning..." class="w-full pl-9 pr-3 py-2 text-xs rounded-lg border border-[#E8E0D2] bg-surface focus:outline-none focus:border-primary transition-colors" oninput="filterPyqs()"/>
+            </div>
+          </div>
+
+          <!-- Semester Filter -->
+          <div>
+            <label class="block text-xs font-semibold text-on-surface-variant mb-1.5">Filter by Semester</label>
+            <select id="semFilter" class="w-full px-3 py-2 text-xs rounded-lg border border-[#E8E0D2] bg-surface focus:outline-none focus:border-primary transition-colors" onchange="filterPyqs()">
+              <option value="all">All Semesters (1 to 8)</option>
+              <option value="1">Semester 1 (Freshman Foundation)</option>
+              <option value="2">Semester 2 (Core Programming)</option>
+              <option value="3">Semester 3 (Data Struct &amp; Discrete Math)</option>
+              <option value="4" selected>Semester 4 (Active Term)</option>
+              <option value="5">Semester 5 (Deep Learning &amp; Networks)</option>
+              <option value="6">Semester 6 (NLP &amp; Big Data)</option>
+              <option value="7">Semester 7 (Cloud &amp; Capstone I)</option>
+              <option value="8">Semester 8 (Major Project &amp; Seminar)</option>
+            </select>
+          </div>
+
+          <!-- Exam Session Filter -->
+          <div>
+            <label class="block text-xs font-semibold text-on-surface-variant mb-1.5">Exam Session</label>
+            <select id="sessionFilter" class="w-full px-3 py-2 text-xs rounded-lg border border-[#E8E0D2] bg-surface focus:outline-none focus:border-primary transition-colors" onchange="filterPyqs()">
+              <option value="all">All Exam Sessions</option>
+              <option value="Nov/Dec 2024">Nov/Dec 2024 (Latest)</option>
+              <option value="Apr/May 2024">Apr/May 2024</option>
+              <option value="Nov/Dec 2023">Nov/Dec 2023</option>
+              <option value="Apr/May 2023">Apr/May 2023</option>
+              <option value="Model Exam">Autonomous Model Exam Pack</option>
+            </select>
+          </div>
+
+          <!-- Solved Status Filter -->
+          <div>
+            <label class="block text-xs font-semibold text-on-surface-variant mb-1.5">Document Type</label>
+            <select id="typeFilter" class="w-full px-3 py-2 text-xs rounded-lg border border-[#E8E0D2] bg-surface focus:outline-none focus:border-primary transition-colors" onchange="filterPyqs()">
+              <option value="all">All Types (Questions &amp; Keys)</option>
+              <option value="Solved QP">Solved with Detailed Key</option>
+              <option value="Question Paper">Original Question Paper</option>
+              <option value="Blueprint">Exam Blueprint &amp; Weightage</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Quick filter tags -->
+        <div class="flex flex-wrap items-center gap-2 mt-4 pt-3 border-t border-[#E8E0D2] text-xs">
+          <span class="text-on-surface-variant font-medium">Quick Jump:</span>
+          <button onclick="setQuickTag('CS3491')" class="px-2.5 py-1 rounded bg-surface-container-low hover:bg-surface-container border border-[#E8E0D2] transition-colors">CS3491 AI &amp; ML</button>
+          <button onclick="setQuickTag('AL3452')" class="px-2.5 py-1 rounded bg-surface-container-low hover:bg-surface-container border border-[#E8E0D2] transition-colors">AL3452 Operating Systems</button>
+          <button onclick="setQuickTag('CS3391')" class="px-2.5 py-1 rounded bg-surface-container-low hover:bg-surface-container border border-[#E8E0D2] transition-colors">CS3391 OOP</button>
+          <button onclick="setQuickTag('MA3354')" class="px-2.5 py-1 rounded bg-surface-container-low hover:bg-surface-container border border-[#E8E0D2] transition-colors">MA3354 Discrete Math</button>
+          <button onclick="resetPyqFilters()" class="text-secondary hover:underline ml-auto font-medium">Clear All Filters</button>
+        </div>
+      </div>
+
+      <!-- Question Papers Archive Table -->
+      <div class="bg-surface-container-lowest border border-[#E8E0D2] rounded-2xl overflow-hidden shadow-xs mb-10">
+        <div class="p-5 border-b border-[#E8E0D2] flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-surface-container-low">
+          <div>
+            <h2 class="font-headline font-bold text-lg text-primary">Catalog of Question Papers &amp; Solution Folios</h2>
+            <p class="text-xs text-on-surface-variant">Click preview to read online or download the high-resolution vector PDF</p>
+          </div>
+          <span id="filteredMatchCount" class="text-xs font-semibold px-3 py-1 rounded-full bg-primary/10 text-primary">
+            Showing 8 of 8 records
+          </span>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs sm:text-sm">
+            <thead>
+              <tr class="border-b border-[#E8E0D2] bg-surface-container-low text-on-surface-variant font-semibold uppercase tracking-wider text-[11px]">
+                <th class="py-3.5 px-4 sm:px-6">Course Code &amp; Title</th>
+                <th class="py-3.5 px-4">Semester</th>
+                <th class="py-3.5 px-4">Session &amp; Regulation</th>
+                <th class="py-3.5 px-4">Format</th>
+                <th class="py-3.5 px-4 text-center">Verified Downloads</th>
+                <th class="py-3.5 px-4 sm:px-6 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="pyqTableBody" class="divide-y divide-[#E8E0D2]">
+              <!-- Injected dynamically via JavaScript -->
+            </tbody>
+          </table>
+        </div>
+
+        <div id="noPyqFound" class="hidden p-12 text-center">
+          <span class="material-symbols-outlined text-4xl text-on-surface-variant mb-2">find_in_page</span>
+          <h3 class="font-headline text-base font-bold text-primary mb-1">No question papers match your filter criteria</h3>
+          <p class="text-xs text-on-surface-variant mb-4">Try clearing some filter fields or search with a different subject code.</p>
+          <button onclick="resetPyqFilters()" class="px-4 py-2 bg-primary text-white rounded-lg text-xs font-semibold hover:bg-primary-container transition-colors">
+            Reset Filters
+          </button>
+        </div>
+      </div>
+
+      <!-- Exam Blueprint & Pattern Guide -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
+        <div class="bg-surface-container-lowest border border-[#E8E0D2] rounded-xl p-6 shadow-xs">
+          <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4">
+            <span class="material-symbols-outlined text-[20px]">assignment</span>
+          </div>
+          <h3 class="font-headline font-bold text-base text-primary mb-2">Part A: Conceptual Core (20 Marks)</h3>
+          <p class="text-xs text-on-surface-variant leading-relaxed mb-4">
+            10 questions × 2 marks each covering foundational definitions, algorithmic complexities, and micro-derivation problems without any choice.
+          </p>
+          <div class="p-3 bg-surface-container-low rounded-lg text-[11px] text-on-surface-variant space-y-1">
+            <p>• <strong>Strategy:</strong> Read Unit summaries &amp; formula sheets.</p>
+            <p>• <strong>Time allocation:</strong> 30 minutes max.</p>
+          </div>
+        </div>
+
+        <div class="bg-surface-container-lowest border border-[#E8E0D2] rounded-xl p-6 shadow-xs">
+          <div class="w-10 h-10 rounded-lg bg-secondary/10 text-secondary flex items-center justify-center mb-4">
+            <span class="material-symbols-outlined text-[20px]">auto_stories</span>
+          </div>
+          <h3 class="font-headline font-bold text-base text-secondary mb-2">Part B: Analytical In-Depth (65 Marks)</h3>
+          <p class="text-xs text-on-surface-variant leading-relaxed mb-4">
+            5 questions with either/or internal choice (13 marks each). Requires architecture diagrams, proofs, case study designs, and pseudo-code implementations.
+          </p>
+          <div class="p-3 bg-surface-container-low rounded-lg text-[11px] text-on-surface-variant space-y-1">
+            <p>• <strong>Strategy:</strong> 1 question strictly mapped from each unit.</p>
+            <p>• <strong>Time allocation:</strong> 22 minutes per question.</p>
+          </div>
+        </div>
+
+        <div class="bg-surface-container-lowest border border-[#E8E0D2] rounded-xl p-6 shadow-xs">
+          <div class="w-10 h-10 rounded-lg bg-tertiary/10 text-tertiary flex items-center justify-center mb-4">
+            <span class="material-symbols-outlined text-[20px]">psychology</span>
+          </div>
+          <h3 class="font-headline font-bold text-base text-tertiary mb-2">Part C: Application &amp; Design (15 Marks)</h3>
+          <p class="text-xs text-on-surface-variant leading-relaxed mb-4">
+            1 comprehensive evaluation problem testing real-world deployment, system architecture, or mathematical optimization with either/or choice.
+          </p>
+          <div class="p-3 bg-surface-container-low rounded-lg text-[11px] text-on-surface-variant space-y-1">
+            <p>• <strong>Strategy:</strong> Solve previous 5 years' Part C sets.</p>
+            <p>• <strong>Time allocation:</strong> 35 minutes focused drafting.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- DOCUMENT PREVIEW MODAL -->
+  <div id="previewModal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-surface-container-lowest border border-[#E8E0D2] rounded-2xl w-full max-w-3xl overflow-hidden shadow-2xl flex flex-col max-h-[85vh]">
+      <div class="p-5 border-b border-[#E8E0D2] flex items-center justify-between bg-surface-container-low">
+        <div class="flex items-center gap-3">
+          <span class="material-symbols-outlined text-primary text-[24px]">description</span>
+          <div>
+            <h3 id="modalTitle" class="font-headline font-bold text-base text-primary">Document Preview</h3>
+            <p id="modalSubtitle" class="text-xs text-on-surface-variant">Question Paper Specimen &amp; Marks Distribution</p>
+          </div>
+        </div>
+        <button onclick="closePreviewModal()" class="w-8 h-8 rounded-full hover:bg-surface-container flex items-center justify-center text-on-surface-variant">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <div class="p-6 overflow-y-auto space-y-4 text-xs sm:text-sm">
+        <div class="bg-surface-container-low p-4 rounded-xl border border-[#E8E0D2] flex items-center justify-between">
+          <div>
+            <span class="text-xs uppercase tracking-wider text-secondary font-bold">Paper Structure</span>
+            <h4 class="font-headline font-bold text-sm text-primary mt-0.5">B.E. DEGREE EXAMINATIONS - ANNA UNIVERSITY / VSB AUTONOMOUS</h4>
+            <p class="text-xs text-on-surface-variant mt-1">Branch: Computer Science and Engineering (Artificial Intelligence and Machine Learning)</p>
+          </div>
+          <span class="px-2.5 py-1 rounded bg-secondary/10 text-secondary font-semibold text-xs">Full 100 Marks</span>
+        </div>
+
+        <div class="border border-[#E8E0D2] rounded-xl p-4 bg-surface">
+          <h5 class="font-bold text-primary mb-2 flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[16px] text-secondary">help</span>
+            <span>Specimen Part A Extract (2-Mark Core Concepts)</span>
+          </h5>
+          <ul id="modalQuestions" class="list-disc pl-5 space-y-1.5 text-xs text-on-surface-variant">
+            <li>Define heuristic search and explain admissibility criterion in A* Algorithm.</li>
+            <li>Differentiate inductive bias between Decision Trees and Support Vector Classifiers.</li>
+            <li>Explain the vanishing gradient problem in deep Multi-Layer Perceptrons and how ReLU mitigates it.</li>
+            <li>State the Markov Decision Process tuple and write the Bellman Optimality Equation.</li>
+          </ul>
+        </div>
+
+        <div class="border border-[#E8E0D2] rounded-xl p-4 bg-surface">
+          <h5 class="font-bold text-primary mb-2 flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[16px] text-tertiary">check_circle</span>
+            <span>Model Solution &amp; Key Characteristics</span>
+          </h5>
+          <p class="text-xs text-on-surface-variant leading-relaxed">
+            The full PDF bundle contains comprehensive handwritten solutions, vector block diagrams, step-by-step mathematical derivations, and sample university score rubric for optimal point presentation.
+          </p>
+        </div>
+      </div>
+
+      <div class="p-4 border-t border-[#E8E0D2] bg-surface-container-low flex items-center justify-between">
+        <span class="text-xs text-on-surface-variant">Format: PDF | High-Res Vector</span>
+        <div class="flex items-center gap-3">
+          <button onclick="closePreviewModal()" class="px-4 py-2 border border-[#E8E0D2] rounded-lg text-xs font-semibold hover:bg-surface-container transition-colors">
+            Close
+          </button>
+          <button id="modalDownloadBtn" class="px-4 py-2 bg-primary text-white rounded-lg text-xs font-semibold hover:bg-primary-container transition-colors flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[16px]">download</span>
+            <span>Download PDF</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-surface border-t border-[#E8E0D2] py-12 transition-colors duration-300 mt-auto">
+    <div class="w-full max-w-[1680px] 2xl:max-w-[96vw] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <img alt="VSB College of Engineering Karur Logo" class="h-10 w-auto object-contain" src="assets/vsb-logo.png" onerror="this.src='https://vsbec.edu.in/wp-content/uploads/2026/06/VSB-Karur.png'"/>
+        <div>
+          <p class="font-headline font-bold text-sm text-primary">VSB Engineering College (Autonomous), Karur</p>
+          <p class="text-xs text-on-surface-variant">Department of Computer Science and Engineering (AI &amp; ML)</p>
+        </div>
+      </div>
+      <div class="flex flex-col sm:flex-row items-center gap-3 text-xs text-on-surface-variant text-center md:text-right">
+        <button onclick="openLegalModal()" class="hover:text-primary underline font-medium">Legal Disclaimer &amp; Compliance</button>
+        <span class="hidden sm:inline">•</span>
+        <span>© 2026 VSB StudyHub. Built for student academic excellence.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // Question Paper Database (True values only - uploaded exclusively via Admin Center)
+    const defaultPyqData = [];
+
+    // Local Storage Data Retrieval (Only Admin Published Papers)
+    function getPyqData() {
+      const saved = localStorage.getItem("vsb_pyqs");
+      if (!saved) {
+        return [];
+      }
+      try {
+        const list = JSON.parse(saved);
+        // Exclude any older sample pyq entries
+        return list.filter(item => !item.id.startsWith("pyq-1") && !item.id.startsWith("pyq-2") && !item.id.startsWith("pyq-3") && !item.id.startsWith("pyq-4") && !item.id.startsWith("pyq-5") && !item.id.startsWith("pyq-6") && !item.id.startsWith("pyq-7") && !item.id.startsWith("pyq-8"));
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function savePyqData(data) {
+      localStorage.setItem("vsb_pyqs", JSON.stringify(data));
+      updateGlobalCounters();
+    }
+
+    // Download action with true count increment
+    function downloadPyq(id) {
+      const data = getPyqData();
+      const item = data.find(p => p.id === id);
+      if (item) {
+        item.downloads = (item.downloads || 0) + 1;
+        savePyqData(data);
+        renderPyqs();
+
+        // Increment global materials download counter in localStorage as well
+        const totalDls = parseInt(localStorage.getItem("vsb_total_downloads") || "0", 10) + 1;
+        localStorage.setItem("vsb_total_downloads", totalDls);
+
+        // Feedback notification
+        alert(`Downloading: ${item.code} - ${item.title} (${item.session})\nFile Size: ${item.fileSize}\nVerified Download Count: ${item.downloads}`);
+      }
+    }
+
+    // Modal Preview
+    let activePreviewId = null;
+    function openPreviewModal(id) {
+      const data = getPyqData();
+      const item = data.find(p => p.id === id);
+      if (!item) return;
+
+      activePreviewId = id;
+      document.getElementById("modalTitle").innerText = `${item.code} - ${item.title}`;
+      document.getElementById("modalSubtitle").innerText = `${item.session} | ${item.regulation} | Semester ${item.semester}`;
+      
+      const downloadBtn = document.getElementById("modalDownloadBtn");
+      downloadBtn.onclick = () => {
+        downloadPyq(id);
+        closePreviewModal();
+      };
+
+      document.getElementById("previewModal").classList.remove("hidden");
+    }
+
+    function closePreviewModal() {
+      document.getElementById("previewModal").classList.add("hidden");
+      activePreviewId = null;
+    }
+
+    // Render Table
+    function renderPyqs() {
+      const data = getPyqData();
+      const search = document.getElementById("pyqSearchInput").value.toLowerCase().trim();
+      const sem = document.getElementById("semFilter").value;
+      const session = document.getElementById("sessionFilter").value;
+      const type = document.getElementById("typeFilter").value;
+
+      const filtered = data.filter(item => {
+        const matchesSearch = item.code.toLowerCase().includes(search) || item.title.toLowerCase().includes(search);
+        const matchesSem = (sem === "all") || (item.semester.toString() === sem);
+        const matchesSession = (session === "all") || (item.session === session);
+        const matchesType = (type === "all") || (item.type === type);
+        return matchesSearch && matchesSem && matchesSession && matchesType;
+      });
+
+      const tbody = document.getElementById("pyqTableBody");
+      const noFound = document.getElementById("noPyqFound");
+      const matchBadge = document.getElementById("filteredMatchCount");
+
+      matchBadge.innerText = `Showing ${filtered.length} of ${data.length} records`;
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = "";
+        noFound.classList.remove("hidden");
+        if (data.length === 0) {
+          noFound.innerHTML = `
+            <span class="material-symbols-outlined text-4xl text-on-surface-variant mb-2">find_in_page</span>
+            <h3 class="font-headline text-base font-bold text-primary mb-1">No Question Papers Uploaded Yet</h3>
+            <p class="text-xs text-on-surface-variant mb-4 max-w-md mx-auto">All official Anna University and autonomous question papers are published directly by the department administrator via the Admin Center.</p>
+            <a href="admin.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-primary text-white rounded-lg text-xs font-semibold hover:bg-primary-container transition-colors">
+              <span class="material-symbols-outlined text-[16px]">upload_file</span>
+              <span>Upload Question Papers in Admin Center</span>
+            </a>
+          `;
+        } else {
+          noFound.innerHTML = `
+            <span class="material-symbols-outlined text-4xl text-on-surface-variant mb-2">find_in_page</span>
+            <h3 class="font-headline text-base font-bold text-primary mb-1">No question papers match your filter criteria</h3>
+            <p class="text-xs text-on-surface-variant mb-4">Try clearing some filter fields or search with a different subject code.</p>
+            <button onclick="resetPyqFilters()" class="px-4 py-2 bg-primary text-white rounded-lg text-xs font-semibold hover:bg-primary-container transition-colors">
+              Reset Filters
+            </button>
+          `;
+        }
+        return;
+      }
+
+      noFound.classList.add("hidden");
+      tbody.innerHTML = filtered.map(item => `
+        <tr class="hover:bg-surface-container-low transition-colors">
+          <td class="py-4 px-4 sm:px-6">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-primary text-[22px]">picture_as_pdf</span>
+              <div>
+                <span class="font-bold text-primary">${item.code}</span>
+                <p class="font-medium text-xs text-on-surface line-clamp-1">${item.title}</p>
+                <span class="text-[10px] text-on-surface-variant">${item.fileSize}</span>
+              </div>
+            </div>
+          </td>
+          <td class="py-4 px-4 font-semibold text-on-surface">
+            Sem ${item.semester}
+          </td>
+          <td class="py-4 px-4">
+            <span class="font-medium text-on-surface">${item.session}</span>
+            <p class="text-[11px] text-on-surface-variant">${item.regulation}</p>
+          </td>
+          <td class="py-4 px-4">
+            <span class="px-2 py-0.5 rounded text-[11px] font-semibold ${
+              item.type === 'Solved QP' ? 'bg-secondary/10 text-secondary' : 
+              item.type === 'Blueprint' ? 'bg-tertiary/10 text-tertiary' : 'bg-primary/10 text-primary'
+            }">
+              ${item.type}
+            </span>
+          </td>
+          <td class="py-4 px-4 text-center">
+            <span class="inline-flex items-center gap-1 font-bold ${item.downloads > 0 ? 'text-primary' : 'text-on-surface-variant'}">
+              <span class="material-symbols-outlined text-[15px]">download</span>
+              ${item.downloads}
+            </span>
+          </td>
+          <td class="py-4 px-4 sm:px-6 text-right">
+            <div class="inline-flex items-center gap-2">
+              <button onclick="openPreviewModal('${item.id}')" class="px-2.5 py-1.5 rounded-lg border border-[#E8E0D2] bg-surface text-primary hover:bg-surface-container text-xs font-semibold transition-colors flex items-center gap-1">
+                <span class="material-symbols-outlined text-[15px]">visibility</span>
+                <span class="hidden sm:inline">Preview</span>
+              </button>
+              <button onclick="downloadPyq('${item.id}')" class="px-3 py-1.5 rounded-lg bg-primary text-white hover:bg-primary-container text-xs font-semibold transition-colors flex items-center gap-1 shadow-xs">
+                <span class="material-symbols-outlined text-[15px]">download</span>
+                <span class="hidden sm:inline">Download</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      `).join("");
+    }
+
+    function filterPyqs() {
+      renderPyqs();
+    }
+
+    function setQuickTag(term) {
+      document.getElementById("pyqSearchInput").value = term;
+      document.getElementById("semFilter").value = "all";
+      renderPyqs();
+    }
+
+    function resetPyqFilters() {
+      document.getElementById("pyqSearchInput").value = "";
+      document.getElementById("semFilter").value = "all";
+      document.getElementById("sessionFilter").value = "all";
+      document.getElementById("typeFilter").value = "all";
+      renderPyqs();
+    }
+
+    function updateGlobalCounters() {
+      const data = getPyqData();
+      const totalDl = data.reduce((acc, curr) => acc + (curr.downloads || 0), 0);
+      document.getElementById("totalPyqDownloads").innerText = totalDl;
+      document.getElementById("totalPyqCount").innerText = data.length;
+    }
+
+    // Dark Mode Theme Handling
+    function setTheme(mode) {
+      const html = document.documentElement;
+      const lightBtn = document.getElementById("lightModeBtn");
+      const darkBtn = document.getElementById("darkModeBtn");
+
+      if (mode === 'dark') {
+        html.classList.add('dark');
+        localStorage.setItem('vsb_theme', 'dark');
+        if (darkBtn && lightBtn) {
+          darkBtn.classList.add('bg-surface-container-lowest', 'text-primary', 'shadow-xs');
+          darkBtn.classList.remove('text-on-surface-variant');
+          lightBtn.classList.remove('bg-surface-container-lowest', 'text-primary', 'shadow-xs');
+          lightBtn.classList.add('text-on-surface-variant');
+        }
+      } else {
+        html.classList.remove('dark');
+        localStorage.setItem('vsb_theme', 'light');
+        if (darkBtn && lightBtn) {
+          lightBtn.classList.add('bg-surface-container-lowest', 'text-primary', 'shadow-xs');
+          lightBtn.classList.remove('text-on-surface-variant');
+          darkBtn.classList.remove('bg-surface-container-lowest', 'text-primary', 'shadow-xs');
+          darkBtn.classList.add('text-on-surface-variant');
+        }
+      }
+    }
+
+    function toggleMobileNav() {
+      const nav = document.getElementById("mobileNav");
+      if (nav) nav.classList.toggle("hidden");
+    }
+
+    // Init
+    document.addEventListener("DOMContentLoaded", () => {
+      const savedTheme = localStorage.getItem("vsb_theme") || "light";
+      setTheme(savedTheme);
+      renderPyqs();
+      updateGlobalCounters();
+    });
+  </script>
+  <!-- Portal Core Runtime (Auth, Timer Analytics, Submissions, Legal Disclaimers) -->
+  <script src="assets/portal-core.js"></script>
+</body>
+</html>

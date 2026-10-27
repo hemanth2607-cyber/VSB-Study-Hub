@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0" name="viewport"/>
+  <meta content="web_standard" name="shell-type"/>
+  <title>Academic Resources &amp; Lab Code Repository - VSB StudyHub</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Merriweather:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <style>
+    @layer base {
+      html { scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+      html, body { margin: 0; padding: 0; width: 100%; overflow-x: hidden; box-sizing: border-box; }
+      *, *::before, *::after { box-sizing: border-box; }
+    }
+    ::-webkit-scrollbar { width: 7px; height: 7px; }
+    ::-webkit-scrollbar-thumb { background: #d3cbbe; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #964450; }
+
+    /* Ambient Warm Scholarly Dark Mode */
+    html.dark { color-scheme: dark; }
+    html.dark body { background-color: #161311 !important; color: #ede7dc !important; }
+    html.dark header { background-color: #1f1a17 !important; border-color: #38302a !important; }
+    html.dark main { background-color: #161311 !important; }
+    html.dark .bg-\[\#FAF7F2\] { background-color: #161311 !important; }
+    html.dark .bg-surface-container-lowest { background-color: #211c19 !important; border-color: #38302a !important; }
+    html.dark .bg-surface-container-low { background-color: #28221e !important; border-color: #3d342d !important; }
+    html.dark .bg-surface { background-color: #1b1714 !important; border-color: #38302a !important; }
+    html.dark .bg-surface-container { background-color: #2c2521 !important; border-color: #423831 !important; }
+    html.dark .border-\[\#E8E0D2\] { border-color: #38302a !important; }
+    html.dark .text-primary { color: #e3be72 !important; }
+    html.dark .text-secondary { color: #df8894 !important; }
+    html.dark .text-on-surface { color: #ede7dc !important; }
+    html.dark .text-on-surface-variant { color: #b0a698 !important; }
+    html.dark footer { background-color: #1b1714 !important; border-color: #38302a !important; }
+    html.dark input, html.dark select, html.dark textarea {
+      background-color: #241e1b !important;
+      color: #ede7dc !important;
+      border-color: #423831 !important;
+    }
+    html.dark ::-webkit-scrollbar-thumb { background: #4a3e35; }
+    html.dark ::-webkit-scrollbar-thumb:hover { background: #e3be72; }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#032448",
+            "secondary": "#964450",
+            "tertiary": "#755b00",
+            "tertiary-fixed": "#ffe08e",
+            "on-primary": "#ffffff",
+            "surface": "#fcf9f8",
+            "surface-container-low": "#f6f3f2",
+            "surface-container-lowest": "#ffffff",
+            "on-surface": "#1b1c1c",
+            "on-surface-variant": "#43474e"
+          },
+          fontFamily: {
+            "display": ["Merriweather", "serif"],
+            "headline": ["Merriweather", "serif"],
+            "body": ["Inter", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-[#FAF7F2] font-body text-on-surface antialiased transition-colors duration-300 w-full min-h-screen flex flex-col">
+
+  <!-- TOP HEADER -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-[#FAF7F2] border-b border-[#E8E0D2] shadow-sm transition-colors duration-300">
+    <div class="w-full max-w-[1680px] 2xl:max-w-[96vw] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex items-center justify-between gap-4 h-20">
+      <a href="index.html" class="flex items-center gap-3 sm:gap-4 flex-shrink-0 group">
+        <img alt="VSB College of Engineering Karur Logo" class="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-105" src="assets/vsb-logo.png" onerror="this.src='https://vsbec.edu.in/wp-content/uploads/2026/06/VSB-Karur.png'"/>
+        <div class="flex flex-col">
+          <span class="font-headline font-bold text-base sm:text-xl text-primary tracking-tight leading-none group-hover:text-secondary transition-colors">VSB StudyHub</span>
+          <span class="text-[10px] sm:text-xs text-secondary tracking-wider uppercase font-semibold mt-1">Dept of CSE (AI &amp; ML)</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-2 xl:gap-4 2xl:gap-6 flex-shrink-0 text-sm font-medium">
+        <a class="text-on-surface-variant hover:text-primary transition-colors py-1" href="index.html">Home</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors py-1" href="semesters.html">Semesters</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors py-1" href="subjects.html">Subjects</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors py-1" href="question-papers.html">Question Papers</a>
+        <a aria-current="page" class="transition-colors py-1 text-primary font-bold border-b-2 border-primary" href="resources.html">Resources</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors py-1" href="study-tools.html">Study Tools</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors py-1" href="design-system.html">Design System</a>
+        <a class="px-3 py-1.5 rounded-lg bg-secondary/10 hover:bg-secondary/20 text-secondary font-semibold transition-colors flex items-center gap-1.5" href="admin.html">
+          <span class="material-symbols-outlined text-[16px]">admin_panel_settings</span>
+          <span>Admin Center</span>
+        </a>
+      </nav>
+
+      <!-- Action Controls -->
+      <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+        <!-- Ambient Warm Dark Mode Toggle -->
+        <div class="flex items-center bg-surface-container-high rounded-full p-0.5 border border-[#E8E0D2]">
+          <button id="lightModeBtn" aria-label="Light mode" onclick="setTheme('light')" class="w-7 h-7 rounded-full flex items-center justify-center bg-surface-container-lowest text-primary shadow-xs transition-colors" type="button" title="Parchment Light Mode">
+            <span class="material-symbols-outlined text-[16px]">light_mode</span>
+          </button>
+          <button id="darkModeBtn" aria-label="Dark mode" onclick="setTheme('dark')" class="w-7 h-7 rounded-full flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" type="button" title="Ambient Scholar Dark Mode">
+            <span class="material-symbols-outlined text-[16px]">dark_mode</span>
+          </button>
+        </div>
+
+        <!-- Unified Login & Account Slot -->
+        <div class="header-auth-slot flex items-center">
+          <button onclick="openAuthModal('student')" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-primary text-white hover:bg-primary-container text-xs sm:text-sm font-semibold transition-colors shadow-xs" type="button">
+            <span class="material-symbols-outlined text-[17px]">login</span>
+            <span>Sign In / Register</span>
+          </button>
+        </div>
+        
+        <!-- Mobile Menu Hamburger -->
+        <button onclick="toggleMobileNav()" class="lg:hidden p-2 text-on-surface hover:text-primary rounded-lg" type="button" aria-label="Menu">
+          <span class="material-symbols-outlined text-[24px]">menu</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Nav -->
+    <div id="mobileNav" class="hidden lg:hidden border-t border-[#E8E0D2] bg-[#FAF7F2] px-4 py-3 space-y-2 text-sm">
+      <a class="block py-1.5 text-on-surface-variant hover:text-primary" href="index.html">Home</a>
+      <a class="block py-1.5 text-on-surface-variant hover:text-primary" href="semesters.html">Semesters Directory</a>
+      <a class="block py-1.5 text-on-surface-variant hover:text-primary" href="subjects.html">Core &amp; Elective Subjects</a>
+      <a class="block py-1.5 text-on-surface-variant hover:text-primary" href="question-papers.html">Previous Year Questions (PYQs)</a>
+      <a class="block py-1.5 text-primary font-bold" href="resources.html">Academic Resources &amp; Lab Code</a>
+      <a class="block py-1.5 text-on-surface-variant hover:text-primary" href="study-tools.html">Study Tools &amp; CGPA Calc</a>
+      <a class="block py-1.5 text-on-surface-variant hover:text-primary" href="design-system.html">Design System &amp; Mood Board</a>
+      <a class="block py-2 text-secondary font-semibold flex items-center gap-1.5" href="admin.html">
+        <span class="material-symbols-outlined text-[18px]">admin_panel_settings</span>
+        <span>Open Admin Control Center</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="w-full pt-20 bg-[#FAF7F2] flex-1 transition-colors duration-300">
+    <div class="w-full max-w-[1680px] 2xl:max-w-[96vw] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-10">
+
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-xs text-on-surface-variant mb-6">
+        <a href="index.html" class="hover:text-primary">Home</a>
+        <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+        <span class="text-primary font-semibold">Academic Resources</span>
+      </nav>
+
+      <!-- Page Header -->
+      <div class="bg-surface-container-lowest border border-[#E8E0D2] rounded-2xl p-6 sm:p-10 mb-8 relative overflow-hidden shadow-xs">
+        <div class="max-w-3xl relative z-10">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-3">
+            <span class="material-symbols-outlined text-[16px]">folder_special</span>
+            <span>Digital Scholarly Repositories &amp; Notebooks</span>
+          </div>
+          <h1 class="font-headline text-2xl sm:text-4xl text-primary font-bold mb-3 tracking-tight">Academic Resources &amp; Code Lab</h1>
+          <p class="text-sm sm:text-base text-on-surface-variant leading-relaxed">
+            Direct access to verified university faculty lecture presentations, fully documented Jupyter notebooks for AI/ML laboratory courses, NPTEL syllabus video sequences, and standard foreign reference textbooks.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4 mt-6 text-xs text-on-surface-variant">
+            <span class="flex items-center gap-1.5 bg-surface-container-low px-3 py-1.5 rounded-lg border border-[#E8E0D2]">
+              <span class="material-symbols-outlined text-[16px] text-primary">download_done</span>
+              <span>Total Downloads: <strong id="totalResDownloads" class="text-primary font-bold">0</strong></span>
+            </span>
+            <span class="flex items-center gap-1.5 bg-surface-container-low px-3 py-1.5 rounded-lg border border-[#E8E0D2]">
+              <span class="material-symbols-outlined text-[16px] text-secondary">inventory_2</span>
+              <span>Catalogued Assets: <strong id="totalResCount" class="text-secondary font-bold">8</strong> Files</span>
+            </span>
+            <span class="flex items-center gap-1.5 bg-surface-container-low px-3 py-1.5 rounded-lg border border-[#E8E0D2]">
+              <span class="material-symbols-outlined text-[16px] text-tertiary">code</span>
+              <span>Python &amp; Jupyter Lab Packs Included</span>
+            </span>
+            <button onclick="openUploadModal()" class="flex items-center gap-1.5 bg-secondary text-white hover:bg-secondary/90 px-3.5 py-1.5 rounded-lg font-semibold shadow-xs transition-colors cursor-pointer">
+              <span class="material-symbols-outlined text-[16px]">upload_file</span>
+              <span>Upload Notes / Solution</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div class="flex flex-wrap items-center gap-2 mb-6">
+        <button onclick="setCategoryFilter('all')" id="tab-all" class="category-tab px-4 py-2 rounded-xl text-xs font-semibold bg-primary text-white transition-all shadow-xs">
+          All Materials (8)
+        </button>
+        <button onclick="setCategoryFilter('Lecture Notes')" id="tab-notes" class="category-tab px-4 py-2 rounded-xl text-xs font-semibold bg-surface-container-lowest text-on-surface-variant hover:text-primary border border-[#E8E0D2] transition-all">
+          Faculty Lecture Notes
+        </button>
+        <button onclick="setCategoryFilter('Lab Code & Notebook')" id="tab-code" class="category-tab px-4 py-2 rounded-xl text-xs font-semibold bg-surface-container-lowest text-on-surface-variant hover:text-primary border border-[#E8E0D2] transition-all">
+          Lab Codes &amp; Notebooks (.ipynb)
+        </button>
+        <button onclick="setCategoryFilter('Reference Book')" id="tab-books" class="category-tab px-4 py-2 rounded-xl text-xs font-semibold bg-surface-container-lowest text-on-surface-variant hover:text-primary border border-[#E8E0D2] transition-all">
+          Reference Books
+        </button>
+        <button onclick="setCategoryFilter('Video Lectures')" id="tab-videos" class="category-tab px-4 py-2 rounded-xl text-xs font-semibold bg-surface-container-lowest text-on-surface-variant hover:text-primary border border-[#E8E0D2] transition-all">
+          NPTEL Video Compilations
+        </button>
+      </div>
+
+      <!-- Search & Semester Filter Bar -->
+      <div class="bg-surface-container-lowest border border-[#E8E0D2] rounded-xl p-4 sm:p-5 mb-8 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="relative w-full sm:w-80">
+          <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+          <input id="resourceSearchInput" type="text" placeholder="Search by title, author, or code..." class="w-full pl-9 pr-3 py-2 text-xs rounded-lg border border-[#E8E0D2] bg-surface focus:outline-none focus:border-primary transition-colors" oninput="filterResources()"/>
+        </div>
+
+        <div class="flex items-center gap-3 w-full sm:w-auto">
+          <label class="text-xs font-semibold text-on-surface-variant whitespace-nowrap">Semester:</label>
+          <select id="resourceSemFilter" class="w-full sm:w-48 px-3 py-2 text-xs rounded-lg border border-[#E8E0D2] bg-surface focus:outline-none focus:border-primary transition-colors" onchange="filterResources()">
+            <option value="all">All Semesters</option>
+            <option value="1">Semester 1</option>
+            <option value="2">Semester 2</option>
+            <option value="3">Semester 3</option>
+            <option value="4" selected>Semester 4 (Active)</option>
+            <option value="5">Semester 5</option>
+            <option value="6">Semester 6</option>
+            <option value="7">Semester 7</option>
+            <option value="8">Semester 8</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Resources Grid -->
+      <div id="resourcesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <!-- Rendered dynamically via JavaScript -->
+      </div>
+
+      <!-- No match container -->
+      <div id="noResourceFound" class="hidden bg-surface-container-lowest border border-[#E8E0D2] rounded-2xl p-12 text-center mb-12">
+        <span class="material-symbols-outlined text-4xl text-on-surface-variant mb-2">menu_book</span>
+        <h3 class="font-headline text-base font-bold text-primary mb-1">No matching resources found</h3>
+        <p class="text-xs text-on-surface-variant mb-4">Try choosing another category or clearing your search term.</p>
+        <button onclick="resetResourceFilters()" class="px-4 py-2 bg-primary text-white rounded-lg text-xs font-semibold hover:bg-primary-container transition-colors">
+          Reset Filter Selections
+        </button>
+      </div>
+
+      <!-- Laboratory Workstation & Tools Banner -->
+      <div class="bg-gradient-to-r from-primary/5 via-secondary/5 to-transparent border border-[#E8E0D2] rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="max-w-2xl">
+          <span class="px-2.5 py-1 rounded bg-secondary/10 text-secondary text-xs font-bold uppercase tracking-wider">AI High-Compute Lab</span>
+          <h2 class="font-headline font-bold text-xl sm:text-2xl text-primary mt-2">NVIDIA GPU Cluster &amp; Python Lab Environments</h2>
+          <p class="text-xs sm:text-sm text-on-surface-variant mt-2 leading-relaxed">
+            All code packages are configured to execute seamlessly in Google Colab, JupyterLab, and the VSB Central High-Performance Computing Cluster. Includes pre-loaded datasets (MNIST, CIFAR-10, IMDB Sentiment, and California Housing).
+          </p>
+        </div>
+        <a href="https://colab.research.google.com" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl bg-primary text-white hover:bg-primary-container text-xs font-semibold transition-colors flex items-center gap-2 shadow-sm whitespace-nowrap">
+          <span class="material-symbols-outlined text-[18px]">terminal</span>
+          <span>Launch Google Colab</span>
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- RESOURCE PREVIEW MODAL -->
+  <div id="resPreviewModal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-surface-container-lowest border border-[#E8E0D2] rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl flex flex-col max-h-[85vh]">
+      <div class="p-5 border-b border-[#E8E0D2] flex items-center justify-between bg-surface-container-low">
+        <div class="flex items-center gap-3">
+          <span id="modalIcon" class="material-symbols-outlined text-primary text-[24px]">description</span>
+          <div>
+            <h3 id="resModalTitle" class="font-headline font-bold text-base text-primary">Resource Details</h3>
+            <p id="resModalCategory" class="text-xs text-on-surface-variant">Course Material Specification</p>
+          </div>
+        </div>
+        <button onclick="closeResModal()" class="w-8 h-8 rounded-full hover:bg-surface-container flex items-center justify-center text-on-surface-variant">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <div class="p-6 overflow-y-auto space-y-4 text-xs sm:text-sm">
+        <div class="bg-surface-container-low p-4 rounded-xl border border-[#E8E0D2]">
+          <span class="text-[10px] uppercase font-bold text-secondary tracking-wider">Course Reference</span>
+          <h4 id="resModalCodeTitle" class="font-headline font-bold text-sm text-primary mt-0.5">CS3491 - Artificial Intelligence and Machine Learning</h4>
+          <p id="resModalDesc" class="text-xs text-on-surface-variant mt-2 leading-relaxed">Detailed verified lecture notes prepared according to syllabus requirements.</p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 text-xs">
+          <div class="p-3 bg-surface rounded-lg border border-[#E8E0D2]">
+            <span class="text-on-surface-variant block text-[11px]">Format / Extension</span>
+            <strong id="resModalFormat" class="text-primary text-xs font-semibold">PDF Document</strong>
+          </div>
+          <div class="p-3 bg-surface rounded-lg border border-[#E8E0D2]">
+            <span class="text-on-surface-variant block text-[11px]">Verified Total Downloads</span>
+            <strong id="resModalDownloads" class="text-primary text-xs font-semibold">0 DLs</strong>
+          </div>
+        </div>
+
+        <div class="p-4 bg-surface rounded-xl border border-[#E8E0D2]">
+          <h5 class="font-bold text-primary mb-1 text-xs">Author / Faculty Contributors</h5>
+          <p id="resModalAuthor" class="text-xs text-on-surface-variant">Department Academic Board &amp; Faculty Committee, VSB Engineering College</p>
+        </div>
+      </div>
+
+      <div class="p-4 border-t border-[#E8E0D2] bg-surface-container-low flex items-center justify-between">
+        <span class="text-xs text-on-surface-variant">Free Educational Access</span>
+        <div class="flex items-center gap-3">
+          <button onclick="closeResModal()" class="px-4 py-2 border border-[#E8E0D2] rounded-lg text-xs font-semibold hover:bg-surface-container transition-colors">
+            Close
+          </button>
+          <button id="resModalDownloadBtn" class="px-4 py-2 bg-primary text-white rounded-lg text-xs font-semibold hover:bg-primary-container transition-colors flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[16px]">download</span>
+            <span>Download Material</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-surface border-t border-[#E8E0D2] py-12 transition-colors duration-300 mt-auto">
+    <div class="w-full max-w-[1680px] 2xl:max-w-[96vw] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <img alt="VSB College of Engineering Karur Logo" class="h-10 w-auto object-contain" src="assets/vsb-logo.png" onerror="this.src='https://vsbec.edu.in/wp-content/uploads/2026/06/VSB-Karur.png'"/>
+        <div>
+          <p class="font-headline font-bold text-sm text-primary">VSB Engineering College (Autonomous), Karur</p>
+          <p class="text-xs text-on-surface-variant">Department of Computer Science and Engineering (AI &amp; ML)</p>
+        </div>
+      </div>
+      <div class="flex flex-col sm:flex-row items-center gap-3 text-xs text-on-surface-variant text-center md:text-right">
+        <button onclick="openLegalModal()" class="hover:text-primary underline font-medium">Legal Disclaimer &amp; Compliance</button>
+        <span class="hidden sm:inline">•</span>
+        <span>© 2026 VSB StudyHub. Built for student academic excellence.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // Default Resource Catalog (real downloads start at 0)
+    // Resource Database (True values only - uploaded exclusively via Admin Center)
+    const defaultResources = [];
+
+    let currentCategory = "all";
+
+    function getResourcesData() {
+      const saved = localStorage.getItem("vsb_resources");
+      if (!saved) {
+        return [];
+      }
+      try {
+        const list = JSON.parse(saved);
+        // Exclude any older sample entries
+        return list.filter(item => !item.id.startsWith("res-1") && !item.id.startsWith("res-2") && !item.id.startsWith("res-3") && !item.id.startsWith("res-4") && !item.id.startsWith("res-5") && !item.id.startsWith("res-6") && !item.id.startsWith("res-7") && !item.id.startsWith("res-8"));
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveResourcesData(data) {
+      localStorage.setItem("vsb_resources", JSON.stringify(data));
+      updateGlobalCounters();
+    }
+
+    function downloadResource(id) {
+      const data = getResourcesData();
+      const item = data.find(r => r.id === id);
+      if (item) {
+        item.downloads = (item.downloads || 0) + 1;
+        saveResourcesData(data);
+        renderResources();
+
+        // Increment global materials download counter in localStorage as well
+        const totalDls = parseInt(localStorage.getItem("vsb_total_downloads") || "0", 10) + 1;
+        localStorage.setItem("vsb_total_downloads", totalDls);
+
+        alert(`Accessing Resource: ${item.title}\nCategory: ${item.category}\nVerified Downloads: ${item.downloads}`);
+      }
+    }
+
+    // Modal Details
+    function openResModal(id) {
+      const data = getResourcesData();
+      const item = data.find(r => r.id === id);
+      if (!item) return;
+
+      document.getElementById("resModalTitle").innerText = item.title;
+      document.getElementById("resModalCategory").innerText = `${item.category} • Semester ${item.semester}`;
+      document.getElementById("resModalCodeTitle").innerText = `${item.code} - ${item.title}`;
+      document.getElementById("resModalDesc").innerText = item.description;
+      document.getElementById("resModalFormat").innerText = `${item.format} (${item.size})`;
+      document.getElementById("resModalDownloads").innerText = `${item.downloads || 0} Verified Downloads`;
+      document.getElementById("resModalAuthor").innerText = item.author;
+
+      const downloadBtn = document.getElementById("resModalDownloadBtn");
+      downloadBtn.onclick = () => {
+        downloadResource(id);
+        closeResModal();
+      };
+
+      document.getElementById("resPreviewModal").classList.remove("hidden");
+    }
+
+    function closeResModal() {
+      document.getElementById("resPreviewModal").classList.add("hidden");
+    }
+
+    // Render Grid
+    function renderResources() {
+      const data = getResourcesData();
+      const search = document.getElementById("resourceSearchInput").value.toLowerCase().trim();
+      const sem = document.getElementById("resourceSemFilter").value;
+
+      const filtered = data.filter(item => {
+        const matchesCategory = (currentCategory === "all") || (item.category === currentCategory);
+        const matchesSem = (sem === "all") || (item.semester.toString() === sem);
+        const matchesSearch = item.title.toLowerCase().includes(search) || 
+                              item.code.toLowerCase().includes(search) || 
+                              item.author.toLowerCase().includes(search);
+        return matchesCategory && matchesSem && matchesSearch;
+      });
+
+      const grid = document.getElementById("resourcesGrid");
+      const noFound = document.getElementById("noResourceFound");
+
+      if (filtered.length === 0) {
+        grid.innerHTML = "";
+        noFound.classList.remove("hidden");
+        if (data.length === 0) {
+          noFound.innerHTML = `
+            <span class="material-symbols-outlined text-4xl text-on-surface-variant mb-2">folder_off</span>
+            <h3 class="font-headline text-base font-bold text-primary mb-1">No Academic Resources Published Yet</h3>
+            <p class="text-xs text-on-surface-variant mb-4 max-w-md mx-auto">Official faculty lecture folios, lab notebooks, and reference materials are published directly by the administrator in the Admin Center.</p>
+            <div class="flex items-center justify-center gap-3 flex-wrap">
+              <a href="admin.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-primary text-white rounded-lg text-xs font-semibold hover:bg-primary-container transition-colors">
+                <span class="material-symbols-outlined text-[16px]">upload_file</span>
+                <span>Upload Materials in Admin Center</span>
+              </a>
+              <button onclick="openUploadModal()" class="inline-flex items-center gap-1.5 px-4 py-2 border border-[#E8E0D2] bg-surface text-primary rounded-lg text-xs font-semibold hover:bg-surface-container transition-colors">
+                <span class="material-symbols-outlined text-[16px]">upload</span>
+                <span>Contribute Student Notes</span>
+              </button>
+            </div>
+          `;
+        } else {
+          noFound.innerHTML = `
+            <span class="material-symbols-outlined text-4xl text-on-surface-variant mb-2">menu_book</span>
+            <h3 class="font-headline text-base font-bold text-primary mb-1">No matching resources found</h3>
+            <p class="text-xs text-on-surface-variant mb-4">Try choosing another category or clearing your search term.</p>
+            <button onclick="resetResourceFilters()" class="px-4 py-2 bg-primary text-white rounded-lg text-xs font-semibold hover:bg-primary-container transition-colors">
+              Reset Filter Selections
+            </button>
+          `;
+        }
+        return;
+      }
+
+      noFound.classList.add("hidden");
+      grid.innerHTML = filtered.map(item => `
+        <div class="bg-surface-container-lowest border border-[#E8E0D2] rounded-2xl p-5 shadow-xs flex flex-col justify-between hover:shadow-md transition-shadow group">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="px-2.5 py-1 rounded text-[10px] font-bold uppercase tracking-wider ${
+                item.category === 'Lecture Notes' ? 'bg-primary/10 text-primary' :
+                item.category === 'Lab Code & Notebook' ? 'bg-secondary/10 text-secondary' :
+                item.category === 'Reference Book' ? 'bg-tertiary/10 text-tertiary' : 'bg-primary/10 text-primary'
+              }">
+                ${item.category}
+              </span>
+              <span class="text-xs font-semibold text-on-surface-variant">Sem ${item.semester}</span>
+            </div>
+
+            <div class="flex items-center gap-2 mb-2">
+              <span class="material-symbols-outlined text-[20px] text-${item.color}">${item.icon}</span>
+              <span class="font-bold text-xs text-primary">${item.code}</span>
+            </div>
+
+            <h3 class="font-headline font-bold text-sm text-primary mb-2 line-clamp-2 group-hover:text-secondary transition-colors">
+              ${item.title}
+            </h3>
+
+            <p class="text-xs text-on-surface-variant line-clamp-3 mb-4 leading-relaxed">
+              ${item.description}
+            </p>
+          </div>
+
+          <div>
+            <div class="pt-3 border-t border-[#E8E0D2] flex items-center justify-between text-xs text-on-surface-variant mb-3">
+              <span>${item.format} • ${item.size}</span>
+              <span class="inline-flex items-center gap-1 font-bold ${item.downloads > 0 ? 'text-primary' : 'text-on-surface-variant'}">
+                <span class="material-symbols-outlined text-[14px]">download</span>
+                ${item.downloads || 0}
+              </span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2">
+              <button onclick="openResModal('${item.id}')" class="w-full py-1.5 rounded-lg border border-[#E8E0D2] bg-surface hover:bg-surface-container text-xs font-semibold transition-colors flex items-center justify-center gap-1 text-on-surface">
+                <span class="material-symbols-outlined text-[15px]">info</span>
+                <span>Details</span>
+              </button>
+              <button onclick="downloadResource('${item.id}')" class="w-full py-1.5 rounded-lg bg-primary text-white hover:bg-primary-container text-xs font-semibold transition-colors flex items-center justify-center gap-1 shadow-xs">
+                <span class="material-symbols-outlined text-[15px]">download</span>
+                <span>Get File</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function filterResources() {
+      renderResources();
+    }
+
+    function setCategoryFilter(cat) {
+      currentCategory = cat;
+
+      // Update tab styles
+      document.querySelectorAll(".category-tab").forEach(tab => {
+        tab.classList.remove("bg-primary", "text-white");
+        tab.classList.add("bg-surface-container-lowest", "text-on-surface-variant", "border", "border-[#E8E0D2]");
+      });
+
+      const activeBtnId = cat === 'all' ? 'tab-all' :
+                          cat === 'Lecture Notes' ? 'tab-notes' :
+                          cat === 'Lab Code & Notebook' ? 'tab-code' :
+                          cat === 'Reference Book' ? 'tab-books' : 'tab-videos';
+      
+      const activeBtn = document.getElementById(activeBtnId);
+      if (activeBtn) {
+        activeBtn.classList.remove("bg-surface-container-lowest", "text-on-surface-variant", "border", "border-[#E8E0D2]");
+        activeBtn.classList.add("bg-primary", "text-white");
+      }
+
+      renderResources();
+    }
+
+    function resetResourceFilters() {
+      document.getElementById("resourceSearchInput").value = "";
+      document.getElementById("resourceSemFilter").value = "all";
+      setCategoryFilter("all");
+    }
+
+    function updateGlobalCounters() {
+      const data = getResourcesData();
+      const totalDl = data.reduce((acc, curr) => acc + (curr.downloads || 0), 0);
+      document.getElementById("totalResDownloads").innerText = totalDl;
+      document.getElementById("totalResCount").innerText = data.length;
+    }
+
+    // Theme Handling
+    function setTheme(mode) {
+      const html = document.documentElement;
+      const lightBtn = document.getElementById("lightModeBtn");
+      const darkBtn = document.getElementById("darkModeBtn");
+
+      if (mode === 'dark') {
+        html.classList.add('dark');
+        localStorage.setItem('vsb_theme', 'dark');
+        if (darkBtn && lightBtn) {
+          darkBtn.classList.add('bg-surface-container-lowest', 'text-primary', 'shadow-xs');
+          darkBtn.classList.remove('text-on-surface-variant');
+          lightBtn.classList.remove('bg-surface-container-lowest', 'text-primary', 'shadow-xs');
+          lightBtn.classList.add('text-on-surface-variant');
+        }
+      } else {
+        html.classList.remove('dark');
+        localStorage.setItem('vsb_theme', 'light');
+        if (darkBtn && lightBtn) {
+          lightBtn.classList.add('bg-surface-container-lowest', 'text-primary', 'shadow-xs');
+          lightBtn.classList.remove('text-on-surface-variant');
+          darkBtn.classList.remove('bg-surface-container-lowest', 'text-primary', 'shadow-xs');
+          darkBtn.classList.add('text-on-surface-variant');
+        }
+      }
+    }
+
+    function toggleMobileNav() {
+      const nav = document.getElementById("mobileNav");
+      if (nav) nav.classList.toggle("hidden");
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const savedTheme = localStorage.getItem("vsb_theme") || "light";
+      setTheme(savedTheme);
+      renderResources();
+      updateGlobalCounters();
+    });
+  </script>
+  <!-- Portal Core Runtime (Auth, Timer Analytics, Submissions, Legal Disclaimers) -->
+  <script src="assets/portal-core.js"></script>
+</body>
+</html>

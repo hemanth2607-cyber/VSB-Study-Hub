@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0" name="viewport"/>
+  <meta content="web_standard" name="shell-type"/>
+  <title>VSB StudyHub - CSE (AI &amp; ML) Department Portal</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Merriweather:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <style>
+    @layer base {
+      html {
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        overflow-x: hidden;
+        box-sizing: border-box;
+      }
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+    }
+    
+    /* Smooth custom scrollbars */
+    ::-webkit-scrollbar { width: 7px; height: 7px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #d3cbbe; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #964450; }
+
+    /* WARM AMBIENT SCHOLARLY DARK MODE */
+    html.dark {
+      color-scheme: dark;
+    }
+    html.dark body {
+      background-color: #161311 !important;
+      color: #ede7dc !important;
+    }
+    html.dark header {
+      background-color: #1f1a17 !important;
+      border-color: #38302a !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+    }
+    html.dark main {
+      background-color: #161311 !important;
+    }
+    html.dark .bg-\[\#FAF7F2\] {
+      background-color: #161311 !important;
+    }
+    html.dark .bg-surface-container-lowest {
+      background-color: #211c19 !important;
+      border-color: #38302a !important;
+    }
+    html.dark .bg-surface-container-low {
+      background-color: #28221e !important;
+      border-color: #3d342d !important;
+    }
+    html.dark .bg-surface {
+      background-color: #1b1714 !important;
+      border-color: #38302a !important;
+    }
+    html.dark .bg-surface-container {
+      background-color: #2c2521 !important;
+      border-color: #423831 !important;
+    }
+    html.dark .border-\[\#E8E0D2\] {
+      border-color: #38302a !important;
+    }
+    html.dark .text-primary {
+      color: #e3be72 !important;
+    }
+    html.dark .text-secondary {
+      color: #df8894 !important;
+    }
+    html.dark .text-on-surface {
+      color: #ede7dc !important;
+    }
+    html.dark .text-on-surface-variant {
+      color: #b0a698 !important;
+    }
+    html.dark footer {
+      background-color: #1b1714 !important;
+      border-color: #38302a !important;
+    }
+    html.dark input, html.dark select, html.dark textarea {
+      background-color: #241e1b !important;
+      color: #ede7dc !important;
+      border-color: #423831 !important;
+    }
+    html.dark ::-webkit-scrollbar-thumb {
+      background: #4a3e35;
+    }
+    html.dark ::-webkit-scrollbar-thumb:hover {
+      background: #e3be72;
+    }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#032448",
+            "primary-container": "#1f3a5f",
+            "secondary": "#964450",
+            "tertiary": "#755b00",
+            "tertiary-fixed": "#ffe08e",
+            "on-primary": "#ffffff",
+            "on-secondary": "#ffffff",
+            "surface": "#fcf9f8",
+            "surface-container-low": "#f6f3f2",
+            "surface-container-lowest": "#ffffff",
+            "on-surface": "#1b1c1c",
+            "on-surface-variant": "#43474e"
+          },
+          fontFamily: {
+            "display": ["Merriweather", "serif"],
+            "headline": ["Merriweather", "serif"],
+            "body": ["Inter", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-[#FAF7F2] font-body text-on-surface antialiased transition-colors duration-300 w-full min-h-screen flex flex-col">
+
+  <!-- TOP HEADER -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-[#FAF7F2] border-b border-[#E8E0D2] shadow-sm transition-colors duration-300">
+    <div class="w-full max-w-[1680px] 2xl:max-w-[96vw] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex items-center justify-between gap-4 h-20">
+      
+      <!-- Crest Logo with Official VSB Image -->
+      <a href="index.html" class="flex items-center gap-3 sm:gap-4 flex-shrink-0 group">
+        <img alt="VSB College of Engineering Karur Logo" class="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-105" src="assets/vsb-logo.png" onerror="this.src='https://vsbec.edu.in/wp-content/uploads/2026/06/VSB-Karur.png'"/>
+        <div class="flex flex-col">
+          <span class="font-headline font-bold text-base sm:text-xl text-primary tracking-tight leading-none group-hover:text-secondary transition-colors">VSB StudyHub</span>
+          <span class="text-[10px] sm:text-xs text-secondary tracking-wider uppercase font-semibold mt-1">Dept of CSE (AI &amp; ML)</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Bar -->
+      <nav class="hidden lg:flex items-center gap-2 xl:gap-4 2xl:gap-6 flex-shrink-0 text-sm font-medium">
+        <a aria-current="page" class="transition-colors py-1 text-primary font-bold border-b-2 border-primary" href="index.html">Home</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors py-1" href="semesters.html">Semesters</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors py-1" href="subjects.html">Subjects</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors py-1" href="question-papers.html">Question Papers</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors py-1" href="resources.html">Resources</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors py-1" href="study-tools.html">Study Tools</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors py-1" href="design-system.html">Design System</a>
+        <a class="px-3 py-1.5 rounded-lg bg-secondary/10 hover:bg-secondary/20 text-secondary font-semibold transition-colors flex items-center gap-1.5" href="admin.html">
+          <span class="material-symbols-outlined text-[16px]">admin_panel_settings</span>
+          <span>Admin Center</span>
+        </a>
+      </nav>
+
+      <!-- Action Controls -->
+      <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+        <!-- Ambient Warm Dark Mode Toggle -->
+        <div class="flex items-center bg-surface-container-high rounded-full p-0.5 border border-[#E8E0D2]">
+          <button id="lightModeBtn" aria-label="Light mode" onclick="setTheme('light')" class="w-7 h-7 rounded-full flex items-center justify-center bg-surface-container-lowest text-primary shadow-xs transition-colors" type="button" title="Parchment Light Mode">
+            <span class="material-symbols-outlined text-[16px]">light_mode</span>
+          </button>
+          <button id="darkModeBtn" aria-label="Dark mode" onclick="setTheme('dark')" class="w-7 h-7 rounded-full flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" type="button" title="Ambient Scholar Dark Mode">
+            <span class="material-symbols-outlined text-[16px]">dark_mode</span>
+          </button>
+        </div>
+
+        <!-- Unified Login & Account Slot -->
+        <div class="header-auth-slot flex items-center">
+          <button onclick="openAuthModal('student')" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-primary text-white hover:bg-primary-container text-xs sm:text-sm font-semibold transition-colors shadow-xs" type="button">
+            <span class="material-symbols-outlined text-[17px]">login</span>
+            <span>Sign In / Register</span>
+          </button>
+        </div>
+        
+        <!-- Mobile Menu Hamburger -->
+        <button onclick="toggleMobileNav()" class="lg:hidden p-2 text-on-surface hover:text-primary rounded-lg" type="button" aria-label="Menu">
+          <span class="material-symbols-outlined text-[24px]">menu</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobileNav" class="hidden lg:hidden border-t border-[#E8E0D2] bg-[#FAF7F2] px-4 py-3 space-y-2 text-sm">
+      <a class="block py-1.5 text-primary font-bold" href="index.html">Home</a>
+      <a class="block py-1.5 text-on-surface-variant hover:text-primary" href="semesters.html">Semesters Directory</a>
+      <a class="block py-1.5 text-on-surface-variant hover:text-primary" href="subjects.html">Core &amp; Elective Subjects</a>
+      <a class="block py-1.5 text-on-surface-variant hover:text-primary" href="question-papers.html">Previous Year Questions (PYQs)</a>
+      <a class="block py-1.5 text-on-surface-variant hover:text-primary" href="resources.html">Academic Resources &amp; Lab Code</a>
+      <a class="block py-1.5 text-on-surface-variant hover:text-primary" href="study-tools.html">Study Tools &amp; CGPA Calc</a>
+      <a class="block py-1.5 text-on-surface-variant hover:text-primary" href="design-system.html">Design System &amp; Mood Board</a>
+      <a class="block py-2 text-secondary font-semibold flex items-center gap-1.5" href="admin.html">
+        <span class="material-symbols-outlined text-[18px]">admin_panel_settings</span>
+        <span>Open Admin Control Center</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- MAIN PAGE CONTAINER -->
+  <main class="w-full pt-20 bg-[#FAF7F2] flex-1 transition-colors duration-300">
+    <div class="w-full max-w-[1680px] 2xl:max-w-[96vw] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+      <div class="flex flex-col w-full space-y-12 py-8">
+
+        <!-- HERO SECTION -->
+        <section class="relative w-full py-6 lg:py-10">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <!-- Left Column: Copy & Search -->
+            <div class="lg:col-span-7 flex flex-col items-start gap-4 z-10">
+              <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary/10 border border-secondary/20 text-secondary">
+                <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                <span class="uppercase tracking-wider font-semibold text-xs">
+                  Dept of CSE (AI &amp; ML) • Regulation 2021/2024
+                </span>
+              </div>
+
+              <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl text-primary tracking-tight leading-tight">
+                Everything you need to study, <span class="italic font-normal text-secondary">in one place</span>
+              </h1>
+
+              <p class="text-base sm:text-lg text-on-surface-variant max-w-3xl leading-relaxed">
+                Curated lecture notes, previous year question papers (PYQs), laboratory manuals, and video lectures tailored specifically for undergraduate scholars in Artificial Intelligence &amp; Machine Learning.
+              </p>
+
+              <!-- Search Bar linking directly into subject & resource search -->
+              <div class="w-full max-w-3xl bg-surface-container-lowest p-2 rounded-xl border border-[#E8E0D2] shadow-sm flex flex-col sm:flex-row gap-2 mt-2 relative">
+                <div class="relative flex-grow flex items-center">
+                  <span class="material-symbols-outlined absolute left-3 text-on-surface-variant text-[20px]">search</span>
+                  <input id="quickSearchInput" class="w-full h-11 pl-10 pr-4 bg-transparent text-sm text-on-surface placeholder:text-on-surface-variant/70 border-0 focus:outline-none" placeholder="Search CS3491 Artificial Intelligence, AL3501 Deep Learning, PYQs..." type="text" onkeydown="if(event.key === 'Enter') handleSearchSubmit();"/>
+                </div>
+
+                <button onclick="handleSearchSubmit()" class="h-11 px-6 rounded-lg bg-primary hover:bg-[#162A45] text-on-primary text-sm font-medium transition-colors flex items-center justify-center gap-2 flex-shrink-0 shadow-sm" type="button">
+                  <span>Search Portal</span>
+                  <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                </button>
+              </div>
+
+              <!-- Quick Page Shortcuts -->
+              <div class="flex flex-wrap items-center gap-2 text-on-surface-variant pt-1 text-xs">
+                <span class="uppercase tracking-wider font-semibold">Explore Sections:</span>
+                <a href="semesters.html" class="px-2.5 py-1 rounded bg-surface-container hover:bg-surface-variant text-on-surface transition-colors font-medium">Semesters (1–8)</a>
+                <a href="subjects.html" class="px-2.5 py-1 rounded bg-surface-container hover:bg-surface-variant text-on-surface transition-colors font-medium">Core Subjects</a>
+                <a href="question-papers.html" class="px-2.5 py-1 rounded bg-surface-container hover:bg-surface-variant text-on-surface transition-colors font-medium">Solved PYQs</a>
+                <a href="resources.html" class="px-2.5 py-1 rounded bg-surface-container hover:bg-surface-variant text-on-surface transition-colors font-medium">Lab Code &amp; Manuals</a>
+                <a href="study-tools.html" class="px-2.5 py-1 rounded bg-surface-container hover:bg-surface-variant text-on-surface transition-colors font-medium">CGPA Calculator</a>
+              </div>
+
+              <!-- Primary Action Buttons -->
+              <div class="flex flex-wrap items-center gap-3 pt-2">
+                <a class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-on-primary hover:bg-[#162A45] text-sm font-semibold shadow-sm transition-all hover:-translate-y-0.5" href="subjects.html">
+                  <span class="material-symbols-outlined text-[20px]">menu_book</span>
+                  <span>Browse Subjects Folio</span>
+                </a>
+                <a class="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-secondary text-secondary hover:bg-secondary/10 text-sm font-semibold transition-all" href="question-papers.html">
+                  <span class="material-symbols-outlined text-[20px]">quiz</span>
+                  <span>Exam Question Papers</span>
+                </a>
+                <button onclick="openUploadModal()" class="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-secondary text-white hover:opacity-90 text-sm font-semibold transition-all shadow-xs" type="button">
+                  <span class="material-symbols-outlined text-[20px]">upload_file</span>
+                  <span>Upload Notes</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Right Column: Visual Academic Hero Illustration -->
+            <div class="lg:col-span-5 relative mt-6 lg:mt-0">
+              <div class="relative rounded-xl overflow-hidden shadow-xl border border-[#E8E0D2] bg-surface-container-lowest">
+                <img id="portalHeroBannerImage" alt="Collegiate study desk with stacked textbooks on Artificial Intelligence and Machine Learning, glowing desk lamp, and laptop displaying neural code" class="w-full h-auto object-cover transform hover:scale-[1.01] transition-transform duration-500" src="assets/hero-study-desk.jpg" onerror="this.src='https://lh3.googleusercontent.com/aida-public/AB6AXuAlDcL1lAgeLAWlUOImuDQLgnngiAL2XS0pRyYP5enTb8_Ku8tITj6M--Y77CxL3fCZ1pbJeTTFeXne2qAc2wVlSwklF-ucsC9rduwvNz4aK0DXCLN8vtAmjgSYrcuLrNnJZfdnYcSI2DgqxQ7Nqbc2wy2lmEJwKLoXIgSRGQJ2d7oImJ4Oom1meLDDW_ya6WT08Nkh4PNjyltSxkoMH7BKFBj5jB2bB9BiGqnxxTafPdvQhtROY30'"/>
+                
+                <!-- Academic Floating Badge overlay -->
+                <div class="absolute bottom-4 left-4 right-4 p-3 bg-surface-container-lowest/95 backdrop-blur-sm rounded-lg border border-[#E8E0D2] shadow-sm flex items-center justify-between">
+                  <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-full bg-secondary/15 text-secondary flex items-center justify-center font-bold">
+                      <span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+                    </div>
+                    <div>
+                      <p class="font-bold text-sm text-primary leading-tight">AI &amp; ML Curated Folio</p>
+                      <p class="text-xs text-on-surface-variant">Validated by Department Faculty</p>
+                    </div>
+                  </div>
+                  <span class="text-xs font-semibold text-secondary px-2.5 py-1 bg-secondary/10 rounded">AUTONOMOUS</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- TRUE LIVE STATS STRIP -->
+        <section class="w-full">
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <a href="semesters.html" class="group bg-surface-container-lowest p-4 sm:p-5 rounded-xl border border-[#E8E0D2] shadow-xs hover:border-primary transition-all">
+              <div class="flex items-center gap-3 mb-1">
+                <div class="w-9 h-9 rounded-lg bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-on-primary transition-colors">
+                  <span class="material-symbols-outlined text-[20px]">calendar_month</span>
+                </div>
+                <span class="font-headline text-2xl font-bold text-primary">8</span>
+              </div>
+              <p class="text-sm font-semibold text-on-surface group-hover:text-primary transition-colors">Semesters Covered</p>
+              <p class="text-xs text-on-surface-variant">Explore 4-year curriculum →</p>
+            </a>
+
+            <a href="subjects.html" class="group bg-surface-container-lowest p-4 sm:p-5 rounded-xl border border-[#E8E0D2] shadow-xs hover:border-secondary transition-all">
+              <div class="flex items-center gap-3 mb-1">
+                <div class="w-9 h-9 rounded-lg bg-secondary/10 text-secondary flex items-center justify-center group-hover:bg-secondary group-hover:text-on-secondary transition-colors">
+                  <span class="material-symbols-outlined text-[20px]">layers</span>
+                </div>
+                <span class="font-headline text-2xl font-bold text-secondary" id="statSubjectCount">6</span>
+              </div>
+              <p class="text-sm font-semibold text-on-surface group-hover:text-secondary transition-colors">Curriculum Courses</p>
+              <p class="text-xs text-on-surface-variant">Core AI, ML &amp; Lab Modules →</p>
+            </a>
+
+            <a href="resources.html" class="group bg-surface-container-lowest p-4 sm:p-5 rounded-xl border border-[#E8E0D2] shadow-xs hover:border-tertiary transition-all">
+              <div class="flex items-center gap-3 mb-1">
+                <div class="w-9 h-9 rounded-lg bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center group-hover:bg-tertiary group-hover:text-on-tertiary transition-colors">
+                  <span class="material-symbols-outlined text-[20px]">description</span>
+                </div>
+                <span class="font-headline text-2xl font-bold text-primary" id="statLiveResourceCount">0</span>
+              </div>
+              <p class="text-sm font-semibold text-on-surface group-hover:text-primary transition-colors">Study Resources</p>
+              <p class="text-xs text-on-surface-variant">View all deposited notes →</p>
+            </a>
+
+            <div class="bg-surface-container-lowest p-4 sm:p-5 rounded-xl border border-[#E8E0D2] shadow-xs">
+              <div class="flex items-center gap-3 mb-1">
+                <div class="w-9 h-9 rounded-lg bg-primary-fixed text-on-primary-fixed flex items-center justify-center">
+                  <span class="material-symbols-outlined text-[20px]">download</span>
+                </div>
+                <span class="font-headline text-2xl font-bold text-primary" id="statLiveDownloadsCount">0</span>
+              </div>
+              <p class="text-sm font-semibold text-on-surface">Total Downloads</p>
+              <p class="text-xs text-on-surface-variant">Genuine scholar downloads</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- DEPARTMENTAL NOTICE BOARD -->
+        <section class="w-full">
+          <div class="bg-surface-container-lowest rounded-xl border border-[#E8E0D2] p-5 sm:p-6 shadow-sm">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 border-b border-[#E8E0D2] pb-3">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded bg-secondary text-on-secondary flex items-center justify-center">
+                  <span class="material-symbols-outlined text-[18px]">campaign</span>
+                </div>
+                <div>
+                  <h2 class="font-headline text-lg sm:text-xl text-primary font-bold">Department Notice Board</h2>
+                  <p class="text-xs text-on-surface-variant uppercase font-semibold">Official circulars from HOD &amp; Academic Coordinators</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="text-xs text-secondary font-bold">Updated Live</span>
+                <a href="admin.html" class="text-xs text-primary hover:underline font-semibold flex items-center gap-1">
+                  <span class="material-symbols-outlined text-[14px]">edit_note</span>
+                  <span>Manage in Admin</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="portalNoticesGrid">
+              <!-- Dynamically populated from localStorage -->
+            </div>
+          </div>
+        </section>
+
+        <!-- PORTAL SECTIONS DIRECTORY -->
+        <section class="w-full space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="uppercase tracking-wider text-secondary font-semibold text-xs">Department Navigation</span>
+              <h2 class="font-headline text-xl sm:text-2xl text-primary font-bold">Dedicated Portals &amp; Sections</h2>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <!-- Link Card 1 -->
+            <a href="semesters.html" class="group bg-surface-container-lowest p-5 rounded-xl border border-[#E8E0D2] shadow-xs hover:border-primary hover:shadow-md transition-all flex flex-col justify-between">
+              <div>
+                <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-3 group-hover:bg-primary group-hover:text-on-primary transition-colors">
+                  <span class="material-symbols-outlined text-[22px]">calendar_view_month</span>
+                </div>
+                <h3 class="font-headline font-bold text-base text-primary mb-1">Semesters (1 to 8)</h3>
+                <p class="text-xs text-on-surface-variant">Term progression breakdown, active semester focus, unit test II packs, and capstone guidelines.</p>
+              </div>
+              <span class="text-xs font-semibold text-primary mt-4 inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                Open Semesters Page →
+              </span>
+            </a>
+
+            <!-- Link Card 2 -->
+            <a href="subjects.html" class="group bg-surface-container-lowest p-5 rounded-xl border border-[#E8E0D2] shadow-xs hover:border-secondary hover:shadow-md transition-all flex flex-col justify-between">
+              <div>
+                <div class="w-10 h-10 rounded-lg bg-secondary/10 text-secondary flex items-center justify-center mb-3 group-hover:bg-secondary group-hover:text-on-secondary transition-colors">
+                  <span class="material-symbols-outlined text-[22px]">school</span>
+                </div>
+                <h3 class="font-headline font-bold text-base text-primary mb-1">Core &amp; Specialized Subjects</h3>
+                <p class="text-xs text-on-surface-variant">Course folios, instructor details, syllabus coverage tracking, and direct star ratings.</p>
+              </div>
+              <span class="text-xs font-semibold text-secondary mt-4 inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                Open Subjects Page →
+              </span>
+            </a>
+
+            <!-- Link Card 3 -->
+            <a href="question-papers.html" class="group bg-surface-container-lowest p-5 rounded-xl border border-[#E8E0D2] shadow-xs hover:border-primary hover:shadow-md transition-all flex flex-col justify-between">
+              <div>
+                <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-3 group-hover:bg-primary group-hover:text-on-primary transition-colors">
+                  <span class="material-symbols-outlined text-[22px]">quiz</span>
+                </div>
+                <h3 class="font-headline font-bold text-base text-primary mb-1">Previous Year Questions (PYQs)</h3>
+                <p class="text-xs text-on-surface-variant">10-year archive of Anna University and VSB Autonomous semester-end exams with faculty verified keys.</p>
+              </div>
+              <span class="text-xs font-semibold text-primary mt-4 inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                Open Question Papers →
+              </span>
+            </a>
+
+            <!-- Link Card 4 -->
+            <a href="resources.html" class="group bg-surface-container-lowest p-5 rounded-xl border border-[#E8E0D2] shadow-xs hover:border-tertiary hover:shadow-md transition-all flex flex-col justify-between">
+              <div>
+                <div class="w-10 h-10 rounded-lg bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center mb-3 group-hover:bg-tertiary group-hover:text-on-tertiary transition-colors">
+                  <span class="material-symbols-outlined text-[22px]">folder</span>
+                </div>
+                <h3 class="font-headline font-bold text-base text-primary mb-1">Academic Resources &amp; Codes</h3>
+                <p class="text-xs text-on-surface-variant">Filterable database of lecture notes, Python lab codes, NPTEL video compilations, and reference books.</p>
+              </div>
+              <span class="text-xs font-semibold text-tertiary mt-4 inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                Open Resources Archive →
+              </span>
+            </a>
+
+            <!-- Link Card 5 -->
+            <a href="study-tools.html" class="group bg-surface-container-lowest p-5 rounded-xl border border-[#E8E0D2] shadow-xs hover:border-secondary hover:shadow-md transition-all flex flex-col justify-between">
+              <div>
+                <div class="w-10 h-10 rounded-lg bg-secondary/10 text-secondary flex items-center justify-center mb-3 group-hover:bg-secondary group-hover:text-on-secondary transition-colors">
+                  <span class="material-symbols-outlined text-[22px]">calculate</span>
+                </div>
+                <h3 class="font-headline font-bold text-base text-primary mb-1">Study Tools &amp; CGPA Calculator</h3>
+                <p class="text-xs text-on-surface-variant">Regulation 2021/2024 SGPA &amp; CGPA performance projection engine.</p>
+              </div>
+              <span class="text-xs font-semibold text-secondary mt-4 inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                Launch Study Tools →
+              </span>
+            </a>
+
+            <!-- Link Card 6 -->
+            <a href="admin.html" class="group bg-surface-container-lowest p-5 rounded-xl border border-[#E8E0D2] shadow-xs hover:border-primary hover:shadow-md transition-all flex flex-col justify-between">
+              <div>
+                <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-3 group-hover:bg-primary group-hover:text-on-primary transition-colors">
+                  <span class="material-symbols-outlined text-[22px]">admin_panel_settings</span>
+                </div>
+                <h3 class="font-headline font-bold text-base text-primary mb-1">Department Admin Center</h3>
+                <p class="text-xs text-on-surface-variant">Upload &amp; edit materials, publish departmental notices, update syllabus coverage percentages, and manage data.</p>
+              </div>
+              <span class="text-xs font-semibold text-primary mt-4 inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                Enter Admin Portal →
+              </span>
+            </a>
+          </div>
+        </section>
+
+        <!-- VERIFIED SCHOLAR RATINGS & REVIEWS -->
+        <section class="w-full">
+          <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-6">
+            <div>
+              <span class="uppercase tracking-wider text-secondary font-semibold text-xs">Scholarly Community</span>
+              <h2 class="font-headline text-xl sm:text-2xl text-primary font-bold">Genuine Student Reviews &amp; Course Ratings</h2>
+              <p class="text-xs sm:text-sm text-on-surface-variant mt-1">Real ratings submitted by VSB AI &amp; ML scholars.</p>
+            </div>
+            <button onclick="document.getElementById('reviewSubmitModal').classList.remove('hidden')" class="px-4 py-2 bg-primary text-on-primary hover:bg-[#162A45] rounded-lg text-xs sm:text-sm font-semibold transition-colors shadow-xs flex items-center gap-1.5 self-start sm:self-auto">
+              <span class="material-symbols-outlined text-[18px]">rate_review</span>
+              <span>Write Course Review</span>
+            </button>
+          </div>
+
+          <div id="homeReviewsContainer" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <!-- Dynamically populated from vsb_reviews -->
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER WITH VSB LOGO -->
+  <footer class="w-full bg-surface-container-lowest border-t border-[#E8E0D2] mt-8 transition-colors duration-300">
+    <div class="w-full max-w-[1680px] 2xl:max-w-[96vw] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 mb-8">
+        <div class="lg:col-span-2 space-y-3">
+          <div class="flex items-center gap-3">
+            <img alt="VSB College of Engineering Karur Logo" class="h-10 w-auto object-contain" src="assets/vsb-logo.png" onerror="this.src='https://vsbec.edu.in/wp-content/uploads/2026/06/VSB-Karur.png'"/>
+            <div>
+              <h4 class="font-headline font-bold text-base text-primary">VSB StudyHub</h4>
+              <p class="text-xs text-secondary uppercase font-semibold">Dept of CSE (AI &amp; ML)</p>
+            </div>
+          </div>
+          <p class="text-xs text-on-surface-variant leading-relaxed">
+            Autonomous academic repository engineered for undergraduate scholars in Computer Science and Engineering (Artificial Intelligence and Machine Learning). VSB Educational Campus, NH-67, Covai Road, Karur, Tamil Nadu 639111.
+          </p>
+        </div>
+
+        <div>
+          <h5 class="font-headline text-primary mb-3 text-sm font-bold border-b border-[#E8E0D2] pb-1">Curriculum</h5>
+          <ul class="space-y-2 text-xs text-on-surface-variant">
+            <li><a class="hover:text-primary transition-colors" href="semesters.html">Semesters 1 to 8</a></li>
+            <li><a class="hover:text-primary transition-colors" href="subjects.html">Core Subject Folios</a></li>
+            <li><a class="hover:text-primary transition-colors" href="question-papers.html">Anna University PYQs</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="font-headline text-primary mb-3 text-sm font-bold border-b border-[#E8E0D2] pb-1">Resources</h5>
+          <ul class="space-y-2 text-xs text-on-surface-variant">
+            <li><a class="hover:text-primary transition-colors" href="resources.html">Lecture Notes Archive</a></li>
+            <li><a class="hover:text-primary transition-colors" href="resources.html">PyTorch Lab Manuals</a></li>
+            <li><button onclick="openUploadModal()" class="hover:text-primary transition-colors text-left font-semibold text-secondary">Upload Notes to Hemanth</button></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="font-headline text-primary mb-3 text-sm font-bold border-b border-[#E8E0D2] pb-1">Utilities</h5>
+          <ul class="space-y-2 text-xs text-on-surface-variant">
+            <li><a class="hover:text-primary transition-colors" href="study-tools.html">CGPA Calculator</a></li>
+            <li><a class="hover:text-primary transition-colors" href="study-tools.html">Grade Projection</a></li>
+            <li><button onclick="openLegalModal()" class="hover:text-primary transition-colors text-left">Legal &amp; Security Compliance</button></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="font-headline text-primary mb-3 text-sm font-bold border-b border-[#E8E0D2] pb-1">Administration</h5>
+          <ul class="space-y-2 text-xs text-on-surface-variant">
+            <li><a class="text-secondary font-semibold hover:underline" href="admin.html">Admin Control Center</a></li>
+            <li><a class="hover:text-primary transition-colors" href="admin.html">Upload Documents</a></li>
+            <li><a class="hover:text-primary transition-colors" href="admin.html">Scholar Credentials</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-[#E8E0D2] pt-4 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-on-surface-variant">
+        <p>© 2026 VSB StudyHub. Department of Computer Science &amp; Engineering (AI &amp; ML).</p>
+        <div class="flex items-center gap-3">
+          <button onclick="openLegalModal()" class="text-secondary font-semibold hover:underline">Privacy, IT Act &amp; Legal Disclaimers</button>
+          <span>•</span>
+          <a class="hover:text-primary transition-colors font-medium" href="admin.html">Admin Portal</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- REVIEW SUBMIT MODAL -->
+  <div class="fixed inset-0 z-50 bg-primary/40 backdrop-blur-xs flex items-center justify-center p-4 hidden" id="reviewSubmitModal">
+    <div class="bg-surface-container-lowest rounded-xl border border-[#E8E0D2] shadow-2xl max-w-md w-full overflow-hidden flex flex-col">
+      <div class="p-4 border-b border-[#E8E0D2] flex items-center justify-between bg-surface-container-low">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-tertiary text-[22px]">star</span>
+          <h3 class="text-primary font-bold text-base">Write Course Review</h3>
+        </div>
+        <button class="w-8 h-8 rounded-lg text-on-surface-variant hover:text-primary flex items-center justify-center" onclick="closeModal('reviewSubmitModal')" type="button">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <form onsubmit="event.preventDefault(); submitHomeReview();" class="p-5 space-y-4">
+        <div>
+          <label class="block text-xs uppercase font-semibold text-on-surface-variant mb-1">Select Subject</label>
+          <select id="homeReviewSubjectCode" class="w-full h-10 px-3 bg-surface rounded-lg border border-[#E8E0D2] text-xs sm:text-sm text-on-surface">
+            <option value="CS3491">CS3491 - Artificial Intelligence</option>
+            <option value="AL3452">AL3452 - Machine Learning Techniques</option>
+            <option value="AL3501">AL3501 - Deep Learning & Neural Nets</option>
+            <option value="CS3352">CS3352 - Foundations of Data Science</option>
+            <option value="CS3391">CS3391 - Object Oriented Java</option>
+            <option value="MA3354">MA3354 - Discrete Mathematics & Graphs</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs uppercase font-semibold text-on-surface-variant mb-1">Your Star Rating</label>
+          <div class="flex items-center gap-2" id="homeStarRatingSelector">
+            <button type="button" onclick="selectHomeFormStars(1)" class="star-pick text-2xl text-on-surface-variant/40 hover:text-tertiary">★</button>
+            <button type="button" onclick="selectHomeFormStars(2)" class="star-pick text-2xl text-on-surface-variant/40 hover:text-tertiary">★</button>
+            <button type="button" onclick="selectHomeFormStars(3)" class="star-pick text-2xl text-on-surface-variant/40 hover:text-tertiary">★</button>
+            <button type="button" onclick="selectHomeFormStars(4)" class="star-pick text-2xl text-on-surface-variant/40 hover:text-tertiary">★</button>
+            <button type="button" onclick="selectHomeFormStars(5)" class="star-pick text-2xl text-on-surface-variant/40 hover:text-tertiary">★</button>
+            <span class="text-xs font-bold text-primary ml-2" id="homeStarRatingLabel">5 Stars</span>
+          </div>
+          <input type="hidden" id="homeSelectedStarValue" value="5"/>
+        </div>
+
+        <div>
+          <label class="block text-xs uppercase font-semibold text-on-surface-variant mb-1">Scholar Name &amp; Year</label>
+          <input required id="homeReviewAuthor" class="w-full h-10 px-3 bg-surface rounded-lg border border-[#E8E0D2] text-xs sm:text-sm text-on-surface" placeholder="e.g. S. Ananya • 4th Year CSE(AIML)"/>
+        </div>
+
+        <div>
+          <label class="block text-xs uppercase font-semibold text-on-surface-variant mb-1">Course Experience &amp; Notes Quality</label>
+          <textarea required id="homeReviewText" rows="3" class="w-full p-3 bg-surface rounded-lg border border-[#E8E0D2] text-xs sm:text-sm text-on-surface" placeholder="Share how the notes and exam papers helped in your exam prep..."></textarea>
+        </div>
+
+        <div class="flex justify-end gap-2 pt-2">
+          <button class="px-4 py-2 border border-[#E8E0D2] rounded-lg text-xs" onclick="closeModal('reviewSubmitModal')" type="button">Cancel</button>
+          <button class="px-5 py-2 bg-primary text-on-primary rounded-lg text-xs font-semibold hover:bg-[#162A45] shadow-xs" type="submit">Submit Review</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- AUTH MODAL -->
+  <div class="fixed inset-0 z-50 bg-primary/40 backdrop-blur-xs flex items-center justify-center p-4 hidden" id="authModal">
+    <div class="bg-surface-container-lowest rounded-xl border border-[#E8E0D2] shadow-2xl max-w-md w-full overflow-hidden flex flex-col">
+      <div class="p-4 border-b border-[#E8E0D2] flex items-center justify-between bg-surface-container-low">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary text-[22px]">account_circle</span>
+          <h3 class="text-primary font-bold text-base">Student Academic Login</h3>
+        </div>
+        <button class="w-8 h-8 rounded-lg text-on-surface-variant hover:text-primary flex items-center justify-center" onclick="closeModal('authModal')" type="button">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <form onsubmit="event.preventDefault(); submitAuth();" class="p-5 space-y-4">
+        <div>
+          <label class="block text-xs uppercase font-semibold text-on-surface-variant mb-1">College Roll Number / Email</label>
+          <input required class="w-full h-10 px-3 bg-surface rounded-lg border border-[#E8E0D2] text-xs sm:text-sm text-on-surface" placeholder="e.g. 22aiml042@vsb.edu.in" type="text"/>
+        </div>
+        <div>
+          <label class="block text-xs uppercase font-semibold text-on-surface-variant mb-1">Password</label>
+          <input required class="w-full h-10 px-3 bg-surface rounded-lg border border-[#E8E0D2] text-xs sm:text-sm text-on-surface" placeholder="••••••••••••" type="password"/>
+        </div>
+
+        <button class="w-full py-2.5 bg-primary text-on-primary hover:bg-[#162A45] rounded-lg text-xs sm:text-sm font-semibold shadow-xs" type="submit">
+          Access Department Portal
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="fixed bottom-6 right-6 z-50 bg-primary text-on-primary px-4 py-3 rounded-lg shadow-xl border border-[#E8E0D2]/20 flex items-center gap-3 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none" id="toast">
+    <span class="material-symbols-outlined text-tertiary-fixed text-[20px]">check_circle</span>
+    <span class="text-xs sm:text-sm font-medium" id="toastMessage">Action completed!</span>
+  </div>
+
+  <script>
+    // WARM AMBIENT DARK MODE ENGINE
+    function setTheme(mode) {
+      if (mode === 'dark') {
+        document.documentElement.classList.add('dark');
+        document.getElementById('darkModeBtn')?.classList.add('bg-surface-container-lowest', 'text-primary', 'shadow-xs');
+        document.getElementById('darkModeBtn')?.classList.remove('text-on-surface-variant');
+        document.getElementById('lightModeBtn')?.classList.remove('bg-surface-container-lowest', 'text-primary', 'shadow-xs');
+        document.getElementById('lightModeBtn')?.classList.add('text-on-surface-variant');
+        localStorage.setItem('vsb_theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.getElementById('lightModeBtn')?.classList.add('bg-surface-container-lowest', 'text-primary', 'shadow-xs');
+        document.getElementById('lightModeBtn')?.classList.remove('text-on-surface-variant');
+        document.getElementById('darkModeBtn')?.classList.remove('bg-surface-container-lowest', 'text-primary', 'shadow-xs');
+        document.getElementById('darkModeBtn')?.classList.add('text-on-surface-variant');
+        localStorage.setItem('vsb_theme', 'light');
+      }
+    }
+
+    if (localStorage.getItem('vsb_theme') === 'dark') {
+      setTheme('dark');
+    }
+
+    function toggleMobileNav() {
+      document.getElementById('mobileNav').classList.toggle('hidden');
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastMessage').textContent = msg;
+      toast.classList.remove('translate-y-24', 'opacity-0');
+      setTimeout(() => {
+        toast.classList.add('translate-y-24', 'opacity-0');
+      }, 3200);
+    }
+
+    function openAuthModal(mode) {
+      document.getElementById('authModal').classList.remove('hidden');
+    }
+
+    function submitAuth() {
+      closeModal('authModal');
+      showToast('Welcome, scholar! Authenticated via VSB Central LDAP.');
+    }
+
+    function handleSearchSubmit() {
+      const val = document.getElementById('quickSearchInput').value.trim();
+      if (val) {
+        window.location.href = `subjects.html?search=${encodeURIComponent(val)}`;
+      } else {
+        window.location.href = 'subjects.html';
+      }
+    }
+
+    // Notices from storage (True values only)
+    function renderPortalNotices() {
+      const data = localStorage.getItem('vsb_notices');
+      const notices = data ? JSON.parse(data) : [];
+
+      const container = document.getElementById('portalNoticesGrid');
+      container.innerHTML = '';
+
+      if (notices.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full p-6 text-center bg-surface rounded-xl border border-[#E8E0D2] text-xs text-on-surface-variant">
+            <span class="material-symbols-outlined text-3xl text-on-surface-variant mb-1">campaign</span>
+            <p class="font-bold text-primary mb-1">No Active Circulars Posted</p>
+            <p>Official announcements from the Department HOD and Academic Board will be broadcasted live via the Admin Center.</p>
+          </div>
+        `;
+        return;
+      }
+
+      notices.slice(0, 4).forEach(n => {
+        const div = document.createElement('div');
+        div.className = 'bg-surface p-4 rounded-lg border-l-4 border-l-secondary border border-[#E8E0D2] shadow-xs flex flex-col justify-between';
+        div.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-secondary/15 text-secondary uppercase">${n.badge || 'Circular'}</span>
+              <span class="text-xs text-on-surface-variant">${n.date}</span>
+            </div>
+            <h4 class="font-headline font-bold text-sm text-primary mb-1">${n.title}</h4>
+            <p class="text-xs text-on-surface-variant leading-relaxed">${n.content || n.body}</p>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    // Reviews from storage
+    function renderHomeReviews() {
+      const data = localStorage.getItem('vsb_reviews');
+      const reviews = data ? JSON.parse(data) : [];
+      const container = document.getElementById('homeReviewsContainer');
+      container.innerHTML = '';
+
+      if (reviews.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full p-6 text-center bg-surface-container-lowest rounded-xl border border-[#E8E0D2] text-xs text-on-surface-variant">
+            No reviews submitted yet. Click "Write Course Review" to be the first to rate your subjects!
+          </div>
+        `;
+        return;
+      }
+
+      reviews.slice(0, 3).forEach(r => {
+        const stars = '★'.repeat(r.stars) + '☆'.repeat(5 - r.stars);
+        const div = document.createElement('div');
+        div.className = 'bg-surface-container-lowest p-5 rounded-xl border border-[#E8E0D2] shadow-xs flex flex-col justify-between';
+        div.innerHTML = `
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-secondary">${r.subjectCode}</span>
+              <span class="text-tertiary text-sm font-bold tracking-widest">${stars}</span>
+            </div>
+            <p class="text-xs sm:text-sm text-on-surface italic leading-relaxed">“${r.text}”</p>
+          </div>
+          <div class="pt-3 border-t border-[#E8E0D2] mt-3">
+            <h5 class="text-xs font-bold text-primary">${r.author}</h5>
+            <span class="text-[11px] text-on-surface-variant">${r.date}</span>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function selectHomeFormStars(val) {
+      document.getElementById('homeSelectedStarValue').value = val;
+      const buttons = document.querySelectorAll('#homeStarRatingSelector .star-pick');
+      buttons.forEach((btn, idx) => {
+        if (idx < val) {
+          btn.classList.add('text-tertiary');
+          btn.classList.remove('text-on-surface-variant/40');
+        } else {
+          btn.classList.remove('text-tertiary');
+          btn.classList.add('text-on-surface-variant/40');
+        }
+      });
+      document.getElementById('homeStarRatingLabel').textContent = `${val} Stars`;
+    }
+
+    function submitHomeReview() {
+      const subjectCode = document.getElementById('homeReviewSubjectCode').value;
+      const stars = parseInt(document.getElementById('homeSelectedStarValue').value) || 5;
+      const author = document.getElementById('homeReviewAuthor').value;
+      const text = document.getElementById('homeReviewText').value;
+
+      const newReview = {
+        id: 'rev-' + Date.now(),
+        subjectCode,
+        stars,
+        author,
+        text,
+        date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+      };
+
+      const data = localStorage.getItem('vsb_reviews');
+      const reviews = data ? JSON.parse(data) : [];
+      reviews.unshift(newReview);
+      localStorage.setItem('vsb_reviews', JSON.stringify(reviews));
+
+      // Update ratings
+      const ratData = localStorage.getItem('vsb_ratings');
+      const ratings = ratData ? JSON.parse(ratData) : {};
+      if (!ratings[subjectCode]) ratings[subjectCode] = { sum: 0, count: 0 };
+      ratings[subjectCode].sum += stars;
+      ratings[subjectCode].count += 1;
+      localStorage.setItem('vsb_ratings', JSON.stringify(ratings));
+
+      closeModal('reviewSubmitModal');
+      showToast('Thank you for submitting your verified course review!');
+      renderHomeReviews();
+    }
+
+    function updateLiveStats() {
+      const matsData = localStorage.getItem('vsb_materials');
+      const mats = matsData ? JSON.parse(matsData) : [];
+      const totalDownloads = mats.reduce((sum, item) => sum + (item.downloads || 0), 0);
+      
+      const subsData = localStorage.getItem('vsb_subjects');
+      const subs = subsData ? JSON.parse(subsData) : [{},{},{},{},{},{}];
+
+      document.getElementById('statSubjectCount').textContent = subs.length;
+      document.getElementById('statLiveResourceCount').textContent = mats.length;
+      document.getElementById('statLiveDownloadsCount').textContent = totalDownloads;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderPortalNotices();
+      renderHomeReviews();
+      updateLiveStats();
+      selectHomeFormStars(5);
+
+      // Hero image setup - restore original collegiate study desk
+      const savedHero = localStorage.getItem('vsb_hero_image');
+      const heroEl = document.getElementById('portalHeroBannerImage');
+      if (savedHero && !savedHero.includes('College-Logo') && !savedHero.includes('vsb-college-banner')) {
+        if (heroEl) heroEl.src = savedHero;
+      } else {
+        localStorage.removeItem('vsb_hero_image');
+        if (heroEl) heroEl.src = 'assets/hero-study-desk.jpg';
+      }
+    });
+  </script>
+  <script src="assets/portal-core.js"></script>
+</body>
+</html>

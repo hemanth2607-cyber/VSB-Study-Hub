@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0" name="viewport"/>
+  <meta content="web_standard" name="shell-type"/>
+  <title>VSB StudyHub - Department Admin Control Center &amp; Analytics</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Merriweather:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <style>
+    @layer base {
+      html, body { margin: 0; padding: 0; width: 100%; min-height: 100%; box-sizing: border-box; }
+      *, *::before, *::after { box-sizing: border-box; }
+    }
+    /* Ambient Warm Scholarly Dark Mode */
+    html.dark { color-scheme: dark; }
+    html.dark body { background-color: #161311 !important; color: #ede7dc !important; }
+    html.dark header { background-color: #1f1a17 !important; border-color: #38302a !important; }
+    html.dark main { background-color: #161311 !important; }
+    html.dark .bg-\[\#FAF7F2\] { background-color: #161311 !important; }
+    html.dark .bg-surface-container-lowest { background-color: #211c19 !important; border-color: #38302a !important; }
+    html.dark .bg-surface-container-low { background-color: #28221e !important; border-color: #3d342d !important; }
+    html.dark .bg-surface { background-color: #1b1714 !important; border-color: #38302a !important; }
+    html.dark .border-\[\#E8E0D2\] { border-color: #38302a !important; }
+    html.dark .text-primary { color: #e3be72 !important; }
+    html.dark .text-secondary { color: #df8894 !important; }
+    html.dark .text-on-surface { color: #ede7dc !important; }
+    html.dark .text-on-surface-variant { color: #b0a698 !important; }
+    html.dark input, html.dark select, html.dark textarea { background-color: #241e1b !important; color: #ede7dc !important; border-color: #423831 !important; }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#032448",
+            "primary-container": "#1f3a5f",
+            "secondary": "#964450",
+            "tertiary": "#755b00",
+            "tertiary-fixed": "#ffe08e",
+            "on-primary": "#ffffff",
+            "on-secondary": "#ffffff",
+            "surface": "#fcf9f8",
+            "surface-container-low": "#f6f3f2",
+            "surface-container-lowest": "#ffffff",
+            "on-surface": "#1b1c1c",
+            "on-surface-variant": "#43474e"
+          },
+          fontFamily: {
+            "headline": ["Merriweather", "serif"],
+            "body": ["Inter", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-[#FAF7F2] font-body text-on-surface min-h-screen flex flex-col antialiased">
+  
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-[#FAF7F2] border-b border-[#E8E0D2] shadow-sm">
+    <div class="w-full max-w-[1600px] 2xl:max-w-[96vw] mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="flex items-center gap-3 group">
+          <img alt="VSB College of Engineering Karur Logo" class="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-105" src="assets/vsb-logo.png" onerror="this.src='https://vsbec.edu.in/wp-content/uploads/2026/06/VSB-Karur.png'"/>
+          <div>
+            <h1 class="font-headline font-bold text-lg text-primary leading-tight">VSB StudyHub • Admin Center</h1>
+            <p class="text-xs text-secondary font-semibold uppercase tracking-wider">Dept of CSE (AI &amp; ML) Management</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Ambient Warm Dark Mode Toggle -->
+        <button onclick="toggleAdminTheme()" id="adminThemeToggle" class="p-2 rounded-lg border border-[#E8E0D2] text-on-surface-variant hover:text-primary transition-colors" title="Toggle Ambient Dark Mode">
+          <span class="material-symbols-outlined text-[18px]">dark_mode</span>
+        </button>
+
+        <a href="index.html" class="px-3.5 py-1.5 rounded-lg border border-primary text-primary hover:bg-primary hover:text-on-primary text-xs sm:text-sm font-medium transition-colors flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+          <span>Live Portal</span>
+        </a>
+        <button onclick="resetAllToDefault()" class="px-3 py-1.5 rounded-lg bg-secondary text-white hover:opacity-90 text-xs sm:text-sm font-semibold transition-colors flex items-center gap-1 shadow-xs" title="Purge all dummy materials, fake analytics, and test submissions to true zero">
+          <span class="material-symbols-outlined text-[16px]">cleaning_services</span>
+          <span>Purge Dummy Data to 0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Admin Passcode Gate (If not yet authenticated) -->
+  <div id="adminGateModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div class="bg-surface-container-lowest border border-[#E8E0D2] rounded-2xl w-full max-w-md p-6 sm:p-8 shadow-2xl text-center">
+      <div class="w-12 h-12 rounded-full bg-secondary/15 text-secondary mx-auto flex items-center justify-center mb-4">
+        <span class="material-symbols-outlined text-[28px]">lock</span>
+      </div>
+      <h2 class="font-headline font-bold text-xl text-primary mb-1">Administrator Verification</h2>
+      <p class="text-xs text-on-surface-variant mb-6">Enter department passcode to access scholar user credentials, analytics &amp; verify IRL notes.</p>
+      
+      <form onsubmit="handleGateUnlock(event)" class="space-y-4">
+        <div>
+          <input required id="gatePasscodeInput" type="password" placeholder="Passcode (Default: admin123)" class="w-full px-4 py-2.5 rounded-xl border border-[#E8E0D2] bg-surface text-center font-mono text-sm focus:outline-none focus:border-primary"/>
+        </div>
+        <p id="gateError" class="text-xs text-secondary font-bold hidden">Invalid passcode. Please enter admin123.</p>
+        <button type="submit" class="w-full py-2.5 bg-primary text-white rounded-xl font-semibold text-xs sm:text-sm hover:bg-primary-container transition-colors shadow-xs">
+          Unlock Admin Control Center
+        </button>
+        <a href="index.html" class="block text-xs text-on-surface-variant hover:text-primary mt-3">Return to Portal Home</a>
+      </form>
+    </div>
+  </div>
+
+  <!-- Admin Main Container -->
+  <main class="w-full max-w-[1600px] 2xl:max-w-[96vw] mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 space-y-8">
+    
+    <!-- REAL-TIME ANALYTICS DASHBOARD STRIP -->
+    <section class="grid grid-cols-2 md:grid-cols-5 gap-4">
+      <div class="bg-surface-container-lowest p-4 rounded-xl border border-[#E8E0D2] shadow-xs">
+        <span class="text-[11px] font-bold uppercase tracking-wider text-secondary flex items-center gap-1">
+          <span class="material-symbols-outlined text-[15px]">timer</span> Total Run Time
+        </span>
+        <p class="font-headline text-xl sm:text-2xl font-bold text-primary mt-1" id="statTotalRunTime">00:00:00</p>
+        <span class="text-[10px] text-on-surface-variant">Continuous platform uptime</span>
+      </div>
+
+      <div class="bg-surface-container-lowest p-4 rounded-xl border border-[#E8E0D2] shadow-xs">
+        <span class="text-[11px] font-bold uppercase tracking-wider text-primary flex items-center gap-1">
+          <span class="material-symbols-outlined text-[15px]">group</span> Registered Scholars
+        </span>
+        <p class="font-headline text-xl sm:text-2xl font-bold text-primary mt-1" id="statUsersCount">0</p>
+        <span class="text-[10px] text-on-surface-variant">Accounts with passwords</span>
+      </div>
+
+      <div class="bg-surface-container-lowest p-4 rounded-xl border border-[#E8E0D2] shadow-xs">
+        <span class="text-[11px] font-bold uppercase tracking-wider text-secondary flex items-center gap-1">
+          <span class="material-symbols-outlined text-[15px]">pending_actions</span> Pending IRL Notes
+        </span>
+        <p class="font-headline text-xl sm:text-2xl font-bold text-secondary mt-1" id="statPendingNotesCount">0</p>
+        <span class="text-[10px] text-on-surface-variant">Awaiting IRL sign-off</span>
+      </div>
+
+      <div class="bg-surface-container-lowest p-4 rounded-xl border border-[#E8E0D2] shadow-xs">
+        <span class="text-[11px] font-bold uppercase tracking-wider text-tertiary flex items-center gap-1">
+          <span class="material-symbols-outlined text-[15px]">visibility</span> Logged vs Guests
+        </span>
+        <p class="font-headline text-xl sm:text-2xl font-bold text-tertiary mt-1" id="statVisitorsRatio">0 / 0</p>
+        <span class="text-[10px] text-on-surface-variant">Logged sessions / Guest visits</span>
+      </div>
+
+      <div class="bg-surface-container-lowest p-4 rounded-xl border border-[#E8E0D2] shadow-xs col-span-2 md:col-span-1">
+        <span class="text-[11px] font-bold uppercase tracking-wider text-primary flex items-center gap-1">
+          <span class="material-symbols-outlined text-[15px]">download</span> Verified Downloads
+        </span>
+        <p class="font-headline text-xl sm:text-2xl font-bold text-primary mt-1" id="statTotalDownloads">0</p>
+        <span class="text-[10px] text-on-surface-variant">Verified student downloads</span>
+      </div>
+    </section>
+
+    <!-- ADMIN TABS -->
+    <div class="border-b border-[#E8E0D2] flex gap-2 overflow-x-auto pb-1 text-xs sm:text-sm font-semibold">
+      <button onclick="switchAdminTab('users')" id="tabBtn-users" class="admin-tab px-4 py-2 border-b-2 border-primary text-primary flex items-center gap-1.5 whitespace-nowrap">
+        <span class="material-symbols-outlined text-[18px]">badge</span>
+        <span>Registered Users &amp; Passwords (<span id="tabCountUsers">0</span>)</span>
+      </button>
+
+      <button onclick="switchAdminTab('queue')" id="tabBtn-queue" class="admin-tab px-4 py-2 border-b-2 border-transparent text-on-surface-variant hover:text-primary flex items-center gap-1.5 whitespace-nowrap">
+        <span class="material-symbols-outlined text-[18px]">verified</span>
+        <span>IRL Verification Queue (<span id="tabCountQueue" class="text-secondary font-bold">0</span>)</span>
+      </button>
+
+      <button onclick="switchAdminTab('materials')" id="tabBtn-materials" class="admin-tab px-4 py-2 border-b-2 border-transparent text-on-surface-variant hover:text-primary flex items-center gap-1.5 whitespace-nowrap">
+        <span class="material-symbols-outlined text-[18px]">upload_file</span>
+        <span>Upload Documents &amp; PYQs</span>
+      </button>
+
+      <button onclick="switchAdminTab('analytics')" id="tabBtn-analytics" class="admin-tab px-4 py-2 border-b-2 border-transparent text-on-surface-variant hover:text-primary flex items-center gap-1.5 whitespace-nowrap">
+        <span class="material-symbols-outlined text-[18px]">monitoring</span>
+        <span>Live Run Time &amp; Traffic</span>
+      </button>
+
+      <button onclick="switchAdminTab('photos')" id="tabBtn-photos" class="admin-tab px-4 py-2 border-b-2 border-transparent text-on-surface-variant hover:text-primary flex items-center gap-1.5 whitespace-nowrap">
+        <span class="material-symbols-outlined text-[18px]">image</span>
+        <span>Portal Photos Manager</span>
+      </button>
+
+      <button onclick="switchAdminTab('notices')" id="tabBtn-notices" class="admin-tab px-4 py-2 border-b-2 border-transparent text-on-surface-variant hover:text-primary flex items-center gap-1.5 whitespace-nowrap">
+        <span class="material-symbols-outlined text-[18px]">campaign</span>
+        <span>Department Notices</span>
+      </button>
+    </div>
+
+    <!-- TAB 1: REGISTERED USERS & PASSWORDS -->
+    <section id="pane-users" class="space-y-6">
+      <div class="bg-surface-container-lowest p-5 sm:p-6 rounded-2xl border border-[#E8E0D2] shadow-xs">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-[#E8E0D2]">
+          <div>
+            <h2 class="font-headline font-bold text-lg text-primary">Registered Scholar Credentials &amp; Profiles</h2>
+            <p class="text-xs text-on-surface-variant">Contains full registration data, passwords, year, and active semesters.</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="openAddUserModal()" class="px-3.5 py-2 bg-primary text-white rounded-lg text-xs font-semibold hover:bg-primary-container transition-colors flex items-center gap-1.5 shadow-xs">
+              <span class="material-symbols-outlined text-[16px]">person_add</span>
+              <span>Enroll Scholar</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs sm:text-sm">
+            <thead>
+              <tr class="border-b border-[#E8E0D2] bg-surface-container-low text-on-surface-variant font-semibold uppercase tracking-wider text-[11px]">
+                <th class="py-3 px-4">Scholar Name</th>
+                <th class="py-3 px-4">Email / Login ID</th>
+                <th class="py-3 px-4">Department</th>
+                <th class="py-3 px-4">Year &amp; Term</th>
+                <th class="py-3 px-4">Password</th>
+                <th class="py-3 px-4 text-center">Logins</th>
+                <th class="py-3 px-4 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="usersTableBody" class="divide-y divide-[#E8E0D2]">
+              <!-- Populated dynamically via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: IRL VERIFICATION QUEUE (Submissions to hemanthg2607@gmail.com) -->
+    <section id="pane-queue" class="space-y-6 hidden">
+      <div class="bg-surface-container-lowest p-5 sm:p-6 rounded-2xl border border-[#E8E0D2] shadow-xs">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-[#E8E0D2]">
+          <div>
+            <span class="px-2.5 py-0.5 rounded bg-secondary/10 text-secondary text-[10px] font-bold uppercase tracking-wider">Hemanth G IRL Inbox</span>
+            <h2 class="font-headline font-bold text-lg text-primary mt-1">Pending Student Notes for IRL Verification</h2>
+            <p class="text-xs text-on-surface-variant">
+              Notes uploaded by logged-in scholars. Transmitted to <strong>hemanthg2607@gmail.com</strong>. Click "Verify &amp; Publish" after real-life validation.
+            </p>
+          </div>
+        </div>
+
+        <div id="pendingQueueContainer" class="space-y-4">
+          <!-- Injected dynamically -->
+        </div>
+
+        <div id="noPendingNotice" class="hidden p-8 text-center bg-surface-container-low rounded-xl border border-[#E8E0D2]">
+          <span class="material-symbols-outlined text-4xl text-on-surface-variant mb-2">task_alt</span>
+          <h3 class="font-bold text-sm text-primary">All Submitted Notes Have Been Verified</h3>
+          <p class="text-xs text-on-surface-variant">No pending notes waiting for IRL review right now.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: UPLOAD DOCUMENTS & PYQS -->
+    <section id="pane-materials" class="space-y-6 hidden">
+      <div class="bg-surface-container-lowest p-5 sm:p-6 rounded-2xl border border-[#E8E0D2] shadow-xs">
+        <h2 class="font-headline font-bold text-lg text-primary mb-2">Publish Official Material / Question Paper Alone</h2>
+        <p class="text-xs text-on-surface-variant mb-6">All documents on VSB StudyHub are published directly by the administrator.</p>
+
+        <form id="adminUploadForm" onsubmit="handleAdminMaterialPublish(event)" class="space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <label class="block text-xs uppercase font-semibold text-on-surface-variant mb-1">Subject Code *</label>
+              <input required id="admMatCode" placeholder="e.g. CS3491" class="w-full px-3 py-2 rounded-lg border border-[#E8E0D2] bg-surface text-xs sm:text-sm uppercase font-bold text-primary"/>
+            </div>
+            <div>
+              <label class="block text-xs uppercase font-semibold text-on-surface-variant mb-1">Subject Full Title *</label>
+              <input required id="admMatSubject" placeholder="e.g. Artificial Intelligence and Machine Learning" class="w-full px-3 py-2 rounded-lg border border-[#E8E0D2] bg-surface text-xs sm:text-sm"/>
+            </div>
+            <div>
+              <label class="block text-xs uppercase font-semibold text-on-surface-variant mb-1">Document / Paper Title *</label>
+              <input required id="admMatTitle" placeholder="e.g. Nov/Dec 2024 Solved Anna University Question Paper" class="w-full px-3 py-2 rounded-lg border border-[#E8E0D2] bg-surface text-xs sm:text-sm"/>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+            <div>
+              <label class="block text-xs uppercase font-semibold text-on-surface-variant mb-1">Semester *</label>
+              <select required id="admMatSemester" class="w-full px-3 py-2 rounded-lg border border-[#E8E0D2] bg-surface text-xs">
+                <option value="1">Semester 1</option>
+                <option value="2">Semester 2</option>
+                <option value="3">Semester 3</option>
+                <option value="4" selected>Semester 4</option>
+                <option value="5">Semester 5</option>
+                <option value="6">Semester 6</option>
+                <option value="7">Semester 7</option>
+                <option value="8">Semester 8</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs uppercase font-semibold text-on-surface-variant mb-1">Document Type *</label>
+              <select required id="admMatType" class="w-full px-3 py-2 rounded-lg border border-[#E8E0D2] bg-surface text-xs">
+                <option value="Solved QP">Solved Question Paper (PYQ)</option>
+                <option value="Question Paper">Original Question Paper</option>
+                <option value="Lecture Notes">Faculty Lecture Notes</option>
+                <option value="Lab Code & Notebook">Lab Code &amp; Notebook (.ipynb)</option>
+                <option value="Reference Book">Reference Textbook</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs uppercase font-semibold text-on-surface-variant mb-1">Session / Regulation</label>
+              <input id="admMatSession" placeholder="e.g. Nov/Dec 2024 (Reg 2021)" class="w-full px-3 py-2 rounded-lg border border-[#E8E0D2] bg-surface text-xs"/>
+            </div>
+            <div>
+              <label class="block text-xs uppercase font-semibold text-on-surface-variant mb-1">File / Cloud URL *</label>
+              <input required id="admMatUrl" type="url" placeholder="https://drive.google.com/..." class="w-full px-3 py-2 rounded-lg border border-[#E8E0D2] bg-surface text-xs"/>
+            </div>
+          </div>
+
+          <div class="pt-2 flex justify-end">
+            <button type="submit" class="px-6 py-2.5 rounded-xl bg-primary text-white font-semibold text-xs sm:text-sm hover:bg-primary-container transition-colors shadow-xs flex items-center gap-2">
+              <span class="material-symbols-outlined text-[18px]">publish</span>
+              <span>Publish Official Material</span>
+            </button>
+          </div>
+        </form>
+
+        <!-- Current Published Materials Table -->
+        <div class="mt-8 pt-6 border-t border-[#E8E0D2]">
+          <h3 class="font-headline font-bold text-sm text-primary mb-3">Live Published Academic Materials &amp; Papers</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs">
+              <thead>
+                <tr class="border-b border-[#E8E0D2] bg-surface-container-low text-on-surface-variant uppercase text-[10px] font-bold">
+                  <th class="py-2.5 px-3">Subject</th>
+                  <th class="py-2.5 px-3">Document Title</th>
+                  <th class="py-2.5 px-3">Sem</th>
+                  <th class="py-2.5 px-3">Category</th>
+                  <th class="py-2.5 px-3 text-center">DLs</th>
+                  <th class="py-2.5 px-3 text-right">Action</th>
+                </tr>
+              </thead>
+              <tbody id="publishedMaterialsBody" class="divide-y divide-[#E8E0D2]">
+                <!-- Populated via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: LIVE RUN TIME & TRAFFIC ANALYTICS -->
+    <section id="pane-analytics" class="space-y-6 hidden">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <div class="bg-surface-container-lowest p-6 rounded-2xl border border-[#E8E0D2] shadow-xs space-y-4">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-secondary text-[24px]">timelapse</span>
+            <h3 class="font-headline font-bold text-base text-primary">Run Time Breakdown</h3>
+          </div>
+          <p class="text-xs text-on-surface-variant">Precise second-by-second accumulation of user engagement on VSB StudyHub.</p>
+
+          <div class="space-y-3 pt-2">
+            <div class="p-3 bg-surface-container-low rounded-xl border border-[#E8E0D2] flex justify-between items-center">
+              <span class="text-xs font-semibold text-primary">Logged-in Users Run Time</span>
+              <strong id="analyticsLoggedTime" class="text-secondary font-mono text-sm">00:00:00</strong>
+            </div>
+
+            <div class="p-3 bg-surface-container-low rounded-xl border border-[#E8E0D2] flex justify-between items-center">
+              <span class="text-xs font-semibold text-primary">Unlogged-in / Guest Run Time</span>
+              <strong id="analyticsGuestTime" class="text-on-surface-variant font-mono text-sm">00:00:00</strong>
+            </div>
+
+            <div class="p-3 bg-surface-container-low rounded-xl border border-[#E8E0D2] flex justify-between items-center">
+              <span class="text-xs font-semibold text-primary">Logged-in User Visits</span>
+              <strong id="analyticsLoggedVisits" class="text-primary font-bold">0</strong>
+            </div>
+
+            <div class="p-3 bg-surface-container-low rounded-xl border border-[#E8E0D2] flex justify-between items-center">
+              <span class="text-xs font-semibold text-primary">Guest / Public Visits</span>
+              <strong id="analyticsGuestVisits" class="text-on-surface-variant font-bold">0</strong>
+            </div>
+
+            <div class="pt-2 flex justify-end">
+              <button onclick="resetAllToDefault()" class="px-3 py-1.5 rounded-lg bg-secondary text-white hover:opacity-90 text-xs font-semibold flex items-center gap-1 shadow-xs">
+                <span class="material-symbols-outlined text-[15px]">restart_alt</span>
+                <span>Reset Analytics to 0</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-surface-container-lowest p-6 rounded-2xl border border-[#E8E0D2] shadow-xs space-y-4">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-[24px]">traffic</span>
+            <h3 class="font-headline font-bold text-base text-primary">Webpage Hit Matrix</h3>
+          </div>
+          <p class="text-xs text-on-surface-variant">Exact traffic volume received across dedicated portal pages.</p>
+
+          <div id="pageViewsContainer" class="space-y-2 pt-2 text-xs">
+            <!-- Dynamically populated pageviews -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TAB 5: PORTAL PHOTOS MANAGER -->
+    <section id="pane-photos" class="space-y-6 hidden">
+      <div class="bg-surface-container-lowest p-6 rounded-2xl border border-[#E8E0D2] shadow-xs">
+        <h2 class="font-headline font-bold text-lg text-primary mb-2">Portal Visuals &amp; Campus Photography Settings</h2>
+        <p class="text-xs text-on-surface-variant mb-6">
+          You can update the hero image or college photograph anytime. Your custom choice will be preserved and will not be overwritten.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+          <div class="space-y-4">
+            <div>
+              <label class="block text-xs font-semibold text-on-surface-variant mb-1">Hero Banner Image Source</label>
+              <input id="heroPhotoInput" type="text" placeholder="assets/hero-study-desk.jpg or any image URL" class="w-full px-3.5 py-2.5 rounded-lg border border-[#E8E0D2] bg-surface text-xs sm:text-sm"/>
+              <p class="text-[11px] text-on-surface-variant mt-1">Default options: <code>assets/hero-study-desk.jpg</code> or direct online URLs.</p>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <button onclick="saveHeroPhoto()" class="px-5 py-2 bg-primary text-white rounded-lg text-xs font-semibold hover:bg-primary-container transition-colors shadow-xs">
+                Apply Custom Image
+              </button>
+              <button onclick="resetHeroPhoto()" class="px-4 py-2 border border-[#E8E0D2] rounded-lg text-xs font-semibold hover:bg-surface-container transition-colors">
+                Reset to Study Desk Illustration
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <span class="text-xs font-semibold text-on-surface-variant block mb-2">Live Preview:</span>
+            <div class="rounded-xl overflow-hidden border border-[#E8E0D2] bg-surface-container-low max-h-64 flex items-center justify-center">
+              <img id="heroPhotoPreview" alt="Hero Banner Preview" class="w-full h-auto object-cover max-h-60" src="assets/hero-study-desk.jpg"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 6: DEPARTMENT NOTICES -->
+    <section id="pane-notices" class="space-y-6 hidden">
+      <div class="bg-surface-container-lowest p-6 rounded-2xl border border-[#E8E0D2] shadow-xs">
+        <h2 class="font-headline font-bold text-lg text-primary mb-2">Post Official Department Notice</h2>
+        <p class="text-xs text-on-surface-variant mb-4">Circulars posted here appear live on the Home page notice board.</p>
+
+        <form onsubmit="handlePostNotice(event)" class="space-y-4 max-w-2xl">
+          <div>
+            <label class="block text-xs font-semibold text-on-surface-variant mb-1">Notice Headline *</label>
+            <input required id="noticeTitleInput" placeholder="e.g. Schedule for Internal Assessment Test II & Lab Submissions" class="w-full px-3 py-2 rounded-lg border border-[#E8E0D2] bg-surface text-xs sm:text-sm"/>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-on-surface-variant mb-1">Circular Content / Details *</label>
+            <textarea required id="noticeContentInput" rows="3" placeholder="Provide full details, deadline, room numbers, or instructions..." class="w-full px-3 py-2 rounded-lg border border-[#E8E0D2] bg-surface text-xs sm:text-sm"></textarea>
+          </div>
+          <button type="submit" class="px-5 py-2 rounded-lg bg-secondary text-white font-semibold text-xs sm:text-sm hover:opacity-90 transition-opacity shadow-xs">
+            Broadcast Notice
+          </button>
+        </form>
+
+        <div class="mt-8 pt-6 border-t border-[#E8E0D2]">
+          <h3 class="font-headline font-bold text-sm text-primary mb-3">Active Department Notices</h3>
+          <div id="adminNoticesList" class="space-y-3">
+            <!-- Notices rendered here -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="assets/portal-core.js"></script>
+  <script>
+    // --- GATE SECURITY ---
+    function checkAdminAccess() {
+      const isAuth = sessionStorage.getItem("vsb_admin_unlocked") === "true";
+      const gate = document.getElementById("adminGateModal");
+      if (!isAuth) {
+        gate.classList.remove("hidden");
+      } else {
+        gate.classList.add("hidden");
+        initAdminView();
+      }
+    }
+
+    function handleGateUnlock(e) {
+      e.preventDefault();
+      const pass = document.getElementById("gatePasscodeInput").value;
+      if (pass === "admin123" || pass === "Password@123") {
+        sessionStorage.setItem("vsb_admin_unlocked", "true");
+        document.getElementById("adminGateModal").classList.add("hidden");
+        initAdminView();
+      } else {
+        document.getElementById("gateError").classList.remove("hidden");
+      }
+    }
+
+    // --- TAB SWITCHING ---
+    function switchAdminTab(tab) {
+      ['users', 'queue', 'materials', 'analytics', 'photos', 'notices'].forEach(t => {
+        const pane = document.getElementById(`pane-${t}`);
+        const btn = document.getElementById(`tabBtn-${t}`);
+        if (pane && btn) {
+          if (t === tab) {
+            pane.classList.remove('hidden');
+            btn.classList.add('border-primary', 'text-primary');
+            btn.classList.remove('border-transparent', 'text-on-surface-variant');
+          } else {
+            pane.classList.add('hidden');
+            btn.classList.remove('border-primary', 'text-primary');
+            btn.classList.add('border-transparent', 'text-on-surface-variant');
+          }
+        }
+      });
+    }
+
+    // --- USERS & PASSWORDS RENDERER ---
+    function renderUsers() {
+      const users = window.portalCore ? window.portalCore.getUsers() : JSON.parse(localStorage.getItem("vsb_users") || "[]");
+      const tbody = document.getElementById("usersTableBody");
+      document.getElementById("statUsersCount").innerText = users.length;
+      document.getElementById("tabCountUsers").innerText = users.length;
+
+      if (users.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="7" class="py-8 px-4 text-center text-xs text-on-surface-variant">
+              No scholars enrolled yet. New registrations from the portal Sign In modal will appear here with full credentials.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = users.map((u, i) => `
+        <tr class="hover:bg-surface-container-low transition-colors">
+          <td class="py-3 px-4 font-bold text-primary">
+            ${u.name}
+          </td>
+          <td class="py-3 px-4 text-on-surface">
+            ${u.email}
+          </td>
+          <td class="py-3 px-4 text-xs text-on-surface-variant">
+            ${u.dept}
+          </td>
+          <td class="py-3 px-4">
+            <span class="px-2 py-0.5 rounded bg-secondary/10 text-secondary font-bold text-xs">
+              Sem ${u.semester} • ${u.year}
+            </span>
+          </td>
+          <td class="py-3 px-4 font-mono text-xs">
+            <div class="flex items-center gap-1.5">
+              <span id="pass-${i}" class="text-primary font-bold">••••••••</span>
+              <button onclick="toggleUserPassRow(${i}, '${u.password}')" class="text-on-surface-variant hover:text-primary p-0.5" title="Show/Hide Password">
+                <span class="material-symbols-outlined text-[16px]">visibility</span>
+              </button>
+            </div>
+          </td>
+          <td class="py-3 px-4 text-center font-bold text-primary">
+            ${u.loginCount || 1}
+          </td>
+          <td class="py-3 px-4 text-right">
+            <button onclick="deleteUser('${u.id}')" class="text-secondary hover:underline text-xs font-semibold">
+              Delete
+            </button>
+          </td>
+        </tr>
+      `).join("");
+    }
+
+    function toggleUserPassRow(index, actualPass) {
+      const el = document.getElementById(`pass-${index}`);
+      if (el.innerText === "••••••••") {
+        el.innerText = actualPass;
+      } else {
+        el.innerText = "••••••••";
+      }
+    }
+
+    function deleteUser(id) {
+      if (confirm("Delete this scholar account and credentials?")) {
+        let users = JSON.parse(localStorage.getItem("vsb_users") || "[]");
+        users = users.filter(u => u.id !== id);
+        localStorage.setItem("vsb_users", JSON.stringify(users));
+        renderUsers();
+      }
+    }
+
+    // --- IRL QUEUE RENDERER ---
+    function renderPendingQueue() {
+      const queue = JSON.parse(localStorage.getItem("vsb_pending_submissions") || "[]");
+      const container = document.getElementById("pendingQueueContainer");
+      const noPending = document.getElementById("noPendingNotice");
+      document.getElementById("statPendingNotesCount").innerText = queue.length;
+      document.getElementById("tabCountQueue").innerText = queue.length;
+
+      if (queue.length === 0) {
+        container.innerHTML = "";
+        noPending.classList.remove("hidden");
+        return;
+      }
+
+      noPending.classList.add("hidden");
+      container.innerHTML = queue.map((item, idx) => `
+        <div class="p-4 sm:p-5 rounded-xl border border-[#E8E0D2] bg-surface-container-low flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div class="space-y-1 max-w-2xl">
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="px-2 py-0.5 rounded bg-primary text-white text-[10px] font-bold uppercase">${item.subjectCode}</span>
+              <span class="px-2 py-0.5 rounded bg-secondary/10 text-secondary text-[10px] font-bold uppercase">${item.category}</span>
+              <span class="text-xs text-on-surface-variant">Submitted by <strong>${item.studentName}</strong> (${item.studentEmail} • Sem ${item.semester})</span>
+            </div>
+            <h4 class="font-headline font-bold text-base text-primary">${item.title}</h4>
+            <p class="text-xs text-on-surface-variant">${item.subjectName} • ${item.description || "No remarks"}</p>
+            <a href="${item.fileUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs text-primary font-semibold hover:underline mt-1">
+              <span class="material-symbols-outlined text-[15px]">link</span>
+              <span>Open Document Link: ${item.fileUrl}</span>
+            </a>
+          </div>
+
+          <div class="flex items-center gap-2 flex-shrink-0">
+            <button onclick="approveQueueItem(${idx})" class="px-4 py-2 rounded-lg bg-primary text-white text-xs font-semibold hover:bg-primary-container transition-colors flex items-center gap-1.5 shadow-xs">
+              <span class="material-symbols-outlined text-[16px]">check_circle</span>
+              <span>Verify &amp; Publish Live</span>
+            </button>
+            <button onclick="rejectQueueItem(${idx})" class="px-3 py-2 rounded-lg border border-secondary text-secondary hover:bg-secondary/10 text-xs font-semibold transition-colors">
+              Reject
+            </button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function approveQueueItem(index) {
+      const queue = JSON.parse(localStorage.getItem("vsb_pending_submissions") || "[]");
+      const item = queue[index];
+      if (!item) return;
+
+      // Transfer into vsb_materials and vsb_resources
+      const materials = JSON.parse(localStorage.getItem("vsb_materials") || "[]");
+      materials.unshift({
+        id: "mat-" + Date.now(),
+        code: item.subjectCode,
+        subject: `${item.subjectCode} ${item.subjectName}`,
+        title: item.title,
+        contributor: `${item.studentName} (Verified IRL)`,
+        semester: `sem${item.semester}`,
+        type: item.category,
+        url: item.fileUrl,
+        date: new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }),
+        downloads: 0
+      });
+      localStorage.setItem("vsb_materials", JSON.stringify(materials));
+
+      // Also add to vsb_resources
+      const resources = JSON.parse(localStorage.getItem("vsb_resources") || "[]");
+      resources.unshift({
+        id: "res-" + Date.now(),
+        code: item.subjectCode,
+        title: item.title,
+        category: item.category,
+        author: `${item.studentName} (Verified IRL by Hemanth G)`,
+        semester: parseInt(item.semester, 10) || 4,
+        format: "Verified Document",
+        size: "PDF",
+        icon: item.category.includes("Lab") ? "terminal" : "description",
+        color: "primary",
+        url: item.fileUrl,
+        downloads: 0,
+        description: item.description || "Student submitted notes verified IRL by Hemanth G."
+      });
+      localStorage.setItem("vsb_resources", JSON.stringify(resources));
+
+      // If Question Paper, also add to vsb_pyqs
+      if (item.category.includes("QP") || item.category.includes("Question Paper")) {
+        const pyqs = JSON.parse(localStorage.getItem("vsb_pyqs") || "[]");
+        pyqs.unshift({
+          id: "pyq-" + Date.now(),
+          code: item.subjectCode,
+          title: item.title,
+          semester: parseInt(item.semester, 10) || 4,
+          session: "Verified Submission",
+          regulation: "Regulation 2021",
+          type: item.category,
+          fileSize: "PDF Document",
+          url: item.fileUrl,
+          downloads: 0
+        });
+        localStorage.setItem("vsb_pyqs", JSON.stringify(pyqs));
+      }
+
+      // Remove from queue
+      queue.splice(index, 1);
+      localStorage.setItem("vsb_pending_submissions", JSON.stringify(queue));
+
+      alert(`Approved & Published!\n\n${item.title} is now live on VSB StudyHub for all scholars to view and download.`);
+      renderPendingQueue();
+      renderPublishedMaterials();
+    }
+
+    function rejectQueueItem(index) {
+      if (confirm("Reject and remove this submission from the verification queue?")) {
+        const queue = JSON.parse(localStorage.getItem("vsb_pending_submissions") || "[]");
+        queue.splice(index, 1);
+        localStorage.setItem("vsb_pending_submissions", JSON.stringify(queue));
+        renderPendingQueue();
+      }
+    }
+
+    // --- PUBLISH MATERIAL ALONE ---
+    function handleAdminMaterialPublish(e) {
+      e.preventDefault();
+      const code = document.getElementById("admMatCode").value.toUpperCase().trim();
+      const subject = document.getElementById("admMatSubject").value.trim();
+      const title = document.getElementById("admMatTitle").value.trim();
+      const semester = document.getElementById("admMatSemester").value;
+      const type = document.getElementById("admMatType").value;
+      const session = document.getElementById("admMatSession").value.trim();
+      const url = document.getElementById("admMatUrl").value.trim();
+
+      const materials = JSON.parse(localStorage.getItem("vsb_materials") || "[]");
+      materials.unshift({
+        id: "mat-" + Date.now(),
+        code: code,
+        subject: `${code} ${subject}`,
+        title: title,
+        contributor: "Department HOD / Academic Board",
+        semester: `sem${semester}`,
+        type: type,
+        session: session,
+        url: url,
+        date: new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }),
+        downloads: 0
+      });
+      localStorage.setItem("vsb_materials", JSON.stringify(materials));
+
+      // Also add to vsb_resources
+      const resources = JSON.parse(localStorage.getItem("vsb_resources") || "[]");
+      resources.unshift({
+        id: "res-" + Date.now(),
+        code: code,
+        title: title,
+        category: type,
+        author: "Department HOD / Academic Board",
+        semester: parseInt(semester, 10),
+        format: "Official Document",
+        size: "PDF",
+        icon: type.includes("Lab") ? "terminal" : type.includes("Book") ? "menu_book" : "description",
+        color: "primary",
+        url: url,
+        downloads: 0,
+        description: `${code} - ${subject}. Published by department administration.`
+      });
+      localStorage.setItem("vsb_resources", JSON.stringify(resources));
+
+      // Also if type is Question Paper, push to vsb_pyqs
+      if (type.includes("QP") || type.includes("Question Paper")) {
+        const pyqs = JSON.parse(localStorage.getItem("vsb_pyqs") || "[]");
+        pyqs.unshift({
+          id: "pyq-" + Date.now(),
+          code: code,
+          title: `${subject} (${title})`,
+          semester: parseInt(semester, 10),
+          session: session || "Nov/Dec 2024",
+          regulation: "Regulation 2021",
+          type: type,
+          fileSize: "PDF Document",
+          url: url,
+          downloads: 0
+        });
+        localStorage.setItem("vsb_pyqs", JSON.stringify(pyqs));
+      }
+
+      document.getElementById("adminUploadForm").reset();
+      alert(`Published: ${title} has been uploaded to the official repository.`);
+      renderPublishedMaterials();
+    }
+
+    function renderPublishedMaterials() {
+      const materials = JSON.parse(localStorage.getItem("vsb_materials") || "[]");
+      const tbody = document.getElementById("publishedMaterialsBody");
+      if (!tbody) return;
+
+      if (materials.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" class="py-8 px-3 text-center text-xs text-on-surface-variant">
+              No materials published yet. Use the form above to publish official curriculum documents and papers.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = materials.map((m, i) => `
+        <tr class="hover:bg-surface-container-low transition-colors">
+          <td class="py-2.5 px-3 font-bold text-primary">${m.code || m.subject.split(" ")[0]}</td>
+          <td class="py-2.5 px-3 font-medium text-on-surface line-clamp-1">${m.title}</td>
+          <td class="py-2.5 px-3 font-bold text-secondary uppercase">${m.semester}</td>
+          <td class="py-2.5 px-3 text-on-surface-variant">${m.type}</td>
+          <td class="py-2.5 px-3 text-center font-bold text-primary">${m.downloads || 0}</td>
+          <td class="py-2.5 px-3 text-right">
+            <button onclick="deletePublishedMaterial(${i})" class="text-secondary hover:underline font-semibold text-xs">
+              Remove
+            </button>
+          </td>
+        </tr>
+      `).join("");
+    }
+
+    function deletePublishedMaterial(index) {
+      if (confirm("Remove this document from the published repository?")) {
+        const materials = JSON.parse(localStorage.getItem("vsb_materials") || "[]");
+        materials.splice(index, 1);
+        localStorage.setItem("vsb_materials", JSON.stringify(materials));
+        renderPublishedMaterials();
+      }
+    }
+
+    // --- LIVE RUN TIME & ANALYTICS ---
+    function formatTime(totalSec) {
+      const hrs = Math.floor(totalSec / 3600);
+      const mins = Math.floor((totalSec % 3600) / 60);
+      const secs = totalSec % 60;
+      return `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    function updateAnalyticsDisplay() {
+      const data = window.portalCore ? window.portalCore.getAnalytics() : JSON.parse(localStorage.getItem("vsb_analytics") || "{}");
+      
+      const totalSec = data.totalRunTimeSeconds || 0;
+      const loggedSec = data.loggedUsersRunTime || 0;
+      const guestSec = data.guestRunTime || 0;
+
+      document.getElementById("statTotalRunTime").innerText = formatTime(totalSec);
+      document.getElementById("analyticsLoggedTime").innerText = formatTime(loggedSec);
+      document.getElementById("analyticsGuestTime").innerText = formatTime(guestSec);
+
+      document.getElementById("analyticsLoggedVisits").innerText = `${data.loggedVisits || 0} Sessions`;
+      document.getElementById("analyticsGuestVisits").innerText = `${data.guestVisits || 0} Sessions`;
+      document.getElementById("statVisitorsRatio").innerText = `${data.loggedVisits || 0} / ${data.guestVisits || 0}`;
+
+      const totalDls = parseInt(localStorage.getItem("vsb_total_downloads") || "0", 10);
+      document.getElementById("statTotalDownloads").innerText = totalDls;
+
+      // Pageviews matrix
+      const pvContainer = document.getElementById("pageViewsContainer");
+      if (pvContainer && data.pageViews) {
+        pvContainer.innerHTML = Object.entries(data.pageViews).map(([page, hits]) => `
+          <div class="flex items-center justify-between p-2.5 bg-surface-container-low rounded-lg border border-[#E8E0D2]">
+            <span class="font-mono text-primary font-semibold">${page}</span>
+            <span class="px-2 py-0.5 rounded bg-primary/10 text-primary font-bold">${hits} Hits</span>
+          </div>
+        `).join("");
+      }
+    }
+
+    // --- HERO PHOTO SETTINGS ---
+    function saveHeroPhoto() {
+      const input = document.getElementById("heroPhotoInput").value.trim();
+      if (!input) return;
+      localStorage.setItem("vsb_hero_image", input);
+      document.getElementById("heroPhotoPreview").src = input;
+      alert("Hero banner image updated across VSB StudyHub!");
+    }
+
+    function resetHeroPhoto() {
+      const defaultImg = "assets/hero-study-desk.jpg";
+      localStorage.setItem("vsb_hero_image", defaultImg);
+      document.getElementById("heroPhotoInput").value = defaultImg;
+      document.getElementById("heroPhotoPreview").src = defaultImg;
+      alert("Reset to official scholarly study desk hero illustration.");
+    }
+
+    // --- NOTICES ---
+    function handlePostNotice(e) {
+      e.preventDefault();
+      const title = document.getElementById("noticeTitleInput").value.trim();
+      const content = document.getElementById("noticeContentInput").value.trim();
+      const notices = JSON.parse(localStorage.getItem("vsb_notices") || "[]");
+      notices.unshift({
+        id: "not-" + Date.now(),
+        title: title,
+        content: content,
+        date: new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }),
+        badge: "Urgent Circular"
+      });
+      localStorage.setItem("vsb_notices", JSON.stringify(notices));
+      document.getElementById("noticeTitleInput").value = "";
+      document.getElementById("noticeContentInput").value = "";
+      alert("Notice broadcasted to portal home!");
+      renderAdminNotices();
+    }
+
+    function renderAdminNotices() {
+      const notices = JSON.parse(localStorage.getItem("vsb_notices") || "[]");
+      const list = document.getElementById("adminNoticesList");
+      if (!list) return;
+
+      list.innerHTML = notices.map((n, i) => `
+        <div class="p-3.5 bg-surface-container-low rounded-xl border border-[#E8E0D2] flex justify-between items-start gap-3">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="px-2 py-0.5 rounded bg-secondary/10 text-secondary text-[10px] font-bold uppercase">${n.badge || 'Circular'}</span>
+              <span class="text-xs text-on-surface-variant">${n.date}</span>
+            </div>
+            <h4 class="font-bold text-sm text-primary mt-1">${n.title}</h4>
+            <p class="text-xs text-on-surface-variant mt-0.5">${n.content}</p>
+          </div>
+          <button onclick="deleteNotice(${i})" class="text-secondary hover:underline text-xs font-semibold">Delete</button>
+        </div>
+      `).join("");
+    }
+
+    function deleteNotice(index) {
+      const notices = JSON.parse(localStorage.getItem("vsb_notices") || "[]");
+      notices.splice(index, 1);
+      localStorage.setItem("vsb_notices", JSON.stringify(notices));
+      renderAdminNotices();
+    }
+
+    // Theme toggle
+    function toggleAdminTheme() {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('vsb_theme', isDark ? 'dark' : 'light');
+    }
+
+    function resetAllToDefault() {
+      if (confirm("Purge ALL dummy data and reset portal to strict true zero? (Resets run time counter, empties test verification queue, clears fake files)")) {
+        if (window.portalCore && window.portalCore.purgeAllDummyValues) {
+          window.portalCore.purgeAllDummyValues(true);
+        } else {
+          localStorage.setItem("vsb_pending_submissions", JSON.stringify([]));
+          localStorage.setItem("vsb_analytics", JSON.stringify({
+            totalRunTimeSeconds: 0,
+            totalPageViews: 0,
+            loggedUsersRunTime: 0,
+            guestRunTime: 0,
+            guestVisits: 0,
+            loggedVisits: 0,
+            pageViews: {},
+            sessionLog: []
+          }));
+          localStorage.setItem("vsb_total_downloads", "0");
+          localStorage.setItem("vsb_calendar_downloads", "0");
+          localStorage.setItem("vsb_pyqs", JSON.stringify([]));
+          localStorage.setItem("vsb_resources", JSON.stringify([]));
+          localStorage.setItem("vsb_materials", JSON.stringify([]));
+          localStorage.setItem("vsb_notices", JSON.stringify([]));
+          localStorage.setItem("vsb_reviews", JSON.stringify([]));
+          localStorage.setItem("vsb_ratings", JSON.stringify({}));
+        }
+        alert("Success! All dummy values, test verification notes, fake analytics, and sample materials have been purged. Platform is now at true zero.");
+        window.location.reload();
+      }
+    }
+
+    function initAdminView() {
+      renderUsers();
+      renderPendingQueue();
+      renderPublishedMaterials();
+      renderAdminNotices();
+      updateAnalyticsDisplay();
+
+      // Poll analytics every second
+      setInterval(updateAnalyticsDisplay, 1000);
+
+      const savedHero = localStorage.getItem("vsb_hero_image") || "assets/hero-study-desk.jpg";
+      document.getElementById("heroPhotoInput").value = savedHero;
+      document.getElementById("heroPhotoPreview").src = savedHero;
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const savedTheme = localStorage.getItem("vsb_theme") || "light";
+      if (savedTheme === 'dark') document.documentElement.classList.add('dark');
+      checkAdminAccess();
+    });
+  </script>
+</body>
+</html>
